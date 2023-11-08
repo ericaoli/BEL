@@ -1,0 +1,55 @@
+@mixin menu {
+    font-family: $nunito-sans;
+    text-decoration: none;
+    color: $text-color;
+    list-style-type: none;
+}
+
+@mixin main_title {
+    color: $link_title-color;
+    font-family: $nunito-sans;
+    text-align: center;
+    margin: 2rem auto;
+}
+
+@mixin text {
+    color: $text-color;
+    font-family: $poppins;
+    text-align: justify;
+    margin: 1rem;
+    line-height: 1.5rem;
+}
+
+@mixin logo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-decoration: none;
+}
+
+@mixin button {
+    text-align: center;
+    background-color: $link_title-color;
+    font-family: $nunito-sans;
+    border: none;
+    border-radius: 15px;
+    a{
+        text-decoration: none;
+        color: $secondary-color;  
+    }
+    &:hover {
+        font-weight: bold;
+        color: $hover-button-color;
+        transition: 0.3s;
+    }
+}
+
+@mixin background_image {
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: sticky;
+    top: 70px;
+    margin-top: 70px;
+    height: 80px;
+    z-index: 2; 
+}

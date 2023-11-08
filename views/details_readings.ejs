@@ -1,0 +1,36 @@
+<%- include('header') -%>
+<div class="books"></div>
+    <main>
+        <section class="container_books">
+            <h1 lang="pt-br"><%= books.title %></h1>
+            <article class="details"> 
+                <div class="technical_informations">
+                        <div class="details_cover">
+                            <img src="/images/<%= books.url_cover_image %>" alt="<%= books.alt_text %>">
+                        </div>
+                        <div>
+                            <h2 lang="pt-br">Ficha técnica:</h2>
+                            <p lang="pt-br"><span class="informations">Apresentado no clube em:</span> <%= books.date_reading_club.toLocaleDateString() %></p>
+                            <p lang="pt-br"><span class="informations">Título:</span> <%= books.title %></p>
+                            <p lang="pt-br"><span class="informations">Autor:</span> <%= books.firstname + " " + books.lastname %></p>
+                            <p lang="pt-br"><span class="informations">Editora:</span> <%= books.name %></p>
+                            <p lang="pt-br"><span class="informations">ISBN: </span> <%= books.isbn %></p>
+                            <p lang="pt-br"><span class="informations">Ano de publicação:</span> <%= books.publication_year %></p>
+                            <p lang="pt-br" class="description"><span class="informations">Descrição:</span> <%= books.description %></p>
+                        </div>
+                </div>
+            </article>
+            <article class="comments">
+                <h2 lang="pt-br">Opinião dos leitores</h2>
+                <div class="id_comment"> 
+                    <p lang="pt-br"><span class="informations reader">Leitor:</span></p>
+                    <p lang="pt-br"><span class="informations date">Data:</span></p>
+                    <p lang="pt-br"><span class="informations comment">Comentário:</span></p>
+                </div>
+                <div class="btn_comment">
+                    <button type="button"><a href="#">Dê a sua opinião</a></button>
+                    </div>
+            </article>
+        </section>
+    </main>
+<%- include('footer') -%>

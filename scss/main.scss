@@ -1,0 +1,530 @@
+/* imports */ 
+@import 'resets';
+@import 'variables';
+@import 'mixins';
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz@6..12&family=Poppins&display=swap" rel="stylesheet');
+
+
+/* MOBILE-FIRST*/
+
+/****** NAVBAR*****/
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: block;
+    height: 70px;
+    background-color: $primary-color;
+    z-index: 4;
+}
+.navbar.is-active {
+    width: 100%;
+    padding-top: 1.5rem;
+    min-height: 100vh;
+}
+.main-navlinks{
+    display: flex;
+    a {
+        padding-right: 2rem;
+    }
+}
+.navlinks-top {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+}
+.nav_login {
+    font-size: 1.8rem;
+}
+.nav_login_desktop{
+    display: none;
+}
+.menu, .menu_scrolling_options {
+    @include menu;
+    font-size: 1.2rem;
+    &.backdrop {
+        font-size: 1rem;
+    }
+    &:hover {
+        color: $link_title-color;
+        font-weight: bold;
+        cursor: pointer;
+    }
+}
+.navbar li {
+    list-style-type: none;
+}
+.logo{
+    @include logo;
+    &__title {
+        font-family: $nunito-sans;
+        color: $link_title-color;
+        font-weight: bold;
+        font-size: 1.1rem;
+    }
+    &__subtitle {
+        font-family: $poppins;
+        color: $text-color;
+    }
+} 
+.menu_backdrop{
+    margin-top: 1rem;
+    li {
+        padding: 0.5rem;
+    }
+}
+.menu_backdrop, 
+.navlinks-container {
+    display: none;
+    text-align: right;    
+}
+.menu_scrolling_options {
+    @include menu;
+    font-size: 1.2rem;
+}
+.navlinks-wrapper li{
+    padding: 1rem;
+}
+/*classe css - insertion avec javascript*/
+.show-links {
+    display: block;
+}
+/*  **** hamburger navbar *******  */
+.hamburger {
+    position: relative;
+    display: block;
+    width: 35px;
+    height: 35px;
+    appearance: none;
+    background: none;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+.hamburger .bar, .hamburger::before, .hamburger::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: #fff;
+    margin: 6px 0;
+    transition: 0.4s;
+}
+.hamburger.is-active::before {
+    transform: rotate(-45deg) translate(-9px, 4px);
+}
+.hamburger.is-active .bar {
+    opacity: 0;
+}
+.hamburger.is-active::after {
+    transform: rotate(45deg) translate(-9px, -4px);
+}
+/* main */
+body {
+    background-color: $secondary-color;
+}
+.container {
+    margin: 3rem 2rem;
+    
+    h1 {
+        @include main_title;
+    }
+    p {
+        @include text;
+    }
+}
+/* page home */
+.homepage {
+    background-image: url("/images/accueil.webp");
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    width: 100%;
+    text-align: center;
+    z-index: -1;
+
+    p{
+        @include text;
+        text-align: center;
+    }
+
+    button {
+        @include button;
+        font-size: 1.5rem;
+        padding: 1rem 1.5rem;
+    }
+}
+.home {
+    color: $text-color;
+    text-align: center;
+    height: 50vh;
+    @include logo;
+    &_title{
+        @include main_title;
+        font-size: 2.5rem;
+    }
+    &_subtitle {
+        font-family: $poppins;
+    }
+}
+/* page about */
+.a-propos {
+    background-image: url("/images/a_propos.webp");
+    background-position: bottom;
+    @include background_image;
+}
+.container.about {
+    height: 100vh;
+}
+/* page readings */
+.books {
+    background-image: url("/images/nos_lectures.webp");
+    background-position: top;
+    @include background_image;  
+}
+.container_books {
+    max-width: 100%;
+    font-size: 1.1rem;
+    z-index: 1;
+    & h1, h2, label{
+        @include main_title;
+    }
+}
+.books_gallery {
+    max-width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+    grid-template-rows: auto;
+    justify-content: center;
+    row-gap: 40px;
+    align-items: end;
+    margin-bottom: 3rem;
+}
+.cover_book {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    & figure{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        
+        & img {
+            width: 150px;
+            height: 240px;
+        }
+        & figcaption {
+            color: $text-color;
+            font-family: $poppins;
+            text-align: center;
+            margin-top: 5px;
+            width: 150px;
+        }
+    }
+    & button {
+        @include button;
+        font-size: 1rem;
+        padding: 0.5rem 1rem;
+    }
+
+}
+#contemporary,
+#classic {
+    @include main_title;
+    display: none;
+}
+/* page details_readings */
+.details_cover {
+    & img{
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: auto;
+    }
+}
+.informations {
+    font-family: $poppins;
+    color: $link_title-color;
+    width: 100%;
+}
+.id_comment {
+    max-width: 100%;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr;
+    border-bottom: 1px solid $link_title-color;
+}
+.technical_informations,
+.id_comment {
+    margin: 1rem;
+    & p {
+        @include text;
+    }
+}
+.btn_comment{
+    width: 100%;
+    margin: 2rem 0;
+    & button {
+        @include button;
+        display: block;
+        margin: auto;
+        padding: 1rem 1.5rem;
+        & a{
+            font-size: 1.3rem;
+        }
+    }
+}
+/* page inscription */
+.inscription {
+    background-image: url('/images/inscription.webp');
+    background-position-y: bottom;
+    @include background_image;
+}
+.inscription_wrapper {
+    max-width: 90%;
+    height: auto;
+    margin: 1rem auto;
+    & h1{
+        @include main_title;
+    }
+    & h2 {
+        color: $link_title-color;
+        font-weight:400;
+        text-align: center;
+        line-height: 1.5;
+        margin: 3rem 1rem 0;
+        font-size: 1rem;
+    }
+}
+.reglement {
+    @include text;
+    max-width: 100%;
+    height: auto;
+    margin-top: 2rem;  
+}
+.inscription_form {
+    margin-top: 1rem;
+    max-width: 100%;
+    height: auto;
+    border: 1px solid $link_title-color;
+    background-color: $primary-color;
+    border-radius: 15px;
+}
+fieldset {
+    background-color: $primary-color;
+    display: flex;
+    flex-direction: column;
+    padding: 0 1rem;
+    margin-top: 3rem;
+    border-radius: 15px;
+    border: none;
+    font-size: 1.2rem;
+
+    & legend {
+        background-color: $primary-color;
+        border: 1px solid $link_title-color;
+        padding: 1rem;
+        font-size: 1.5rem;
+        border-radius: 15px;
+        text-align: center;
+        @include main_title;
+    }
+    & label {
+        font-family: $nunito-sans;
+        color: $text-color;
+        margin-top: 1rem;
+    }
+    & button {
+        @include button;
+        width: fit-content;
+        border: 1px solid $primary-color;
+        padding: 1rem 1.5rem;
+        margin: 1rem auto;
+    }
+    input {
+        padding: 0.5rem;
+        border-radius: 15px;
+        border: 1px solid $primary-color;
+        font-family: $nunito-sans;
+        font-size: 1rem;
+    }
+}
+.message{
+    @include text;
+}
+/* footer */ 
+.foot{
+    background-color: $primary-color;
+    font-family: $nunito-sans;
+    text-align: center;
+    height: fit-content;
+    padding: 1rem;
+}
+.medias{
+    text-align: center;
+    color: $link_title-color;
+    
+    i{
+        font-size: 1.5rem;
+        padding: 0 0.5rem 1rem 0.5rem ;
+    }
+}
+
+
+
+/* Version DESKTOP*/
+
+@media screen and (min-width: 992px) {
+
+    /* barre de navigation*/
+        .main-navlinks{
+            display: none;
+        };
+        .navlinks-wrapper{
+            display: flex;
+        }
+        .navlinks-container {
+            display: block;
+    
+            .connect, .disconnect {
+                display: none;
+            }  
+        }
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+        }
+        .nav_login_desktop{
+            display: block;
+            font-size: 1.5rem;
+        }
+        .menu_backdrop{
+            background-color: $primary-color;
+            width: fit-content;
+            bottom: 1;
+            position: absolute;
+            margin-top: 10px;
+            padding: 0;
+    
+            &:hover{
+                color: $link_title-color;
+                cursor: pointer;
+            }
+        }
+        .menu .menu_scrolling_options{
+            position: relative;
+
+        }
+    /* footer */ 
+        .foot {
+            display: flex;
+            justify-content: space-between;
+            padding: 0 4rem;
+        }
+    /* page about */
+        .a-propos {
+            height: 230px;
+            background-position: bottom;
+            margin-top: 80px;
+        }
+        .container {
+            width: 40%;
+            margin: 2rem auto;
+        }
+    /* page home */
+        .homepage {
+            background-position:center;
+        
+            p{
+               font-size: 1.5rem;
+            }
+            button {
+                margin-top: 30px;
+            }
+        }
+    /* page readings */
+        .books_gallery {
+            grid-template-columns: repeat(4, 1fr);
+            margin: 2rem;
+     
+        }
+        .cover_book {
+            & img {
+                width: 100%;
+            }
+    
+            & figcaption {
+                max-width: 100%;
+            }
+        }
+        .card {
+            background-color: $primary-color;
+            padding: 2rem 0;
+            border-radius: 10px;
+            width: 80%;
+            height: 80%;
+            margin: auto;
+            
+            &:hover {
+                box-shadow: 0 8px 16px 0 rgb(249, 248, 248);
+                transition: 0.3s;
+            }
+        }
+    /* page details_readings */
+    .details {
+        display: flex;
+        align-items: flex-end;
+        width: 90%;
+        height: auto;
+        margin: 5rem auto;
+    }
+    .details_cover {
+        & img{
+        width: 350px;
+        height: auto;
+        }
+    }
+    .description {
+        width: 90%;
+        height: 200px;
+        overflow-y: scroll;
+        padding-right: 1rem;
+    }
+    .id_comment {
+        display: grid;
+        grid-template-rows: 1fr;
+        grid-template-columns: 1fr;
+        border-bottom: 1px solid $link_title-color;
+        width: 80%;
+        margin: auto;
+    }
+    .technical_informations {
+        display: flex;
+        width: 80%;
+        margin: auto;
+        padding: 2rem;
+        border-radius: 15px;
+        background-color: $primary-color;
+    
+    }
+    //page inscriptions
+    .inscription_wrapper {
+        display: flex;
+        gap: 10rem;
+    }
+    .inscription_form, 
+    .reglement {
+        width: 100%;
+        margin-top: 0;
+    }
+}
+
+
+
