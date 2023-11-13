@@ -44,6 +44,26 @@
     }
 }
 
+@mixin button_form {
+    width: fit-content;
+    border: 1px solid $primary-color;
+    padding: 1rem 1.5rem;
+    margin: 1rem auto;
+    text-align: center;
+    background-color: $link_title-color;
+    font-family: $nunito-sans;
+    border: none;
+    border-radius: 15px;
+    a{
+        text-decoration: none;
+        color: $secondary-color;  
+    }
+    &:hover {
+        font-weight: bold;
+        transition: 0.3s;
+    }
+}
+
 @mixin background_image {
     background-repeat: no-repeat;
     background-size: cover;
@@ -52,4 +72,43 @@
     margin-top: 70px;
     height: 80px;
     z-index: 2; 
+}
+
+@mixin fieldset {
+    display: flex;
+    padding: 0 1rem;
+    margin-top: 3rem;
+    border-radius: 15px;
+    border: none;
+    font-size: 1.2rem; 
+}
+
+@mixin form {
+    margin-top: 1rem;
+    max-width: 100%;
+    height: auto;
+    border: 1px solid $link_title-color;
+    border-radius: 15px;
+}
+
+@mixin legend {
+    border: 1px solid $link_title-color;
+    padding: 1rem;
+    font-size: 1.5rem;
+    border-radius: 15px;
+    text-align: center;
+}
+
+@mixin input {
+    padding: 0.5rem;
+    border-radius: 15px;
+    border: 1px solid $primary-color;
+    font-family: $nunito-sans;
+    font-size: 1rem;
+}
+
+@mixin label {
+    font-family: $nunito-sans;
+    color: $text-color;
+    margin-top: 1rem;
 }

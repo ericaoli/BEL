@@ -290,6 +290,39 @@ body {
         }
     }
 }
+/* page contact */
+.contact {
+    background-image: url('/images/contact.webp');
+    background-position-y: center;
+    @include background_image; 
+}
+.form_contact{
+    
+    & form {
+        @include form;
+    }
+    & fieldset {
+        @include fieldset;
+        flex-direction: column;
+    }
+    & legend {
+        @include legend;
+        background-color: $primary-color;
+        @include main_title;
+    }
+    & input, 
+    & textarea {
+        @include input;
+    }
+  
+    & label {
+        @include label;
+    }
+    & button {
+        @include button_form;
+    }
+}
+
 /* page inscription */
 .inscription {
     background-image: url('/images/inscription.webp');
@@ -323,52 +356,29 @@ body {
     }  
 }
 .inscription_form {
-    margin-top: 1rem;
-    max-width: 100%;
-    height: auto;
-    border: 1px solid $link_title-color;
+    @include form;
     background-color: $primary-color;
-    border-radius: 15px;
-}
-fieldset {
+   & fieldset {
+    @include fieldset;
     background-color: $primary-color;
-    display: flex;
     flex-direction: column;
-    padding: 0 1rem;
-    margin-top: 3rem;
-    border-radius: 15px;
-    border: none;
-    font-size: 1.2rem;
-
     & legend {
+        @include legend;
         background-color: $primary-color;
-        border: 1px solid $link_title-color;
-        padding: 1rem;
-        font-size: 1.5rem;
-        border-radius: 15px;
-        text-align: center;
         @include main_title;
     }
     & label {
-        font-family: $nunito-sans;
-        color: $text-color;
-        margin-top: 1rem;
+        @include label;
     }
     & button {
-        @include button;
-        width: fit-content;
-        border: 1px solid $primary-color;
-        padding: 1rem 1.5rem;
-        margin: 1rem auto;
+        @include button_form;
     }
     input {
-        padding: 0.5rem;
-        border-radius: 15px;
-        border: 1px solid $primary-color;
-        font-family: $nunito-sans;
-        font-size: 1rem;
+        @include input;
     }
 }
+}
+
 .message{
     font-family: $nunito-sans;
     color: $link_title-color;
@@ -535,7 +545,13 @@ fieldset {
         background-color: $primary-color;
     
     }
-    //page inscriptions
+
+    /* page contact */
+    .contact_page {
+        width: 80%;
+    }
+   
+    /* page inscriptions */
     .inscription_wrapper {
         display: flex;
         gap: 10rem;

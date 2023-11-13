@@ -710,6 +710,80 @@ body {
   font-size: 1.3rem;
 }
 
+/* page contact */
+.contact {
+  background-image: url("/images/contact.webp");
+  background-position-y: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: sticky;
+  top: 70px;
+  margin-top: 70px;
+  height: 80px;
+  z-index: 2;
+}
+
+.form_contact form {
+  margin-top: 1rem;
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #ffde59;
+  border-radius: 15px;
+}
+.form_contact fieldset {
+  display: flex;
+  padding: 0 1rem;
+  margin-top: 3rem;
+  border-radius: 15px;
+  border: none;
+  font-size: 1.2rem;
+  flex-direction: column;
+}
+.form_contact legend {
+  border: 1px solid #ffde59;
+  padding: 1rem;
+  font-size: 1.5rem;
+  border-radius: 15px;
+  text-align: center;
+  background-color: #2b2b2b;
+  color: #ffde59;
+  font-family: "Nunito Sans", sans-serif;
+  text-align: center;
+  margin: 2rem auto;
+}
+.form_contact input, .form_contact textarea {
+  padding: 0.5rem;
+  border-radius: 15px;
+  border: 1px solid #2b2b2b;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 1rem;
+}
+.form_contact label {
+  font-family: "Nunito Sans", sans-serif;
+  color: #fff;
+  margin-top: 1rem;
+}
+.form_contact button {
+  width: -moz-fit-content;
+  width: fit-content;
+  border: 1px solid #2b2b2b;
+  padding: 1rem 1.5rem;
+  margin: 1rem auto;
+  text-align: center;
+  background-color: #ffde59;
+  font-family: "Nunito Sans", sans-serif;
+  border: none;
+  border-radius: 15px;
+}
+.form_contact button a {
+  text-decoration: none;
+  color: black;
+}
+.form_contact button:hover {
+  font-weight: bold;
+  transition: 0.3s;
+}
+
 /* page inscription */
 .inscription {
   background-image: url("/images/inscription.webp");
@@ -763,59 +837,57 @@ body {
   max-width: 100%;
   height: auto;
   border: 1px solid #ffde59;
-  background-color: #2b2b2b;
   border-radius: 15px;
-}
-
-fieldset {
   background-color: #2b2b2b;
+}
+.inscription_form fieldset {
   display: flex;
-  flex-direction: column;
   padding: 0 1rem;
   margin-top: 3rem;
   border-radius: 15px;
   border: none;
   font-size: 1.2rem;
-}
-fieldset legend {
   background-color: #2b2b2b;
+  flex-direction: column;
+}
+.inscription_form fieldset legend {
   border: 1px solid #ffde59;
   padding: 1rem;
   font-size: 1.5rem;
   border-radius: 15px;
   text-align: center;
+  background-color: #2b2b2b;
   color: #ffde59;
   font-family: "Nunito Sans", sans-serif;
   text-align: center;
   margin: 2rem auto;
 }
-fieldset label {
+.inscription_form fieldset label {
   font-family: "Nunito Sans", sans-serif;
   color: #fff;
   margin-top: 1rem;
 }
-fieldset button {
-  text-align: center;
-  background-color: #ffde59;
-  font-family: "Nunito Sans", sans-serif;
-  border: none;
-  border-radius: 15px;
+.inscription_form fieldset button {
   width: -moz-fit-content;
   width: fit-content;
   border: 1px solid #2b2b2b;
   padding: 1rem 1.5rem;
   margin: 1rem auto;
+  text-align: center;
+  background-color: #ffde59;
+  font-family: "Nunito Sans", sans-serif;
+  border: none;
+  border-radius: 15px;
 }
-fieldset button a {
+.inscription_form fieldset button a {
   text-decoration: none;
   color: black;
 }
-fieldset button:hover {
+.inscription_form fieldset button:hover {
   font-weight: bold;
-  color: #fefce8;
   transition: 0.3s;
 }
-fieldset input {
+.inscription_form fieldset input {
   padding: 0.5rem;
   border-radius: 15px;
   border: 1px solid #2b2b2b;
@@ -976,6 +1048,11 @@ fieldset input {
     border-radius: 15px;
     background-color: #2b2b2b;
   }
+  /* page contact */
+  .contact_page {
+    width: 80%;
+  }
+  /* page inscriptions */
   .inscription_wrapper {
     display: flex;
     gap: 10rem;
