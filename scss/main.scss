@@ -296,33 +296,6 @@ body {
     background-position-y: center;
     @include background_image; 
 }
-.form_contact{
-    
-    & form {
-        @include form;
-    }
-    & fieldset {
-        @include fieldset;
-        flex-direction: column;
-    }
-    & legend {
-        @include legend;
-        background-color: $primary-color;
-        @include main_title;
-    }
-    & input, 
-    & textarea {
-        @include input;
-    }
-  
-    & label {
-        @include label;
-    }
-    & button {
-        @include button_form;
-    }
-}
-
 /* page inscription */
 .inscription {
     background-image: url('/images/inscription.webp');
@@ -355,7 +328,8 @@ body {
         max-width: 100%;
     }  
 }
-.inscription_form {
+.inscription_form,
+.form_contact {
     @include form;
     background-color: $primary-color;
    & fieldset {
@@ -483,7 +457,6 @@ body {
         .books_gallery {
             grid-template-columns: repeat(4, 1fr);
             margin: 2rem;
-     
         }
         .cover_book {
             & img {
@@ -516,8 +489,8 @@ body {
         height: auto;
         margin: 5rem auto;
     }
-    .details_cover {
-        & img{
+    .details_cover img {
+        & img {
         width: 350px;
         height: auto;
         }
@@ -547,10 +520,7 @@ body {
     }
 
     /* page contact */
-    .contact_page {
-        width: 80%;
-    }
-   
+    
     /* page inscriptions */
     .inscription_wrapper {
         display: flex;
