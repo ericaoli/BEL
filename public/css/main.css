@@ -460,7 +460,7 @@ body {
 }
 
 .container {
-  margin: 3rem 2rem;
+  margin: 3rem 1rem;
 }
 .container h1 {
   color: #ffde59;
@@ -548,7 +548,7 @@ body {
 }
 
 .container.about {
-  height: 100vh;
+  height: 60vh;
 }
 
 /* page readings */
@@ -566,7 +566,7 @@ body {
 
 .container_books {
   max-width: 100%;
-  font-size: 1.1rem;
+  font-size: 1rem;
   z-index: 1;
 }
 .container_books h1, .container_books h2, .container_books label {
@@ -574,6 +574,8 @@ body {
   font-family: "Nunito Sans", sans-serif;
   text-align: center;
   margin: 2rem auto;
+  font-size: 1.5rem;
+  margin: 2rem 1rem;
 }
 
 .books_gallery {
@@ -605,8 +607,10 @@ body {
   color: #fff;
   font-family: "Poppins", sans-serif;
   text-align: center;
+  font-size: 0.8rem;
   margin-top: 5px;
   width: 150px;
+  height: 20px;
 }
 .cover_book button {
   text-align: center;
@@ -639,7 +643,7 @@ body {
 /* page details_readings */
 .details_cover img {
   display: block;
-  width: 100%;
+  max-width: 100%;
   height: auto;
   margin: auto;
 }
@@ -672,8 +676,16 @@ body {
 }
 
 .btn_comment {
-  width: 100%;
-  margin: 2rem 0;
+  max-width: 100%;
+  margin: 2rem 1rem;
+}
+.btn_comment textarea {
+  font-family: "Nunito Sans", sans-serif;
+  width: 80%;
+  border-radius: 15px;
+  display: block;
+  margin: 1rem auto;
+  padding: 0.5rem 1rem;
 }
 .btn_comment button {
   text-align: center;
@@ -740,6 +752,10 @@ body {
   max-width: 100%;
   height: auto;
   margin-top: 2rem;
+}
+.reglement ul {
+  text-align: center;
+  max-width: 100%;
 }
 
 .inscription_form {
@@ -808,11 +824,10 @@ fieldset input {
 }
 
 .message {
-  color: #fff;
-  font-family: "Poppins", sans-serif;
-  text-align: justify;
-  margin: 1rem;
-  line-height: 1.5rem;
+  font-family: "Nunito Sans", sans-serif;
+  color: #ffde59;
+  text-align: center;
+  font-size: 1rem;
 }
 
 /* footer */
@@ -913,6 +928,7 @@ fieldset input {
   }
   .cover_book figcaption {
     max-width: 100%;
+    height: 70px;
   }
   .card {
     background-color: #2b2b2b;

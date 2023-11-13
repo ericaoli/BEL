@@ -5,12 +5,19 @@
             <article class="reglement">
                 <h1>Inscrivez-vous</h1> 
                 <h2>Conditions générales de participation et confidentialité des données</h2>
+                <ul>Fonctionalités exclusives  aux membres du Club de lecture:</ul>
+                    <li>Création de son profil personnel.</li>
+                    <li>Avoir sa propre bibliothèque avec la sélection de livres préférés.</li>
+                    <li>Commenter les livres proposés par le Club de lecture.</li>
+                    <li>Participer aux rencontres mensuelles.</li>
+                    <li>Participer aux choix des livres.</li>
                 <p>Devenir un membre de “Brasil em Livros” est gratuit.</p>
                 <p>Nous ne faisons pas de commerce de livres ni des cours de portugais.</p>
                 <p>Tous les participants ont le droit de s’exprimer, indépendamment de leur niveau de portugais.</p>
                 <p>Les propositions racistes et discriminatoires ne seront pas tolérées.</p>
                 <p>Les données personnelles ne seront pas diffusées.</p>
                 <p>Vous pouvez, à tout moment, supprimer votre compte.</p>
+
                 <p><input type="checkbox" name="conditions" id=""> J’ai lu et j’accepte les conditions de participation et la confidentialité des données.</p>
             </article>
             <article class="inscription_form">
@@ -18,17 +25,18 @@
                     <fieldset>
                         <legend>Formulaire d'inscription</legend>
                         <label for="firstname">Prénom</label>
-                        <input type="text" name="firstname"required id="firstname" placeholder="Prénom">
+                        <input type="text" name="firstname" id="firstname" placeholder="Prénom">
                         <label for="lastname">Nom</label>
-                        <input type="text" name="lastname"required id="lastname" placeholder="Nom">
+                        <input type="text" name="lastname" id="lastname" placeholder="Nom">
                         <label for="E-mail">E-mail</label>
-                        <input type="email" name="email"required id="email" placeholder="E-mail">
+                        <input type="email" name="email" id="email" placeholder="E-mail">
                         <label for="password">Mot de passe</label>
-                        <input type="password" name="password"required id="password" placeholder="Veuillez enregistrer 8 caractères">
+                        <input type="password" name="password" id="password" placeholder="Veuillez enregistrer 8 caractères">
                         <button type="submit">Je m'inscris</button>
                         <% if(locals.message) { %>
                             <p class="message"><%= message %></p>
                         <% } %>
+
                     </fieldset>
                 </form>
             </article>

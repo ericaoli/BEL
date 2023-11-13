@@ -1,6 +1,7 @@
 import pool from "../config/database.js";
 import bcrypt from "bcrypt";
 import { baseUrl } from "../server.js";
+import * as yup from "yup";
 
 const saltRoundsCrypt = 10;
 
@@ -16,17 +17,29 @@ export const InscriptionSubmit = (req,res) => {
     const email = req.body.email;
     const password = req.body.password;
 
+  // validation du formulaire
+  let erreurs = [];
 
-    // Vérifie si le mot de passe a 8 caractères
-    if (password.length !== 8) {
-        res.render("inscription", {
-        message: "Le mot de passe doit contenir exactement 8 caractères.",
-        base_url: baseUrl,
-        });
-        return; // Terminer la fonction ici pour éviter l'insertion dans la base de données
-    }
+  if(!firstname || typeof firstname == undefined || firstname == null){
+    erreurs.push = ({message: "Prènom invalide"})
+  }
+  if(!lastname || typeof lastname == undefined || lastname == null){
+    erreurs.push = ({message: "Nom invalide"})
+  }
+  if(!email || typeof email == undefined || email == null){
+    erreurs.push = ({message: "email invalide"})
+  }
+  if (password.length !== 8){
+    erreurs.push = ({message: "mot de passe invalide"})
+  }
 
-    // vérifie si l'utilisateur est déjà enregistré
+  if(erreurs.length > 0) {
+    res.render ("inscription", {erreurs: erreurs, base_url: baseUrl})
+  } else {
+
+
+    
+    // vérifie si l'utilisateur est déjà enregistré dans la base de données
     const checkUser = "SELECT * FROM users WHERE firstname = ? AND lastname = ? AND email = ?";
 
     pool.query(checkUser, [firstname, lastname, email], (checkErr, checkResult) => {
@@ -52,13 +65,13 @@ export const InscriptionSubmit = (req,res) => {
               if (insertErr) {
                 console.error("Erreur requête SQL:", insertErr);
                 res.render("inscription", {
-                  message: "Erreur du serveur. Veuillez essayer plus tard.",
+                  messageError: "Erreur du serveur. Veuillez essayer plus tard.",
                   base_url: baseUrl,
                 });
               } else {
                 console.log(insertResult);
                 res.render("inscription", {
-                  message: "Vous êtes inscrits au Club de lecture Brasil em livros!",
+                  messageRegister: "Vous êtes inscrits au Club de lecture Brasil em livros!",
                   base_url: baseUrl,
                 });
               };
@@ -67,6 +80,8 @@ export const InscriptionSubmit = (req,res) => {
         };
         };
     });
+  }
+ 
 }; 
   
     
