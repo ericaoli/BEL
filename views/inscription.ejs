@@ -25,13 +25,13 @@
                     <fieldset>
                         <legend>Formulaire d'inscription</legend>
                         <label for="firstname">Prénom</label>
-                        <input type="text" name="firstname" id="firstname" placeholder="Prénom">
+                        <input type="text" name="firstname" minlength="4" required id="firstname" placeholder="Prénom">
                         <label for="lastname">Nom</label>
-                        <input type="text" name="lastname" id="lastname" placeholder="Nom">
+                        <input type="text" name="lastname" minlength="4" required id="lastname" placeholder="Nom">
                         <label for="E-mail">E-mail</label>
-                        <input type="email" name="email" id="email" placeholder="E-mail">
+                        <input type="email" name="email"required id="email" placeholder="E-mail">
                         <label for="password">Mot de passe</label>
-                        <input type="password" name="password" id="password" placeholder="Veuillez enregistrer 8 caractères">
+                        <input type="password" name="password" required minlength="8" maxlength="8" id="password" placeholder="Veuillez enregistrer 8 caractères">
                         <button type="submit">Je m'inscris</button>
                         <% if(locals.message) { %>
                             <p class="message"><%= message %></p>
