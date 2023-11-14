@@ -1,8 +1,8 @@
 import pool from "../config/database.js";
 import bcrypt from "bcrypt";
 import { baseUrl } from "../server.js";
-import { validationResult, body } from "express-validator";
-import bodyParser from "body-parser";
+import { check } from "express-validator";
+
 
 
 const saltRoundsCrypt = 10;
@@ -22,34 +22,43 @@ export const InscriptionSubmit = (req,res) => {
   const email = req.body.email;
   const password = req.body.password;
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
+ 
 
   // validation des champs du formulaire
   try {
+    // Validação do checkbox "conditions"
+    // if (!req.body.contitions || !req.body.conditions === "on") {
+    // throw new Error(res.render("inscription", {
+    // message: "Vous devez accepter les conditions générales de participation pour vous inscrire.",
+    // base_url: baseUrl}));
+    // }
+
     if (!firstname || firstname.length < 3 || !/^[a-zA-Z]+$/.test(firstname)) {
       throw new Error (res.render("inscription", {
-        messageFirstname: "Champ obligatoire. Veuillez utiliser au moins 3 lettres.",
+        messageFirstname: "Le champ prénom est obligatoire. Veuillez utiliser au moins 3 lettres.",
         base_url: baseUrl}));
     }
     if (!lastname || lastname.length < 3 || !/^[a-zA-Z]+$/.test(lastname)) {
       throw new Error (res.render("inscription", {
-        messageLastname: "Champ obligatoire. Veuillez utiliser au moins 3 lettres.",
+        messageLastname: "Le champ nom est obligatoire. Veuillez utiliser au moins 3 lettres.",
         base_url: baseUrl}));
     }
     if (!email || !emailRegex) {
       throw new Error (res.render("inscription", {
-        message: "Champ obligatoire. L'addresse d'email n'est pas valide.",
+        message: "Le champ e-mail est obligatoire. Veuillez saisir une adresse valide.",
         base_url: baseUrl}));
     }
     if (!password || password.length < 8 || password.length > 8) {
       throw new Error (res.render("inscription", {
-        messagePassword: "Champ obligatoire. Veuillez utiliser 8 caractères.",
+        messagePassword: "Le champ mot de passe est obligatoire. Veuillez saisir 8 caractères.",
         base_url: baseUrl}));
     }
-
    } catch (error) {
       console.error('Erreur de validation:', error.message);
-      res.status(400).send('Erreur de validation: ' + error.message);
+      return res.status(400).render("inscription", {
+      message: error.message,
+      base_url: baseUrl
+      });
     }
 
   //vérifie si l'utilisateur est déjà enregistré dans la base de données
@@ -100,11 +109,11 @@ export const InscriptionSubmit = (req,res) => {
                         base_url: baseUrl,
                         });
                       } else {
-              console.log(insertResult);
-              res.render("inscription", {
-              message: "Vous êtes inscrits au Club de lecture Brasil em livros!",
-              base_url: baseUrl,
-              });
+                        console.log(insertResult);
+                        res.render("inscription", {
+                        message: "Vous êtes inscrits au Club de lecture Brasil em livros!",
+                        base_url: baseUrl,
+                        });
                       }; // fin confirme inscription
                     }); // fin requete insert
                   }); //fin bcrypt
