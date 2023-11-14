@@ -25,16 +25,31 @@
                     <fieldset>
                         <legend>Formulaire d'inscription</legend>
                         <label for="firstname">Prénom</label>
-                        <input type="text" name="firstname" minlength="4" required id="firstname" placeholder="Prénom">
+                        <input type="text" name="firstname" id="hide_error" placeholder="Prénom">
+                        <% if(locals.messageFirstname) { %>
+                            <p class="message_error"><%= messageFirstname %></p>
+                        <% } %>
                         <label for="lastname">Nom</label>
-                        <input type="text" name="lastname" minlength="4" required id="lastname" placeholder="Nom">
+                        <input type="text" name="lastname" id="hide_error" placeholder="Nom">
+                        <% if(locals.messageLastname) { %>
+                            <p class="message_error"><%= messageLastname %></p>
+                        <% } %>
                         <label for="E-mail">E-mail</label>
-                        <input type="email" name="email"required id="email" placeholder="E-mail">
+                        <input type="email" name="email" id="hide_error" placeholder="E-mail">
+                        <% if(locals.messageEmail) { %>
+                            <p class="message_error"><%= messageEmail%></p>
+                        <% } %>
+                        <% if(locals.messageEmailRegister) { %>
+                            <p class="message_error"><%= messageEmailRegister%></p>
+                        <% } %>
                         <label for="password">Mot de passe</label>
-                        <input type="password" name="password" required minlength="8" maxlength="8" id="password" placeholder="Veuillez enregistrer 8 caractères">
+                        <input type="password" name="password" id="hide_error" placeholder="Veuillez enregistrer 8 caractères">
+                        <% if(locals.messagePassword) { %>
+                            <p class="message_error"><%= messagePassword%></p>
+                        <% } %>
                         <button type="submit">Je m'inscris</button>
                         <% if(locals.message) { %>
-                            <p class="message"><%= message %></p>
+                            <p class="message_error"><%= message %></p>
                         <% } %>
 
                     </fieldset>
@@ -42,4 +57,5 @@
             </article>
         </section>
 </main>
+<script src="/javascript/formulaire.js"></script>
 <%- include('footer') -%>

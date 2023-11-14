@@ -1,5 +1,4 @@
 import express from "express";
-import { validationResult, body } from 'express-validator';
 import HomeController from "../controllers/HomeController.js";
 import AboutController from "../controllers/AboutController.js";
 import { ReadingsController, ClassicsCategory, ContemporarysCategory } from "../controllers/ReadingsController.js";

@@ -846,7 +846,7 @@ body {
   font-size: 1rem;
 }
 
-.message {
+.message_error {
   font-family: "Nunito Sans", sans-serif;
   color: #ffde59;
   text-align: center;
@@ -967,18 +967,26 @@ body {
   }
   /* page details_readings */
   .details {
+    width: 80%;
+    margin: auto;
+  }
+  .technical_informations {
     display: flex;
-    align-items: flex-end;
-    width: 90%;
+    align-items: center;
+    width: 80%;
     height: auto;
     margin: 5rem auto;
   }
-  .details_cover img img {
+  .details_cover img {
     width: 350px;
     height: auto;
   }
+  .editor_informations {
+    width: 80%;
+    height: auto;
+  }
   .description {
-    width: 90%;
+    width: 95%;
     height: 200px;
     overflow-y: scroll;
     padding-right: 1rem;
