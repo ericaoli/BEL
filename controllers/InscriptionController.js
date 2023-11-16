@@ -1,7 +1,7 @@
 import pool from "../config/database.js";
 import bcrypt from "bcrypt";
 import { baseUrl } from "../server.js";
-import { check } from "express-validator";
+
 
 
 
@@ -22,17 +22,11 @@ export const InscriptionSubmit = (req,res) => {
   const email = req.body.email;
   const password = req.body.password;
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
  
 
-  // validation des champs du formulaire
+  // validation des champs du formulaire d'inscription
   try {
-    // Validação do checkbox "conditions"
-    // if (!req.body.contitions || !req.body.conditions === "on") {
-    // throw new Error(res.render("inscription", {
-    // message: "Vous devez accepter les conditions générales de participation pour vous inscrire.",
-    // base_url: baseUrl}));
-    // }
-
     if (!firstname || firstname.length < 3 || !/^[a-zA-Z]+$/.test(firstname)) {
       throw new Error (res.render("inscription", {
         messageFirstname: "Le champ prénom est obligatoire. Veuillez utiliser au moins 3 lettres.",
@@ -43,12 +37,12 @@ export const InscriptionSubmit = (req,res) => {
         messageLastname: "Le champ nom est obligatoire. Veuillez utiliser au moins 3 lettres.",
         base_url: baseUrl}));
     }
-    if (!email || !emailRegex) {
+    if (!email || !email.match(emailRegex)) {
       throw new Error (res.render("inscription", {
-        message: "Le champ e-mail est obligatoire. Veuillez saisir une adresse valide.",
+        messageEmail: "Le champ e-mail est obligatoire. Veuillez saisir une adresse valide.",
         base_url: baseUrl}));
     }
-    if (!password || password.length < 8 || password.length > 8) {
+    if (!password || password.length !== 8) {
       throw new Error (res.render("inscription", {
         messagePassword: "Le champ mot de passe est obligatoire. Veuillez saisir 8 caractères.",
         base_url: baseUrl}));

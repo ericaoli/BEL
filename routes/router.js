@@ -5,7 +5,7 @@ import { ReadingsController, ClassicsCategory, ContemporarysCategory } from "../
 import DetailsReadingsController from "../controllers/DetailsReadingsController.js";
 import ContactController from "../controllers/ContactController.js";
 import { InscriptionController, InscriptionSubmit } from "../controllers/InscriptionController.js";
-import ConnexionController from "../controllers/ConnexionController.js";
+import { ConnexionController, ConnexionSubmit } from "../controllers/ConnexionController.js";
 
 const router = express.Router();
 
@@ -34,6 +34,6 @@ router.post("/inscription", InscriptionSubmit);
 
 //Connexion
 router.get("/connexion", ConnexionController);
-
+router.post("/connexion", ConnexionSubmit);
 
 export default router;
