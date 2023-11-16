@@ -1,0 +1,35 @@
+<%- include('header') -%>
+<div class="connexion"></div>
+<main class="container">
+    <article>
+        <h1>Bienvenue au Brasil em livros</h1>
+        <form method="post" class="form_connexion">
+            <fieldset>
+                <legend>Connexion</legend>
+                <label for="E-mail">E-mail</label>
+                <input type="email" name="email" id="email" class="input-error" placeholder="E-mail">
+                <% if(locals.messageEmail) { %>
+                    <p class="message_error"><%= messageEmail%></p>
+                <% } %>
+                <% if(locals.messageEmailRegister) { %>
+                    <p class="message_error"><%= messageEmailRegister%></p>
+                <% } %>
+                <label for="password">Mot de passe</label>
+                <input type="password" name="password" id="password" class="input-error" placeholder="Veuillez enregistrer 8 caractères">
+                <% if(locals.messagePassword) { %>
+                    <p class="message_error"><%= messagePassword%></p>
+                <% } %>
+                <button type="submit">Connexion</button>
+                <% if(locals.message) { %>
+                    <p class="message_error"><%= message %></p>
+                <% } %>
+
+            </fieldset>
+        </form>
+
+        
+    </article>
+</main>
+
+
+<%- include('footer') -%>

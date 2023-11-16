@@ -730,6 +730,7 @@ body {
 .inscription {
   background-image: url("/images/inscription.webp");
   background-position-y: bottom;
+  background-position-x: center;
   background-repeat: no-repeat;
   background-size: cover;
   position: sticky;
@@ -743,7 +744,7 @@ body {
 .inscription_wrapper {
   max-width: 90%;
   height: auto;
-  margin: 1rem auto;
+  margin: 2rem auto;
 }
 .inscription_wrapper h1 {
   color: #ffde59;
@@ -775,28 +776,31 @@ body {
   max-width: 100%;
 }
 
+.form_flex {
+  width: 100%;
+}
+
 .inscription_form,
-.form_contact {
-  margin-top: 1rem;
+.form_contact,
+.form_connexion {
   max-width: 100%;
   height: auto;
-  border: 1px solid #ffde59;
   border-radius: 15px;
-  background-color: #2b2b2b;
 }
 .inscription_form fieldset,
-.form_contact fieldset {
+.form_contact fieldset,
+.form_connexion fieldset {
   display: flex;
   padding: 0 1rem;
-  margin-top: 3rem;
   border-radius: 15px;
-  border: none;
   font-size: 1.2rem;
+  border: 1px solid #ffde59;
   background-color: #2b2b2b;
   flex-direction: column;
 }
 .inscription_form fieldset legend,
-.form_contact fieldset legend {
+.form_contact fieldset legend,
+.form_connexion fieldset legend {
   border: 1px solid #ffde59;
   padding: 1rem;
   font-size: 1.5rem;
@@ -809,13 +813,15 @@ body {
   margin: 2rem auto;
 }
 .inscription_form fieldset label,
-.form_contact fieldset label {
+.form_contact fieldset label,
+.form_connexion fieldset label {
   font-family: "Nunito Sans", sans-serif;
   color: #fff;
   margin-top: 1rem;
 }
 .inscription_form fieldset button,
-.form_contact fieldset button {
+.form_contact fieldset button,
+.form_connexion fieldset button {
   width: -moz-fit-content;
   width: fit-content;
   border: 1px solid #2b2b2b;
@@ -828,17 +834,20 @@ body {
   border-radius: 15px;
 }
 .inscription_form fieldset button a,
-.form_contact fieldset button a {
+.form_contact fieldset button a,
+.form_connexion fieldset button a {
   text-decoration: none;
   color: black;
 }
 .inscription_form fieldset button:hover,
-.form_contact fieldset button:hover {
+.form_contact fieldset button:hover,
+.form_connexion fieldset button:hover {
   font-weight: bold;
   transition: 0.3s;
 }
 .inscription_form fieldset input,
-.form_contact fieldset input {
+.form_contact fieldset input,
+.form_connexion fieldset input {
   padding: 0.5rem;
   border-radius: 15px;
   border: 1px solid #2b2b2b;
@@ -851,6 +860,21 @@ body {
   color: #ffde59;
   text-align: center;
   font-size: 1rem;
+}
+
+/* page connexion */
+.connexion {
+  background-image: url("/images/inscription.webp");
+  background-position-y: bottom;
+  background-position-x: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: sticky;
+  top: 70px;
+  margin-top: 70px;
+  width: 100%;
+  height: 80px;
+  z-index: 2;
 }
 
 /* footer */
@@ -1011,11 +1035,33 @@ body {
   /* page inscriptions */
   .inscription_wrapper {
     display: flex;
-    gap: 10rem;
+    height: 500px;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    align-items: center;
   }
-  .inscription_form,
+  .inscription_form {
+    height: 450px;
+    margin: 0;
+  }
+  .inscription_formfieldset {
+    margin-top: 3rem;
+  }
+  .form_flex {
+    width: 100%;
+    margin: 0;
+    height: 450px;
+    padding: 1rem;
+  }
   .reglement {
     width: 100%;
-    margin-top: 0;
+    background-color: #2b2b2b;
+    overflow-y: scroll;
+    border-radius: 15px;
+    padding: 1rem;
+    height: 450px;
+  }
+  .reglement * {
+    padding-right: 1rem;
   }
 }
