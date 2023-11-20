@@ -1,0 +1,21 @@
+<%- include('header') -%>
+<div class="user"></div>
+    <main class="container">
+        <article>
+            <h1>Mon espace</h1>
+            <p><span class="informations">Utilisateur :</span> <%= users.firstname %></p>
+            <p><span class="informations">Inscrit le :</span> <%= users.registration_date.toLocaleDateString() %></p>
+
+            <h2>Ma bibliotèque</h2>
+            <label for="book-select" class="book-select">Choississez vos favoris:</label>
+            <select name="book-select" id="book-select">
+                <option value="nos_lectures">-- Nos lectures --</option>
+                <option value="">Affiche tout par la bdd</option>
+                <option value="">Affiche tout par la bdd</option>
+                <option value="">Affiche tout par la bdd</option>
+                <option value="">Affiche tout par la bdd</option>
+            </select>
+            
+        </article>
+</main>
+<%- include('footer') -%>

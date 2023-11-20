@@ -5,7 +5,8 @@ import { ReadingsController, ClassicsCategory, ContemporarysCategory } from "../
 import DetailsReadingsController from "../controllers/DetailsReadingsController.js";
 import ContactController from "../controllers/ContactController.js";
 import { InscriptionController, InscriptionSubmit } from "../controllers/InscriptionController.js";
-import { ConnexionController, ConnexionSubmit } from "../controllers/ConnexionController.js";
+import { ConnexionController, ConnexionSubmitPost, RedirectToUserPage } from "../controllers/ConnexionController.js";
+import { UserController } from "../controllers/UserController.js";
 
 const router = express.Router();
 
@@ -34,6 +35,10 @@ router.post("/inscription", InscriptionSubmit);
 
 //Connexion
 router.get("/connexion", ConnexionController);
-router.post("/connexion", ConnexionSubmit);
+router.post("/connexion", ConnexionSubmitPost);
+router.get("/user/redirect", RedirectToUserPage);
+
+// user
+router.get("/user/", UserController);
 
 export default router;

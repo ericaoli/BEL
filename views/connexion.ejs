@@ -11,10 +11,7 @@
                 <% if(locals.messageEmail) { %>
                     <p class="message_error"><%= messageEmail%></p>
                 <% } %>
-                <% if(locals.messageEmailRegister) { %>
-                    <p class="message_error"><%= messageEmailRegister%></p>
-                <% } %>
-                <label for="password">Mot de passe</label>
+                <label for="Mot_de_passe">Mot de passe</label>
                 <input type="password" name="password" id="password" class="input-error" placeholder="Veuillez enregistrer 8 caractères">
                 <% if(locals.messagePassword) { %>
                     <p class="message_error"><%= messagePassword%></p>
@@ -26,10 +23,7 @@
 
             </fieldset>
         </form>
-
-        
     </article>
 </main>
-
-
+<script src="/javascript/formulaire.js"></script>
 <%- include('footer') -%>

@@ -127,7 +127,7 @@ body {
 .container {
     margin: 3rem 1rem;
     
-    h1 {
+    h1, h2 {
         @include main_title;
     }
     p {
@@ -356,12 +356,8 @@ body {
     }
 }
 }
-.message_error{
-    font-family: $nunito-sans;
-    color: $link_title-color;
-    text-align: center;
-    font-size: 1rem;
-    margin: 0;
+.message_error {
+    @include message;
 }
 /* page connexion */
 .connexion {
@@ -370,6 +366,26 @@ body {
     background-position-x: center;
     @include background_image;
 }
+/* page user */
+.user {
+    background-image: url('/images/espace_personnel.webp');
+    background-position-y: top;
+    background-position-x: center;
+    @include background_image;
+}
+.book-select {
+    @include label;
+    font-size: 1rem;
+}
+
+select,
+option {
+   font-family: $nunito-sans;
+   font-size: 1rem;
+   padding: 0.5rem;
+   border-radius: 10px
+}
+
 
 /* footer */ 
 .foot{

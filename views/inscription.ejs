@@ -25,17 +25,17 @@
                     <fieldset>
                         <legend>Formulaire d'inscription</legend>
                         <label for="firstname">Prénom</label>
-                        <input type="text" name="firstname" id="messageFirstname"  class="input-error" placeholder="Prénom">
+                        <input type="text" name="firstname" id="firstname"  class="input-error" placeholder="Prénom">
                         <% if(locals.messageFirstname) { %>
                             <p class="message_error"><%= messageFirstname %></p>
                         <% } %>
                         <label for="lastname">Nom</label>
-                        <input type="text" name="lastname" id="messageLastname" class="input-error" placeholder="Nom">
+                        <input type="text" name="lastname" id="lastname" class="input-error" placeholder="Nom">
                         <% if(locals.messageLastname) { %>
                             <p class="message_error"><%= messageLastname %></p>
                         <% } %>
                         <label for="E-mail">E-mail</label>
-                        <input type="email" name="email" id="messageEmail" class="input-error" placeholder="E-mail">
+                        <input type="email" name="email" id="email" class="input-error" placeholder="E-mail">
                         <% if(locals.messageEmail) { %>
                             <p class="message_error"><%= messageEmail%></p>
                         <% } %>
@@ -43,11 +43,11 @@
                             <p class="message_error"><%= messageEmailRegister%></p>
                         <% } %>
                         <label for="password">Mot de passe</label>
-                        <input type="password" name="password" id="messagePassword" class="input-error" placeholder="Veuillez enregistrer 8 caractères">
+                        <input type="password" name="password" id="password" class="input-error" placeholder="Veuillez enregistrer 8 caractères">
                         <% if(locals.messagePassword) { %>
                             <p class="message_error"><%= messagePassword%></p>
                         <% } %>
-                        <button type="submit">Je m'inscris</button>
+                        <button type="submit" class="submit-button">Je m'inscris</button>
                         <% if(locals.message) { %>
                             <p class="message_error"><%= message %></p>
                         <% } %>

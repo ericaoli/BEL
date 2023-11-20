@@ -82,13 +82,11 @@
     font-size: 1.2rem; 
     border: 1px solid $link_title-color;
 }
-
 @mixin form {
     max-width: 100%;
     height: auto;
     border-radius: 15px;
 }
-
 @mixin legend {
     border: 1px solid $link_title-color;
     padding: 1rem;
@@ -96,7 +94,6 @@
     border-radius: 15px;
     text-align: center;
 }
-
 @mixin input {
     padding: 0.5rem;
     border-radius: 15px;
@@ -104,9 +101,15 @@
     font-family: $nunito-sans;
     font-size: 1rem;
 }
-
 @mixin label {
     font-family: $nunito-sans;
     color: $text-color;
     margin-top: 1rem;
+}
+@mixin message {
+    font-family: $nunito-sans;
+    color: $link_title-color;
+    text-align: center;
+    font-size: 1rem;
+    margin: 0;
 }
