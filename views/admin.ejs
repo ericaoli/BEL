@@ -1,0 +1,84 @@
+<%- include('header') -%>
+<div class="admin"></div>
+<section class="container admin_page">
+    <h1>Administrateur</h1>
+    
+    <h2>Fonctionalités :</h2>
+    <article>
+        <h3>Enregistrer un nouveau livre</h3>
+        <form method="post" class="book_form">
+            <fieldset>
+                <legend>Nouveau livre</legend>
+                <label for="titre">Titre</label>
+                <input type="text" name="title" id="title"  class="input-error" placeholder="Titre">
+       
+                <label for="parution">Année de parution</label>
+                <input type="text" name="parution" id="parution" class="input-error" placeholder="Anée de parution">
+            
+                <label for="description">Description</label>
+                <textarea name="description" id="description" placeholder="Description" cols="30" rows="10"></textarea>
+        
+            
+                <label for="isbn">ISBN</label>
+                <input type="text" name="ISBN" id="isbn" class="input-error" placeholder="ISBN">
+            
+                <label for="url_image">Image de couverture</label>
+                <input type="text" name="url_cover_image" id="cover_image" class="input-error">
+            
+                <label for="alt_text">Text alternatif</label>
+                <input type="text" name="alt_text" id="alt_text" class="input-error" placeholder="Text descriptif de l'image">
+            
+                <label for="date_reading_club">Date de lecture au club</label>
+                <input type="text" name="date_reading_club" id="date_reading_club" class="input-error" placeholder="Date de la lecture au club">
+
+                <label for="id_book_category">Categorie du livre</label>
+                <input type="text" name="id_book_category" id="id_book_category" class="input-error" placeholder="Insérez 1 pour 'classique' et 2 pour 'contemporain'">
+            
+                <label for="editor">Editeur</label>
+                <input type="text" name="editor" id="editor" class="input-error" placeholder="Le nom de l'editeur">
+
+                <label for="author">Auteur</label>
+                <input type="text" name="author" id="author" class="input-error" placeholder="Le nom de l'auteur">
+
+
+                <button type="submit" class="submit-button">Enregistrer</button>
+
+            </fieldset>
+        </form>
+    </article>
+    <article>
+        <h3>Supprimer un livre</h3>
+        <form method="post" class="book_form_delete">
+            <fieldset>
+                <legend>Choisir un livre</legend>
+       
+                <div class="flex_form_delete">
+                    <input type="checkbox" name="delete_book" id="">
+                    <label for="titre"></label>
+                </div>
+                <button type="submit" class="submit-button">Supprimer</button>
+            
+            </fieldset>
+        </form>
+    </article>
+    <article>
+        <h3>Supprimer un commentaire</h3>
+        <div class="delete_comment"> 
+            <p><span class="informations reader">Lecteur:</span></p>
+            <p><span class="informations date">Date:</span></p>
+            <p><span class="informations comment">Commentaire:</span></p>
+        </div>
+    </article>
+    
+   
+    
+    <h3>Supprimer un utilisateur</h3>
+    <h3>Supprimer un message</h3>
+    
+
+</section>
+
+
+
+<script src="/javascript/formulaire.js"></script>
+<%- include('footer') -%>

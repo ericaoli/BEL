@@ -462,7 +462,7 @@ body {
 .container {
   margin: 3rem 1rem;
 }
-.container h1, .container h2 {
+.container h1, .container h2, .container h3 {
   color: #ffde59;
   font-family: "Nunito Sans", sans-serif;
   text-align: center;
@@ -663,6 +663,26 @@ body {
   grid-template-columns: 1fr;
   border-bottom: 1px solid #ffde59;
 }
+.id_comment button {
+  width: -moz-fit-content;
+  width: fit-content;
+  border: 1px solid #2b2b2b;
+  padding: 1rem 1.5rem;
+  margin: 1rem auto;
+  text-align: center;
+  background-color: #ffde59;
+  font-family: "Nunito Sans", sans-serif;
+  border: none;
+  border-radius: 15px;
+}
+.id_comment button a {
+  text-decoration: none;
+  color: black;
+}
+.id_comment button:hover {
+  font-weight: bold;
+  transition: 0.3s;
+}
 
 .technical_informations,
 .id_comment {
@@ -682,8 +702,8 @@ body {
   margin: 2rem 1rem;
 }
 .btn_comment textarea {
-  font-family: "Nunito Sans", sans-serif;
   width: 80%;
+  font-family: "Nunito Sans", sans-serif;
   border-radius: 15px;
   display: block;
   margin: 1rem auto;
@@ -782,14 +802,18 @@ body {
 
 .inscription_form,
 .form_contact,
-.form_connexion {
+.form_connexion,
+.book_form,
+.book_form_delete {
   max-width: 100%;
   height: auto;
   border-radius: 15px;
 }
 .inscription_form fieldset,
 .form_contact fieldset,
-.form_connexion fieldset {
+.form_connexion fieldset,
+.book_form fieldset,
+.book_form_delete fieldset {
   display: flex;
   padding: 0 1rem;
   border-radius: 15px;
@@ -800,7 +824,9 @@ body {
 }
 .inscription_form fieldset legend,
 .form_contact fieldset legend,
-.form_connexion fieldset legend {
+.form_connexion fieldset legend,
+.book_form fieldset legend,
+.book_form_delete fieldset legend {
   border: 1px solid #ffde59;
   padding: 1rem;
   font-size: 1.5rem;
@@ -814,14 +840,18 @@ body {
 }
 .inscription_form fieldset label,
 .form_contact fieldset label,
-.form_connexion fieldset label {
+.form_connexion fieldset label,
+.book_form fieldset label,
+.book_form_delete fieldset label {
   font-family: "Nunito Sans", sans-serif;
   color: #fff;
   margin-top: 1rem;
 }
 .inscription_form fieldset button,
 .form_contact fieldset button,
-.form_connexion fieldset button {
+.form_connexion fieldset button,
+.book_form fieldset button,
+.book_form_delete fieldset button {
   width: -moz-fit-content;
   width: fit-content;
   border: 1px solid #2b2b2b;
@@ -835,19 +865,36 @@ body {
 }
 .inscription_form fieldset button a,
 .form_contact fieldset button a,
-.form_connexion fieldset button a {
+.form_connexion fieldset button a,
+.book_form fieldset button a,
+.book_form_delete fieldset button a {
   text-decoration: none;
   color: black;
 }
 .inscription_form fieldset button:hover,
 .form_contact fieldset button:hover,
-.form_connexion fieldset button:hover {
+.form_connexion fieldset button:hover,
+.book_form fieldset button:hover,
+.book_form_delete fieldset button:hover {
   font-weight: bold;
   transition: 0.3s;
 }
 .inscription_form fieldset input,
 .form_contact fieldset input,
-.form_connexion fieldset input {
+.form_connexion fieldset input,
+.book_form fieldset input,
+.book_form_delete fieldset input {
+  padding: 0.5rem;
+  border-radius: 15px;
+  border: 1px solid #2b2b2b;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 1rem;
+}
+.inscription_form fieldset textarea,
+.form_contact fieldset textarea,
+.form_connexion fieldset textarea,
+.book_form fieldset textarea,
+.book_form_delete fieldset textarea {
   padding: 0.5rem;
   border-radius: 15px;
   border: 1px solid #2b2b2b;
@@ -906,6 +953,63 @@ option {
   font-size: 1rem;
   padding: 0.5rem;
   border-radius: 10px;
+}
+
+/* page admin */
+.admin {
+  background-image: url("/images/admin.webp");
+  background-position-y: center;
+  background-position-x: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: sticky;
+  top: 70px;
+  margin-top: 70px;
+  width: 100%;
+  height: 80px;
+  z-index: 2;
+}
+
+.container.admin_page {
+  width: 90%;
+  margin: auto;
+}
+
+.book_form_delete.flex_form_delete {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+}
+
+.delete_comment {
+  border: 1px solid #ffde59;
+  border-radius: 15px;
+  background-color: #2b2b2b;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  width: 100%;
+  height: 400px;
+  overflow-y: scroll;
+}
+.delete_comment button {
+  width: -moz-fit-content;
+  width: fit-content;
+  border: 1px solid #2b2b2b;
+  padding: 1rem 1.5rem;
+  margin: 1rem auto;
+  text-align: center;
+  background-color: #ffde59;
+  font-family: "Nunito Sans", sans-serif;
+  border: none;
+  border-radius: 15px;
+}
+.delete_comment button a {
+  text-decoration: none;
+  color: black;
+}
+.delete_comment button:hover {
+  font-weight: bold;
+  transition: 0.3s;
 }
 
 /* footer */
@@ -1095,4 +1199,5 @@ option {
   .reglement * {
     padding-right: 1rem;
   }
+  /* page admin */
 }

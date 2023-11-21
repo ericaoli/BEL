@@ -127,7 +127,7 @@ body {
 .container {
     margin: 3rem 1rem;
     
-    h1, h2 {
+    h1, h2, h3 {
         @include main_title;
     }
     p {
@@ -261,6 +261,9 @@ body {
     grid-template-rows: 1fr;
     grid-template-columns: 1fr;
     border-bottom: 1px solid $link_title-color;
+    & button {
+        @include button_form;
+    }
 }
 .technical_informations,
 .id_comment {
@@ -273,12 +276,9 @@ body {
     max-width: 100%;
     margin: 2rem 1rem;
     & textarea {
-        font-family: $nunito-sans;
         width: 80%;
-        border-radius: 15px;
-        display: block;
-        margin: 1rem auto;
-        padding: 0.5rem 1rem;
+        @include textarea;
+
     }
     & button {
         @include button;
@@ -334,7 +334,9 @@ body {
 }
 .inscription_form,
 .form_contact,
-.form_connexion {
+.form_connexion,
+.book_form,
+.book_form_delete {
     @include form;
     & fieldset {
     @include fieldset;
@@ -351,7 +353,10 @@ body {
     & button {
         @include button_form;
     }
-    input {
+    & input {
+        @include input;
+    }
+    & textarea {
         @include input;
     }
 }
@@ -377,7 +382,6 @@ body {
     @include label;
     font-size: 1rem;
 }
-
 select,
 option {
    font-family: $nunito-sans;
@@ -386,7 +390,37 @@ option {
    border-radius: 10px
 }
 
-
+/* page admin */
+.admin {
+    background-image: url('/images/admin.webp');
+    background-position-y: center;
+    background-position-x: center;
+    @include background_image;
+}
+.container.admin_page {
+    width: 90%;
+    margin: auto;
+}
+.book_form_delete {
+    &.flex_form_delete {
+        display: flex;
+        flex-direction: row;
+        align-items: baseline;
+    }   
+}
+.delete_comment {
+    border: 1px solid $link_title-color;
+    border-radius: 15px;
+    background-color: $primary-color;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    width: 100%;
+    height: 400px;
+    overflow-y: scroll;
+    & button {
+        @include button_form;
+    }
+}
 /* footer */ 
 .foot{
     background-color: $primary-color;
@@ -596,6 +630,8 @@ option {
             padding-right: 1rem;
         }
     }
+
+    /* page admin */
 }
 
 

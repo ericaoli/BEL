@@ -101,6 +101,14 @@
     font-family: $nunito-sans;
     font-size: 1rem;
 }
+
+@mixin textarea {
+    font-family: $nunito-sans;
+    border-radius: 15px;
+    display: block;
+    margin: 1rem auto;
+    padding: 0.5rem 1rem;
+}
 @mixin label {
     font-family: $nunito-sans;
     color: $text-color;

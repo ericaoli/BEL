@@ -40,12 +40,26 @@ app.use(
 //MiddleWare - PAGES PROTEGEES
 app.use((req, res, next) => {
 	let pathname = parseurl(req).pathname.split("/");
-	console.log(pathname);
+	//console.log(`pathname: ${pathname}`);
+	let protectedPath = ["admin"];
+	//console.log(`protectedpath: ${protectedPath}`);
+	//si la session admin n'existe pas et que l'url fait partie des urls protégées
+	if (!req.session.admin && protectedPath.includes(pathname[2])) {
+		res.redirect("/");
+	} else {
+		next();
+	}
+});
+
+app.use((req, res, next) => {
+	let pathname = parseurl(req).pathname.split("/");
+	//console.log(`pathname: ${pathname}`);
 
 	let protectedPath = ["user"];
+	//console.log(`protectedpath: ${protectedPath}`);
 
-	//si la session user n'existe pas et que l'url fait partie des urls protégées
-	if (!req.session.user && protectedPath.indexOf(pathname[1]) !== -1) {
+	//si la session admin n'existe pas et que l'url fait partie des urls protégées
+	if (!req.session.user && protectedPath.includes(pathname[2])) {
 		res.redirect("/");
 	} else {
 		next();
@@ -54,6 +68,15 @@ app.use((req, res, next) => {
 
 
 // Création d'une variable pour l'utiliser la session dans le template
+app.use(function (req, res, next) {
+	if (!req.session.admin) {
+		res.locals.admin = false;
+	} else {
+		res.locals.admin = true;
+	}
+	next();
+});
+
 app.use(function (req, res, next) {
 	if (!req.session.user) {
 		res.locals.user = false;
