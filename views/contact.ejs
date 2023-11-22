@@ -1,19 +1,31 @@
 <%- include('header') -%>
 <div class="contact"></div>
-<main class="container">
+<main class="container _contact">
     <article>
         <h1>Contactez-nous</h1>
         <form  class="form_contact" method="post">
             <fieldset>
                 <legend>Formulaire de contact</legend>
                 <label for="firstname">Prénom</label>
-                <input type="text" name="firstname" minlength="4" required id="firstname" placeholder="Prénom">
+                <input type="text" name="firstname" id="firstname" placeholder="Prénom">
+                <% if(locals.messageFirstname) { %>
+                    <p class="message_error"><%= messageFirstname %></p>
+                <% } %>
                 <label for="lastname">Nom</label>
-                <input type="text" name="lastname" minlength="4" required id="lastname" placeholder="Nom">
+                <input type="text" name="lastname" id="lastname" placeholder="Nom">
+                <% if(locals.messageLastname) { %>
+                    <p class="message_error"><%= messageLastname %></p>
+                <% } %>
                 <label for="E-mail">E-mail</label>
-                <input type="email" name="email"required id="email" placeholder="E-mail">
+                <input type="email" name="email" id="email" placeholder="E-mail">
+                <% if(locals.messageEmail) { %>
+                    <p class="message_error"><%= messageEmail%></p>
+                <% } %>
                 <label for="message">Message</label>
                 <textarea name="message" id="" cols="30" rows="10"></textarea>  
+                <% if(locals.messageUser) { %>
+                    <p class="message_error"><%= messageUser %></p>
+                <% } %>
                 <button type="submit">Envoyer un message</button>
                 <% if(locals.message) { %>
                     <p class="message"><%= message %></p>
@@ -22,5 +34,5 @@
         </form>
     </article>
 </main>
-
+<script src="/javascript/formulaire.js"></script>
 <%- include('footer') -%>

@@ -3,12 +3,20 @@
 <section class="container admin_page">
     <h1>Administrateur</h1>
     
-    <h2>Fonctionalités :</h2>
+    <h2>Menu de fonctionalités :</h2>
+    <ul>
+        <li><i class="fa-solid fa-clipboard-list" style="color: #ede607;"></i> <a href="#register">Enregistrer un nouveau livre</a></li>
+        <li><i class="fa-solid fa-clipboard-list" style="color: #ede607;"></i> <a href="#delete">Supprimer un livre</a></li>
+        <li><i class="fa-solid fa-clipboard-list" style="color: #ede607;"></i> <a href="#delete_comment">Supprimer un commentaire</a></li>
+        <li><i class="fa-solid fa-clipboard-list" style="color: #ede607;"></i> <a href="#delete_user">Supprimer un utilisateur</a></li>
+        <li><i class="fa-solid fa-clipboard-list" style="color: #ede607;"></i> <a href="#delete_msg">Supprimer un message</a></li>
+    </ul>
+    
     <article>
-        <h3>Enregistrer un nouveau livre</h3>
+        <h3 >Enregistrer un nouveau livre</h3>
         <form method="post" class="book_form">
             <fieldset>
-                <legend>Nouveau livre</legend>
+                <legend id="register">Nouveau livre</legend>
                 <label for="titre">Titre</label>
                 <input type="text" name="title" id="title"  class="input-error" placeholder="Titre">
        
@@ -47,7 +55,7 @@
         </form>
     </article>
     <article>
-        <h3>Supprimer un livre</h3>
+        <h3 id="delete">Supprimer un livre</h3>
         <form method="post" class="book_form_delete">
             <fieldset>
                 <legend>Choisir un livre</legend>
@@ -62,7 +70,7 @@
         </form>
     </article>
     <article>
-        <h3>Supprimer un commentaire</h3>
+        <h3 id="delete_comment">Supprimer un commentaire</h3>
         <div class="delete_comment"> 
             <p><span class="informations reader">Lecteur:</span></p>
             <p><span class="informations date">Date:</span></p>
@@ -70,12 +78,8 @@
         </div>
     </article>
     
-   
-    
-    <h3>Supprimer un utilisateur</h3>
-    <h3>Supprimer un message</h3>
-    
-
+    <h3 id="delete_user">Supprimer un utilisateur</h3>
+    <h3 id="delete_msg">Supprimer un message</h3>
 </section>
 
 

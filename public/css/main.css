@@ -460,7 +460,7 @@ body {
 }
 
 .container {
-  margin: 3rem 1rem;
+  max-width: 100%;
 }
 .container h1, .container h2, .container h3 {
   color: #ffde59;
@@ -479,10 +479,10 @@ body {
 /* page home */
 .homepage {
   background-image: url("/images/accueil.webp");
-  background-position: bottom;
+  background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 100vh;
+  height: calc(100vh - 160px);
   width: 100%;
   text-align: center;
   z-index: -1;
@@ -502,6 +502,7 @@ body {
   border: none;
   border-radius: 15px;
   font-size: 1.5rem;
+  margin-top: 3rem;
   padding: 1rem 1.5rem;
 }
 .homepage button a {
@@ -514,10 +515,14 @@ body {
   transition: 0.3s;
 }
 
+.block_home {
+  width: 100%;
+  padding-top: 90px;
+}
+
 .home {
   color: #fff;
   text-align: center;
-  height: 50vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -549,7 +554,12 @@ body {
 }
 
 .container.about {
-  height: 60vh;
+  max-width: 100%;
+  height: calc(100vh - 300px);
+}
+
+.about_container {
+  margin: auto;
 }
 
 /* page readings */
@@ -805,6 +815,7 @@ body {
 .form_connexion,
 .book_form,
 .book_form_delete {
+  margin: 1rem;
   max-width: 100%;
   height: auto;
   border-radius: 15px;
@@ -901,8 +912,11 @@ body {
   font-family: "Nunito Sans", sans-serif;
   font-size: 1rem;
 }
-
-.message_error {
+.inscription_form fieldset .message_error,
+.form_contact fieldset .message_error,
+.form_connexion fieldset .message_error,
+.book_form fieldset .message_error,
+.book_form_delete fieldset .message_error {
   font-family: "Nunito Sans", sans-serif;
   color: #ffde59;
   text-align: center;
@@ -973,6 +987,23 @@ option {
 .container.admin_page {
   width: 90%;
   margin: auto;
+}
+.container.admin_page h2 {
+  text-align: left;
+}
+.container.admin_page li {
+  line-height: 1.8;
+}
+.container.admin_page a {
+  font-family: "Nunito Sans", sans-serif;
+  text-decoration: none;
+  color: #fff;
+  list-style-type: none;
+  font-size: 1.2rem;
+}
+.container.admin_page i {
+  font-size: 1.5rem;
+  margin-right: 1rem;
 }
 
 .book_form_delete.flex_form_delete {
@@ -1082,17 +1113,21 @@ option {
   }
   /* page about */
   .a-propos {
-    height: 230px;
+    height: 200px;
     background-position: bottom;
     margin-top: 80px;
   }
   .container {
-    width: 40%;
-    margin: 2rem auto;
+    width: 50%;
+    margin: auto;
+  }
+  .about_container {
+    padding-top: 70px;
   }
   /* page home */
   .homepage {
     background-position: center;
+    height: calc(100vh - 90px);
   }
   .homepage p {
     font-size: 1.5rem;
@@ -1167,6 +1202,9 @@ option {
     background-color: #2b2b2b;
   }
   /* page contact */
+  .container ._contact {
+    height: calc(100vh - 310px);
+  }
   /* page inscriptions */
   .inscription_wrapper {
     display: flex;

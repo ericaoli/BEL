@@ -6,6 +6,8 @@
             <p><span class="informations">Utilisateur :</span> <%= user.firstname %></p>
             <p><span class="informations">Inscrit le :</span> <%= user.registration_date.toLocaleDateString() %></p>
 
+
+
             <h2>Ma bibliotèque</h2>
             <label for="book-select" class="book-select">Choississez vos favoris:</label>
             <select name="book-select" id="book-select">
@@ -14,8 +16,7 @@
                 <option value="">Affiche tout par la bdd</option>
                 <option value="">Affiche tout par la bdd</option>
                 <option value="">Affiche tout par la bdd</option>
-            </select>
-            
+            </select> 
         </article>
 </main>
 <%- include('footer') -%>

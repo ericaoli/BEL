@@ -3,7 +3,7 @@ import HomeController from "../controllers/HomeController.js";
 import AboutController from "../controllers/AboutController.js";
 import { ReadingsController, ClassicsCategory, ContemporarysCategory } from "../controllers/ReadingsController.js";
 import DetailsReadingsController from "../controllers/DetailsReadingsController.js";
-import ContactController from "../controllers/ContactController.js";
+import {ContactController, ContactSubmit} from "../controllers/ContactController.js";
 import { InscriptionController, InscriptionSubmit } from "../controllers/InscriptionController.js";
 import { ConnexionController, ConnexionSubmitUser} from "../controllers/ConnexionController.js";
 import { ConnexionAdminController, ConnexionSubmitAdmin } from "../controllers/ConnexionAdminController.js";
@@ -30,6 +30,7 @@ router.get("/details_readings/:id", DetailsReadingsController);
 
 //Contact
 router.get("/contact", ContactController);
+router.post("/contact", ContactSubmit);
 
 //Inscriptions
 router.get("/inscription", InscriptionController);

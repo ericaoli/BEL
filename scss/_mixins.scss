@@ -4,14 +4,12 @@
     color: $text-color;
     list-style-type: none;
 }
-
 @mixin main_title {
     color: $link_title-color;
     font-family: $nunito-sans;
     text-align: center;
     margin: 2rem auto;
 }
-
 @mixin text {
     color: $text-color;
     font-family: $poppins;
@@ -19,14 +17,12 @@
     margin: 1rem;
     line-height: 1.5rem;
 }
-
 @mixin logo {
     display: flex;
     flex-direction: column;
     justify-content: center;
     text-decoration: none;
 }
-
 @mixin button {
     text-align: center;
     background-color: $link_title-color;
@@ -43,7 +39,6 @@
         transition: 0.3s;
     }
 }
-
 @mixin button_form {
     width: fit-content;
     border: 1px solid $primary-color;
@@ -63,7 +58,6 @@
         transition: 0.3s;
     }
 }
-
 @mixin background_image {
     background-repeat: no-repeat;
     background-size: cover;
@@ -74,7 +68,6 @@
     height: 80px;
     z-index: 2; 
 }
-
 @mixin fieldset {
     display: flex;
     padding: 0 1rem;
@@ -101,7 +94,6 @@
     font-family: $nunito-sans;
     font-size: 1rem;
 }
-
 @mixin textarea {
     font-family: $nunito-sans;
     border-radius: 15px;
