@@ -707,39 +707,8 @@ body {
   line-height: 1.5rem;
 }
 
-.btn_comment {
+.form_comment {
   max-width: 100%;
-  margin: 2rem 1rem;
-}
-.btn_comment textarea {
-  width: 80%;
-  font-family: "Nunito Sans", sans-serif;
-  border-radius: 15px;
-  display: block;
-  margin: 1rem auto;
-  padding: 0.5rem 1rem;
-}
-.btn_comment button {
-  text-align: center;
-  background-color: #ffde59;
-  font-family: "Nunito Sans", sans-serif;
-  border: none;
-  border-radius: 15px;
-  display: block;
-  margin: auto;
-  padding: 1rem 1.5rem;
-}
-.btn_comment button a {
-  text-decoration: none;
-  color: black;
-}
-.btn_comment button:hover {
-  font-weight: bold;
-  color: #fefce8;
-  transition: 0.3s;
-}
-.btn_comment button a {
-  font-size: 1.3rem;
 }
 
 /* page contact */
@@ -811,6 +780,7 @@ body {
 }
 
 .inscription_form,
+.form_comment,
 .form_contact,
 .form_connexion,
 .book_form,
@@ -821,6 +791,7 @@ body {
   border-radius: 15px;
 }
 .inscription_form fieldset,
+.form_comment fieldset,
 .form_contact fieldset,
 .form_connexion fieldset,
 .book_form fieldset,
@@ -834,6 +805,7 @@ body {
   flex-direction: column;
 }
 .inscription_form fieldset legend,
+.form_comment fieldset legend,
 .form_contact fieldset legend,
 .form_connexion fieldset legend,
 .book_form fieldset legend,
@@ -850,6 +822,7 @@ body {
   margin: 2rem auto;
 }
 .inscription_form fieldset label,
+.form_comment fieldset label,
 .form_contact fieldset label,
 .form_connexion fieldset label,
 .book_form fieldset label,
@@ -859,6 +832,7 @@ body {
   margin-top: 1rem;
 }
 .inscription_form fieldset button,
+.form_comment fieldset button,
 .form_contact fieldset button,
 .form_connexion fieldset button,
 .book_form fieldset button,
@@ -875,6 +849,7 @@ body {
   border-radius: 15px;
 }
 .inscription_form fieldset button a,
+.form_comment fieldset button a,
 .form_contact fieldset button a,
 .form_connexion fieldset button a,
 .book_form fieldset button a,
@@ -883,6 +858,7 @@ body {
   color: black;
 }
 .inscription_form fieldset button:hover,
+.form_comment fieldset button:hover,
 .form_contact fieldset button:hover,
 .form_connexion fieldset button:hover,
 .book_form fieldset button:hover,
@@ -891,6 +867,7 @@ body {
   transition: 0.3s;
 }
 .inscription_form fieldset input,
+.form_comment fieldset input,
 .form_contact fieldset input,
 .form_connexion fieldset input,
 .book_form fieldset input,
@@ -901,7 +878,19 @@ body {
   font-family: "Nunito Sans", sans-serif;
   font-size: 1rem;
 }
+.inscription_form fieldset input[type=file],
+.form_comment fieldset input[type=file],
+.form_contact fieldset input[type=file],
+.form_connexion fieldset input[type=file],
+.book_form fieldset input[type=file],
+.book_form_delete fieldset input[type=file] {
+  border-radius: 15px;
+  padding: 2rem;
+  font-family: "Nunito Sans", sans-serif;
+  color: #ffde59;
+}
 .inscription_form fieldset textarea,
+.form_comment fieldset textarea,
 .form_contact fieldset textarea,
 .form_connexion fieldset textarea,
 .book_form fieldset textarea,
@@ -911,8 +900,10 @@ body {
   border: 1px solid #2b2b2b;
   font-family: "Nunito Sans", sans-serif;
   font-size: 1rem;
+  margin-top: 1rem;
 }
 .inscription_form fieldset .message_error,
+.form_comment fieldset .message_error,
 .form_contact fieldset .message_error,
 .form_connexion fieldset .message_error,
 .book_form fieldset .message_error,
@@ -1200,6 +1191,10 @@ option {
     padding: 2rem;
     border-radius: 15px;
     background-color: #2b2b2b;
+  }
+  .form_comment {
+    width: 80%;
+    margin: 1rem auto;
   }
   /* page contact */
   .container ._contact {

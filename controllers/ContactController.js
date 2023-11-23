@@ -5,13 +5,14 @@ export const ContactController = (req, res) => {
     res.render("contact", {base_url: baseUrl});   
 }
 
-export const ContactSubmit = (req, res, next) => {
+export const ContactSubmit = (req, res) => {
 
 // déclaration des variables
   const firstname = req.body.firstname;
   const lastname = req.body.lastname;
   const email = req.body.email;
   const message = req.body.message;
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   
 // validation des champs du formulaire de contact
   try {
@@ -44,24 +45,25 @@ export const ContactSubmit = (req, res, next) => {
       });
     }
 
+    // Insérer le commentaire dans la base de données: formulaire public
+        const insertMessage = "INSERT INTO message (firstname, lastname, email, message, registration_date) VALUES (?, ?, ?, ?, CURDATE())";
+        pool.query(insertMessage, [firstname, lastname, email, message], (error, result) => {
+            if (error) {
+                console.error("Erreur requête SQL:", error);
+                res.render("contact", {
+                message: "Erreur du serveur. Veuillez essayer plus tard.",
+                base_url: baseUrl,
+                 });
+            } else {
+                console.log(result);
+                res.render("contact", {
+                message: "Merci de votre message!",
+                base_url: baseUrl,
+                });
+            }
+        })
+} 
 
 
-}
 
-// const insertMessage = "INSERT INTO message (firstname, lastname, email, message, registration_date, id_user) VALUES (?, ?, ?, ?, CURDATE(), ?)";
-//     pool.query(insertMessage, [firstname, lastname, email, message, registration_date, id_user]), (insertErr, insertResult) => {
-//         if (insertErr) {
-//             console.error("Erreur requête SQL:", insertErr);
-//             res.render("inscription", {
-//             message: "Erreur du serveur. Veuillez essayer plus tard.",
-//             base_url: baseUrl,
-//             });
-//           } else {
-//             console.log(insertResult);
-//             res.render("inscription", {
-//             message: "Merci de votre message!",
-//             base_url: baseUrl,
-//             });
-//         }
-//     }
 

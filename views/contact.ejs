@@ -7,28 +7,28 @@
             <fieldset>
                 <legend>Formulaire de contact</legend>
                 <label for="firstname">Prénom</label>
-                <input type="text" name="firstname" id="firstname" placeholder="Prénom">
+                <input class="input-error" type="text" name="firstname" id="firstname" placeholder="Prénom">
                 <% if(locals.messageFirstname) { %>
                     <p class="message_error"><%= messageFirstname %></p>
                 <% } %>
                 <label for="lastname">Nom</label>
-                <input type="text" name="lastname" id="lastname" placeholder="Nom">
+                <input class="input-error" type="text" name="lastname" id="lastname" placeholder="Nom">
                 <% if(locals.messageLastname) { %>
                     <p class="message_error"><%= messageLastname %></p>
                 <% } %>
                 <label for="E-mail">E-mail</label>
-                <input type="email" name="email" id="email" placeholder="E-mail">
+                <input class="input-error" type="email" name="email" id="email" placeholder="E-mail">
                 <% if(locals.messageEmail) { %>
                     <p class="message_error"><%= messageEmail%></p>
                 <% } %>
                 <label for="message">Message</label>
-                <textarea name="message" id="" cols="30" rows="10"></textarea>  
+                <textarea class="input-error" name="message" id="" cols="30" rows="10"></textarea>  
                 <% if(locals.messageUser) { %>
                     <p class="message_error"><%= messageUser %></p>
                 <% } %>
                 <button type="submit">Envoyer un message</button>
                 <% if(locals.message) { %>
-                    <p class="message"><%= message %></p>
+                    <p class="message_error"><%= message %></p>
                 <% } %>
             </fieldset>
         </form>

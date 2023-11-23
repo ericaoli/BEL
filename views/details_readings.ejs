@@ -20,6 +20,8 @@
                         </div>
                 </div>
             </article>
+          </section>
+          <section>
             <article class="comments">
                 <h2 lang="pt-br">Opinião dos leitores</h2>
                 <div class="id_comment"> 
@@ -27,11 +29,26 @@
                     <p lang="pt-br"><span class="informations date">Data:</span></p>
                     <p lang="pt-br"><span class="informations comment">Comentário:</span></p>
                 </div>
-                <form method="post" class="btn_comment">
-                    <textarea name="" id="" cols="30" rows="5"placeholder="Escreva aqui o seu comentário" lang="pt-br"></textarea>
-                    <button type="button"><a href="#">Dê a sua opinião</a></button>
-                    </form>
+                <form method="post" class="form_comment">
+                    <fieldset>
+                        <legend lang="pt-br"> Comente o livro</legend>
+                        <label for="E-mail">E-mail</label>
+                        <input class="input-error" type="email" name="email" id="email" placeholder="E-mail">
+                        <!-- <% if(locals.messageEmail) { %>
+                        <p class="message_error"><%= messageEmail%></p>
+                        <% } %> -->
+                        <textarea name="textarea" class="input-error" id="" cols="30" rows="5" placeholder="Escreva aqui o seu comentário" lang="pt-br"></textarea>
+                        <!-- <% if(locals.messageEmail) { %>
+                        <p class="message_error"><%= messageEmail%></p>
+                        <% } %> -->
+                        <button type="submit" lang="pt-br"><a href="#">Dê a sua opinião</a></button>
+                        <!-- <% if(locals.messageEmail) { %>
+                        <p class="message_error"><%= messageEmail%></p>
+                        <% } %> -->
+                    </fieldset>
+                </form>
             </article>
-        </section>
+          </section>  
     </main>
+    <script src="/javascript/formulaire.js"></script>
 <%- include('footer') -%>

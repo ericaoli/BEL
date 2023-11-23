@@ -279,23 +279,26 @@ body {
         @include text;
     }
 }
-.btn_comment{
-    max-width: 100%;
-    margin: 2rem 1rem;
-    & textarea {
-        width: 80%;
-        @include textarea;
+// .btn_comment{
+//     max-width: 100%;
+//     margin: 2rem 1rem;
+//     & textarea {
+//         width: 80%;
+//         @include textarea;
 
-    }
-    & button {
-        @include button;
-        display: block;
-        margin: auto;
-        padding: 1rem 1.5rem;
-        & a{
-            font-size: 1.3rem;
-        }
-    }
+//     }
+//     & button {
+//         @include button;
+//         display: block;
+//         margin: auto;
+//         padding: 1rem 1.5rem;
+//         & a{
+//             font-size: 1.3rem;
+//         }
+//     }
+// }
+.form_comment {
+    max-width: 100%;
 }
 /* page contact */
 .contact {
@@ -340,6 +343,7 @@ body {
     width: 100%;
 }
 .inscription_form,
+.form_comment,
 .form_contact,
 .form_connexion,
 .book_form,
@@ -364,8 +368,15 @@ body {
     & input {
         @include input;
     }
+    & input[type="file"] {
+        border-radius: 15px;
+        padding: 2rem;
+        font-family: $nunito-sans;
+        color: $link_title-color;
+    }
     & textarea {
         @include input;
+        margin-top: 1rem;
     }
     & .message_error {
     @include message;
@@ -616,6 +627,10 @@ option {
         border-radius: 15px;
         background-color: $primary-color;
     
+        }
+        .form_comment {
+            width: 80%;
+            margin: 1rem auto;
         }
     /* page contact */
         .container ._contact{

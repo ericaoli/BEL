@@ -14,7 +14,7 @@
     
     <article>
         <h3 >Enregistrer un nouveau livre</h3>
-        <form method="post" class="book_form">
+        <form method="post" class="book_form" enctype="multipart/form-data">
             <fieldset>
                 <legend id="register">Nouveau livre</legend>
                 <label for="titre">Titre</label>
@@ -26,13 +26,12 @@
                 <label for="description">Description</label>
                 <textarea name="description" id="description" placeholder="Description" cols="30" rows="10"></textarea>
         
-            
                 <label for="isbn">ISBN</label>
-                <input type="text" name="ISBN" id="isbn" class="input-error" placeholder="ISBN">
+                <input type="text" name="ISBN" id="isbn" class="input-error" placeholder="13 chiffres">
             
-                <label for="url_image">Image de couverture</label>
-                <input type="text" name="url_cover_image" id="cover_image" class="input-error">
-            
+                <label for="image">Choissisez l'image du livre </label>
+                <input type="file" name="url_cover_image" id="cover_image">
+
                 <label for="alt_text">Text alternatif</label>
                 <input type="text" name="alt_text" id="alt_text" class="input-error" placeholder="Text descriptif de l'image">
             
@@ -48,8 +47,10 @@
                 <label for="author">Auteur</label>
                 <input type="text" name="author" id="author" class="input-error" placeholder="Le nom de l'auteur">
 
-
                 <button type="submit" class="submit-button">Enregistrer</button>
+                <% if(locals.message) { %>
+                        <p class="message_error"><%= message %></p>
+                <% } %>
 
             </fieldset>
         </form>
