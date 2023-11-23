@@ -29,7 +29,7 @@ export const CommentSubmit = (req, res) => {
 
     // déclaration des variables
     const email = req.body.email;
-    console.log(email);
+    //console.log(email);
     const message = req.body.textarea;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 

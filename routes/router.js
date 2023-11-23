@@ -8,7 +8,7 @@ import { InscriptionController, InscriptionSubmit } from "../controllers/Inscrip
 import { ConnexionController, ConnexionSubmitUser } from "../controllers/ConnexionController.js";
 import { ConnexionAdminController, ConnexionSubmitAdmin } from "../controllers/ConnexionAdminController.js";
 import { UserController } from "../controllers/UserController.js";
-import { AddBooks, AdminController } from "../controllers/AdminController.js";
+import { AddBooks, AdminController} from "../controllers/AdminController.js";
 import upload from "../helpers/upload.js";
 
 
@@ -54,6 +54,7 @@ router.get("/user", UserController);
 
 //Admin
 router.get("/admin", AdminController);
+
 router.post("/admin", upload.single("url_cover_image"), AddBooks);
 
 export default router;

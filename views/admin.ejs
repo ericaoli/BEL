@@ -2,7 +2,7 @@
 <div class="admin"></div>
 <section class="container admin_page">
     <h1>Administrateur</h1>
-    
+  
     <h2>Menu de fonctionalités :</h2>
     <ul>
         <li><i class="fa-solid fa-clipboard-list" style="color: #ede607;"></i> <a href="#register">Enregistrer un nouveau livre</a></li>
@@ -17,6 +17,7 @@
         <form method="post" class="book_form" enctype="multipart/form-data">
             <fieldset>
                 <legend id="register">Nouveau livre</legend>
+
                 <label for="titre">Titre</label>
                 <input type="text" name="title" id="title"  class="input-error" placeholder="Titre">
        
@@ -45,7 +46,8 @@
                 <input type="text" name="editor" id="editor" class="input-error" placeholder="Le nom de l'editeur">
 
                 <label for="author">Auteur</label>
-                <input type="text" name="author" id="author" class="input-error" placeholder="Le nom de l'auteur">
+                <input type="text" name="author_firstname" id="author" class="input-error" placeholder="Le prenom de l'auteur">
+                <input type="text" name="author_lastname" id="author" class="input-error" placeholder="Le nom de l'auteur">
 
                 <button type="submit" class="submit-button">Enregistrer</button>
                 <% if(locals.message) { %>
