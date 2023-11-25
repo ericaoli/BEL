@@ -7,8 +7,6 @@ import { baseUrl } from "../server.js";
 export const ConnexionController = (req, res) => {
     res.render("connexion", {base_url: baseUrl});
 }
-
-//pour gérer la connexion de l'utilisateur
 // export const ConnexionSubmitUser = (req, res, next) => {
     
 //     // Déclaration des variables
@@ -75,14 +73,16 @@ export const ConnexionController = (req, res) => {
 export const ConnexionSubmitUser = (req, res, next) => {
     // Déclaration des variables
     const email = req.body.email;
+    //console.log(email);
     const password = req.body.password;
-
-
+    //console.log(password);
+ ;
+    
     // 1. Vérifie si l'email est enregistré dans la base de données
-    const checkEmailUser = "SELECT * FROM users WHERE email = ?";
-   
+    const checkEmailUser = "SELECT id_user, registration_date, lastname, firstname, email, password, id_user_type FROM users WHERE email = ? AND id_user_type = 2";
+
     pool.query(checkEmailUser, [email], (checkErr, user, checkResult) => {
-        console.log(user);
+        console.log('Conteúdo de user:', user);
         if (checkErr) {
             console.error("Erreur requête SQL:", checkErr);
             return res.status(500).render("connexion", {
@@ -91,7 +91,6 @@ export const ConnexionSubmitUser = (req, res, next) => {
                 users: user,
             });
         }
-
         // Si l'email n'est pas enregistré
         if (checkResult.length === 0) {
             return res.status(404).render("connexion", {
@@ -103,7 +102,7 @@ export const ConnexionSubmitUser = (req, res, next) => {
 
         // Vérification si le mot de passe est correct
         const storedPassword = user[0].password;
-
+        console.log('Conteúdo de user:', user)
         bcrypt.compare(password, storedPassword, (bcryptError, result) => {
             // s'il y a une erreur
             if (bcryptError) {
@@ -124,9 +123,8 @@ export const ConnexionSubmitUser = (req, res, next) => {
             }
             // Si le mot de passe est correct
             if (result) {
-                req.session.user = user;
-
-                console.log(`Nouvelle session créée pour l'utilisateur: ${req.session.user}`);
+                req.session.user = user[0];
+                console.log(`Nouvelle session créée pour l'utilisateur: ${req.session.user.firstname}`);
             // Rediriger vers la page utilisateur
                 return res.redirect("/user");
             }

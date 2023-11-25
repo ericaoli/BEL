@@ -7,6 +7,31 @@
 
 /* MOBILE-FIRST*/
 
+/* généralités */ 
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; 
+    background-color: $secondary-color;
+}
+main {
+    flex: 1; 
+}
+footer {
+    padding: 10px;
+}
+.container {
+    max-width: 100%;
+    h1, h2, h3 {
+        @include main_title;
+    }
+    p {
+        @include text;
+    }
+}
+
 /****** NAVBAR*****/
 .navbar {
     position: fixed;
@@ -119,19 +144,6 @@
 }
 .hamburger.is-active::after {
     transform: rotate(45deg) translate(-9px, -4px);
-}
-/* main */
-body {
-    background-color: $secondary-color;
-}
-.container {
-    max-width: 100%;
-    h1, h2, h3 {
-        @include main_title;
-    }
-    p {
-        @include text;
-    }
 }
 /* page home */
 .homepage {
@@ -279,24 +291,6 @@ body {
         @include text;
     }
 }
-// .btn_comment{
-//     max-width: 100%;
-//     margin: 2rem 1rem;
-//     & textarea {
-//         width: 80%;
-//         @include textarea;
-
-//     }
-//     & button {
-//         @include button;
-//         display: block;
-//         margin: auto;
-//         padding: 1rem 1.5rem;
-//         & a{
-//             font-size: 1.3rem;
-//         }
-//     }
-// }
 .form_comment {
     max-width: 100%;
 }
@@ -305,6 +299,9 @@ body {
     background-image: url('/images/contact.webp');
     background-position-y: center;
     @include background_image; 
+}
+.container._contact{
+    margin: 1rem;
 }
 /* page inscription */
 .inscription {
@@ -346,9 +343,9 @@ body {
 .form_comment,
 .form_contact,
 .form_connexion,
-.book_form,
-.book_form_delete {
-    margin: 1rem;
+.book_form_delete,
+.book_form{
+    margin: auto;
     @include form;
     & fieldset {
     @include fieldset;
@@ -367,10 +364,10 @@ body {
     }
     & input {
         @include input;
+        box-sizing: border-box;
     }
     & input[type="file"] {
         border-radius: 15px;
-        padding: 2rem;
         font-family: $nunito-sans;
         color: $link_title-color;
     }
@@ -383,7 +380,6 @@ body {
     }
 }
 }
-
 /* page connexion */
 .connexion {
     background-image: url('/images/inscription.webp');
@@ -391,12 +387,24 @@ body {
     background-position-x: center;
     @include background_image;
 }
+.container.connect {
+    width: 90%;
+    min-height: 100vh;
+    margin: auto;
+
+}
+
 /* page user */
 .user {
     background-image: url('/images/espace_personnel.webp');
     background-position-y: top;
     background-position-x: center;
     @include background_image;
+}
+.ident{
+    clear: both;
+    width: 100%;
+    margin: 1rem;
 }
 .book-select {
     @include label;
@@ -409,6 +417,25 @@ option {
    padding: 0.5rem;
    border-radius: 10px
 }
+
+.logout {
+   float: right;
+   margin-right: 1rem;
+   margin-bottom: 2rem;
+   width: 100%;
+   text-align: right;
+    & a {
+        @include main_title;
+        font-size: 1rem;
+        text-decoration: none;
+    }
+    & i {
+        color: $link_title-color;
+        font-size: 1.5rem;
+        margin-left: 0.5rem;
+    }
+}
+
 /* page admin */
 .admin {
     background-image: url('/images/admin.webp');
@@ -421,6 +448,7 @@ option {
     margin: auto;
     & h2 {
         text-align: left;
+        margin-left: 1rem;
     }
     & li {
         line-height: 1.8;
@@ -471,9 +499,6 @@ option {
         padding: 0 0.5rem 1rem 0.5rem ;
     }
 }
-
-
-
 
 
 
@@ -535,12 +560,10 @@ option {
             background-position: bottom;
             margin-top: 80px;
         }
-        .container {
-            width: 50%;
-            margin: auto;
-        }
         .about_container {
-            padding-top: 70px;
+            width: 50%;
+            display: block;
+            margin: auto;
         }
 
     /* page home */
@@ -633,8 +656,11 @@ option {
             margin: 1rem auto;
         }
     /* page contact */
-        .container ._contact{
-            height: calc(100vh - 310px);
+        .container._contact{
+            margin: 1rem auto;
+        }
+        .form_contact {
+            width: 800px;
         }
     
     /* page inscriptions */
@@ -672,6 +698,10 @@ option {
         }
 
     /* page admin */
+    .form_connexion {
+        width: 50%;
+        margin: auto;
+    }
 }
 
 

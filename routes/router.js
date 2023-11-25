@@ -5,7 +5,7 @@ import { ReadingsController, ClassicsCategory, ContemporarysCategory } from "../
 import { DetailsReadingsController } from "../controllers/DetailsReadingsController.js";
 import { ContactController, ContactSubmit } from "../controllers/ContactController.js";
 import { InscriptionController, InscriptionSubmit } from "../controllers/InscriptionController.js";
-import { ConnexionController, ConnexionSubmitUser } from "../controllers/ConnexionController.js";
+import { ConnexionController, ConnexionSubmitUser, Logout } from "../controllers/ConnexionController.js";
 import { ConnexionAdminController, ConnexionSubmitAdmin } from "../controllers/ConnexionAdminController.js";
 import { UserController } from "../controllers/UserController.js";
 import { AddBooks, AdminController} from "../controllers/AdminController.js";
@@ -50,11 +50,10 @@ router.post("/connexion_admin", ConnexionSubmitAdmin);
 
 // user
 router.get("/user", UserController);
-
+router.get("/user", Logout);
 
 //Admin
 router.get("/admin", AdminController);
-
 router.post("/admin", upload.single("url_cover_image"), AddBooks);
 
 export default router;

@@ -18,7 +18,7 @@
                 <p>Les données personnelles ne seront pas diffusées.</p>
                 <p>Vous pouvez, à tout moment, supprimer votre compte.</p>
 
-                <p><input type="checkbox" name="conditions" id="conditions"> J’ai lu et j’accepte les conditions de participation et la confidentialité des données.</p>
+                <p><input type="checkbox" role="checkbox" name="conditions" id="conditions"> J’ai lu et j’accepte les conditions de participation et la confidentialité des données.</p>
             </article>
             <article class="form_flex">
                 <form method="post" class="inscription_form">
@@ -34,7 +34,7 @@
                         <% if(locals.messageLastname) { %>
                             <p class="message_error"><%= messageLastname %></p>
                         <% } %>
-                        <label for="E-mail">E-mail</label>
+                        <label for="email">E-mail</label>
                         <input type="email" name="email" id="email" class="input-error" placeholder="E-mail">
                         <% if(locals.messageEmail) { %>
                             <p class="message_error"><%= messageEmail%></p>

@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* imports */
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 /* Document
@@ -311,6 +312,41 @@ template {
 }
 
 /* MOBILE-FIRST*/
+/* généralités */
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: black;
+}
+
+main {
+  flex: 1;
+}
+
+footer {
+  padding: 10px;
+}
+
+.container {
+  max-width: 100%;
+}
+.container h1, .container h2, .container h3 {
+  color: #ffde59;
+  font-family: "Nunito Sans", sans-serif;
+  text-align: center;
+  margin: 2rem auto;
+}
+.container p {
+  color: #fff;
+  font-family: "Poppins", sans-serif;
+  text-align: justify;
+  margin: 1rem;
+  line-height: 1.5rem;
+}
+
 /****** NAVBAR*****/
 .navbar {
   position: fixed;
@@ -452,28 +488,6 @@ template {
 
 .hamburger.is-active::after {
   transform: rotate(45deg) translate(-9px, -4px);
-}
-
-/* main */
-body {
-  background-color: black;
-}
-
-.container {
-  max-width: 100%;
-}
-.container h1, .container h2, .container h3 {
-  color: #ffde59;
-  font-family: "Nunito Sans", sans-serif;
-  text-align: center;
-  margin: 2rem auto;
-}
-.container p {
-  color: #fff;
-  font-family: "Poppins", sans-serif;
-  text-align: justify;
-  margin: 1rem;
-  line-height: 1.5rem;
 }
 
 /* page home */
@@ -725,6 +739,10 @@ body {
   z-index: 2;
 }
 
+.container._contact {
+  margin: 1rem;
+}
+
 /* page inscription */
 .inscription {
   background-image: url("/images/inscription.webp");
@@ -783,9 +801,9 @@ body {
 .form_comment,
 .form_contact,
 .form_connexion,
-.book_form,
-.book_form_delete {
-  margin: 1rem;
+.book_form_delete,
+.book_form {
+  margin: auto;
   max-width: 100%;
   height: auto;
   border-radius: 15px;
@@ -794,8 +812,8 @@ body {
 .form_comment fieldset,
 .form_contact fieldset,
 .form_connexion fieldset,
-.book_form fieldset,
-.book_form_delete fieldset {
+.book_form_delete fieldset,
+.book_form fieldset {
   display: flex;
   padding: 0 1rem;
   border-radius: 15px;
@@ -808,8 +826,8 @@ body {
 .form_comment fieldset legend,
 .form_contact fieldset legend,
 .form_connexion fieldset legend,
-.book_form fieldset legend,
-.book_form_delete fieldset legend {
+.book_form_delete fieldset legend,
+.book_form fieldset legend {
   border: 1px solid #ffde59;
   padding: 1rem;
   font-size: 1.5rem;
@@ -825,8 +843,8 @@ body {
 .form_comment fieldset label,
 .form_contact fieldset label,
 .form_connexion fieldset label,
-.book_form fieldset label,
-.book_form_delete fieldset label {
+.book_form_delete fieldset label,
+.book_form fieldset label {
   font-family: "Nunito Sans", sans-serif;
   color: #fff;
   margin-top: 1rem;
@@ -835,8 +853,8 @@ body {
 .form_comment fieldset button,
 .form_contact fieldset button,
 .form_connexion fieldset button,
-.book_form fieldset button,
-.book_form_delete fieldset button {
+.book_form_delete fieldset button,
+.book_form fieldset button {
   width: -moz-fit-content;
   width: fit-content;
   border: 1px solid #2b2b2b;
@@ -852,8 +870,8 @@ body {
 .form_comment fieldset button a,
 .form_contact fieldset button a,
 .form_connexion fieldset button a,
-.book_form fieldset button a,
-.book_form_delete fieldset button a {
+.book_form_delete fieldset button a,
+.book_form fieldset button a {
   text-decoration: none;
   color: black;
 }
@@ -861,8 +879,8 @@ body {
 .form_comment fieldset button:hover,
 .form_contact fieldset button:hover,
 .form_connexion fieldset button:hover,
-.book_form fieldset button:hover,
-.book_form_delete fieldset button:hover {
+.book_form_delete fieldset button:hover,
+.book_form fieldset button:hover {
   font-weight: bold;
   transition: 0.3s;
 }
@@ -870,22 +888,22 @@ body {
 .form_comment fieldset input,
 .form_contact fieldset input,
 .form_connexion fieldset input,
-.book_form fieldset input,
-.book_form_delete fieldset input {
+.book_form_delete fieldset input,
+.book_form fieldset input {
   padding: 0.5rem;
   border-radius: 15px;
   border: 1px solid #2b2b2b;
   font-family: "Nunito Sans", sans-serif;
   font-size: 1rem;
+  box-sizing: border-box;
 }
 .inscription_form fieldset input[type=file],
 .form_comment fieldset input[type=file],
 .form_contact fieldset input[type=file],
 .form_connexion fieldset input[type=file],
-.book_form fieldset input[type=file],
-.book_form_delete fieldset input[type=file] {
+.book_form_delete fieldset input[type=file],
+.book_form fieldset input[type=file] {
   border-radius: 15px;
-  padding: 2rem;
   font-family: "Nunito Sans", sans-serif;
   color: #ffde59;
 }
@@ -893,8 +911,8 @@ body {
 .form_comment fieldset textarea,
 .form_contact fieldset textarea,
 .form_connexion fieldset textarea,
-.book_form fieldset textarea,
-.book_form_delete fieldset textarea {
+.book_form_delete fieldset textarea,
+.book_form fieldset textarea {
   padding: 0.5rem;
   border-radius: 15px;
   border: 1px solid #2b2b2b;
@@ -906,8 +924,8 @@ body {
 .form_comment fieldset .message_error,
 .form_contact fieldset .message_error,
 .form_connexion fieldset .message_error,
-.book_form fieldset .message_error,
-.book_form_delete fieldset .message_error {
+.book_form_delete fieldset .message_error,
+.book_form fieldset .message_error {
   font-family: "Nunito Sans", sans-serif;
   color: #ffde59;
   text-align: center;
@@ -930,6 +948,12 @@ body {
   z-index: 2;
 }
 
+.container.connect {
+  width: 90%;
+  min-height: 100vh;
+  margin: auto;
+}
+
 /* page user */
 .user {
   background-image: url("/images/espace_personnel.webp");
@@ -945,6 +969,12 @@ body {
   z-index: 2;
 }
 
+.ident {
+  clear: both;
+  width: 100%;
+  margin: 1rem;
+}
+
 .book-select {
   font-family: "Nunito Sans", sans-serif;
   color: #fff;
@@ -958,6 +988,27 @@ option {
   font-size: 1rem;
   padding: 0.5rem;
   border-radius: 10px;
+}
+
+.logout {
+  float: right;
+  margin-right: 1rem;
+  margin-bottom: 2rem;
+  width: 100%;
+  text-align: right;
+}
+.logout a {
+  color: #ffde59;
+  font-family: "Nunito Sans", sans-serif;
+  text-align: center;
+  margin: 2rem auto;
+  font-size: 1rem;
+  text-decoration: none;
+}
+.logout i {
+  color: #ffde59;
+  font-size: 1.5rem;
+  margin-left: 0.5rem;
 }
 
 /* page admin */
@@ -981,6 +1032,7 @@ option {
 }
 .container.admin_page h2 {
   text-align: left;
+  margin-left: 1rem;
 }
 .container.admin_page li {
   line-height: 1.8;
@@ -1108,12 +1160,10 @@ option {
     background-position: bottom;
     margin-top: 80px;
   }
-  .container {
-    width: 50%;
-    margin: auto;
-  }
   .about_container {
-    padding-top: 70px;
+    width: 50%;
+    display: block;
+    margin: auto;
   }
   /* page home */
   .homepage {
@@ -1197,8 +1247,11 @@ option {
     margin: 1rem auto;
   }
   /* page contact */
-  .container ._contact {
-    height: calc(100vh - 310px);
+  .container._contact {
+    margin: 1rem auto;
+  }
+  .form_contact {
+    width: 800px;
   }
   /* page inscriptions */
   .inscription_wrapper {
@@ -1233,4 +1286,8 @@ option {
     padding-right: 1rem;
   }
   /* page admin */
+  .form_connexion {
+    width: 50%;
+    margin: auto;
+  }
 }

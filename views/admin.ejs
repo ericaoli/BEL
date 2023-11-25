@@ -2,53 +2,77 @@
 <div class="admin"></div>
 <section class="container admin_page">
     <h1>Administrateur</h1>
-  
-    <h2>Menu de fonctionalités :</h2>
-    <ul>
-        <li><i class="fa-solid fa-clipboard-list" style="color: #ede607;"></i> <a href="#register">Enregistrer un nouveau livre</a></li>
-        <li><i class="fa-solid fa-clipboard-list" style="color: #ede607;"></i> <a href="#delete">Supprimer un livre</a></li>
-        <li><i class="fa-solid fa-clipboard-list" style="color: #ede607;"></i> <a href="#delete_comment">Supprimer un commentaire</a></li>
-        <li><i class="fa-solid fa-clipboard-list" style="color: #ede607;"></i> <a href="#delete_user">Supprimer un utilisateur</a></li>
-        <li><i class="fa-solid fa-clipboard-list" style="color: #ede607;"></i> <a href="#delete_msg">Supprimer un message</a></li>
-    </ul>
-    
+    <article>
+        <h2>Menu de fonctionalités :</h2>
+        <ul>
+            <li><i class="fa-solid fa-clipboard-list" style="color: #ede607;"></i> <a href="#register">Enregistrer un nouveau livre</a></li>
+            <li><i class="fa-solid fa-clipboard-list" style="color: #ede607;"></i> <a href="#delete">Supprimer un livre</a></li>
+            <li><i class="fa-solid fa-clipboard-list" style="color: #ede607;"></i> <a href="#delete_comment">Supprimer un commentaire</a></li>
+            <li><i class="fa-solid fa-clipboard-list" style="color: #ede607;"></i> <a href="#delete_user">Supprimer un utilisateur</a></li>
+            <li><i class="fa-solid fa-clipboard-list" style="color: #ede607;"></i> <a href="#delete_msg">Supprimer un message</a></li>
+        </ul>
+    </article>
     <article>
         <h3 >Enregistrer un nouveau livre</h3>
         <form method="post" class="book_form" enctype="multipart/form-data">
             <fieldset>
                 <legend id="register">Nouveau livre</legend>
 
-                <label for="titre">Titre</label>
+                <label for="title">Titre</label>
                 <input type="text" name="title" id="title"  class="input-error" placeholder="Titre">
-       
+                <% if(locals.messageTitle) { %>
+                    <p class="message_error"><%= messageTitle %></p>
+                <% } %>
                 <label for="parution">Année de parution</label>
-                <input type="text" name="parution" id="parution" class="input-error" placeholder="Anée de parution">
-            
+                <input type="number" name="parution" id="parution" class="input-error" placeholder="Anée de parution">
+                <% if(locals.messagePublicationYear) { %>
+                    <p class="message_error"><%= messagePublicationYear %></p>
+                <% } %>
                 <label for="description">Description</label>
                 <textarea name="description" id="description" placeholder="Description" cols="30" rows="10"></textarea>
-        
+                <% if(locals.messageDescription) { %>
+                    <p class="message_error"><%= messageDescription %></p>
+                <% } %>
                 <label for="isbn">ISBN</label>
-                <input type="text" name="ISBN" id="isbn" class="input-error" placeholder="13 chiffres">
-            
+                <input type="number" name="ISBN" id="isbn" class="input-error" placeholder="13 chiffres">
+                <% if(locals.messageIsbn) { %>
+                    <p class="message_error"><%= messageIsbn %></p>
+                <% } %>
                 <label for="image">Choissisez l'image du livre </label>
-                <input type="file" name="url_cover_image" id="cover_image">
-
+                <input type="file" name="url_cover_image" id="image">
+                <% if(locals.messageImage) { %>
+                    <p class="message_error"><%= messageImage %></p>
+                <% } %>
                 <label for="alt_text">Text alternatif</label>
                 <input type="text" name="alt_text" id="alt_text" class="input-error" placeholder="Text descriptif de l'image">
-            
+                <% if(locals.messageAltText) { %>
+                    <p class="message_error"><%= messageAltText %></p>
+                <% } %>
                 <label for="date_reading_club">Date de lecture au club</label>
-                <input type="text" name="date_reading_club" id="date_reading_club" class="input-error" placeholder="Date de la lecture au club">
-
+                <input type="date" name="date_reading_club" id="date_reading_club" class="input-error" placeholder="Date de la lecture au club">
+                <% if(locals.messageDateReading) { %>
+                    <p class="message_error"><%= messageDateReading %></p>
+                <% } %>
                 <label for="id_book_category">Categorie du livre</label>
-                <input type="text" name="id_book_category" id="id_book_category" class="input-error" placeholder="Insérez 1 pour 'classique' et 2 pour 'contemporain'">
-            
+                <input type="text" name="id_book_category" id="id_book_category" class="input-error" placeholder="Classique: 1 et Contemporain: 2">
+                <% if(locals.messageIdBookCategory) { %>
+                    <p class="message_error"><%= messageIdBookCategory %></p>
+                <% } %>
                 <label for="editor">Editeur</label>
                 <input type="text" name="editor" id="editor" class="input-error" placeholder="Le nom de l'editeur">
-
-                <label for="author">Auteur</label>
+                <% if(locals.messageEditor) { %>
+                    <p class="message_error"><%= messageEditor %></p>
+                <% } %>
+                <label for="author">Auteur - Prénom</label>
                 <input type="text" name="author_firstname" id="author" class="input-error" placeholder="Le prenom de l'auteur">
+                <% if(locals.messageAuthorFirstname) { %>
+                    <p class="message_error"><%= messageAuthorFirstname %></p>
+                <% } %>
+                <label for="author">Auteur - Nom</label>
                 <input type="text" name="author_lastname" id="author" class="input-error" placeholder="Le nom de l'auteur">
-
+                <% if(locals.messageAuthorLastname) { %>
+                    <p class="message_error"><%= messageAuthorLastName %></p>
+                <% } %>
                 <button type="submit" class="submit-button">Enregistrer</button>
                 <% if(locals.message) { %>
                         <p class="message_error"><%= message %></p>

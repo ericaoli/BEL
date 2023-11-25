@@ -3,10 +3,17 @@
     <main class="container">
         <article>
             <h1>Mon espace</h1>
-            <p><span class="informations">Utilisateur :</span> <%= user.firstname %></p>
-            <p><span class="informations">Inscrit le :</span> <%= user.registration_date.toLocaleDateString() %></p>
-
-
+            <div class="logout">
+                <a href="">Me déconnecter <i class="fa-solid fa-right-from-bracket"></i></a>
+            </div>
+            <div class="ident">
+                <% if (user) { %>
+                <p><span class="informations">Utilisateur :</span> <%= user.firstname %></p>
+                <p><span class="informations">Inscrit le :</span> <%= new Date(user.registration_date).toLocaleDateString() %></p>
+                <% } else { %>
+                    <p>Aucun utilisateur trouvé.</p>
+                <% } %>
+            </div>
 
             <h2>Ma bibliotèque</h2>
             <label for="book-select" class="book-select">Choississez vos favoris:</label>
