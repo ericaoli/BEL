@@ -975,6 +975,12 @@ footer {
   margin: 1rem;
 }
 
+.flex_biblio {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+}
+
 .book-select {
   font-family: "Nunito Sans", sans-serif;
   color: #fff;
@@ -1049,6 +1055,10 @@ option {
   margin-right: 1rem;
 }
 
+.book_form_deletefieldset {
+  height: 400px;
+  overflow-y: scroll;
+}
 .book_form_delete.flex_form_delete {
   display: flex;
   flex-direction: row;

@@ -1,7 +1,7 @@
-import { date } from "yup";
+
 import pool from "../config/database.js";
 import { baseUrl } from "../server.js";
-import multer from "multer";
+
 
 // pour faire l'affichage de la page admin avec la session
 export const AdminController = (req, res) => {
@@ -115,3 +115,4 @@ export const AddBooks = async (req, res) => {
       }; 
   })                    
 }
+

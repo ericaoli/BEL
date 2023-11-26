@@ -4,7 +4,7 @@
         <article>
             <h1>Mon espace</h1>
             <div class="logout">
-                <a href="">Me déconnecter <i class="fa-solid fa-right-from-bracket"></i></a>
+                <a href="/logout">Me déconnecter <i class="fa-solid fa-right-from-bracket"></i></a>
             </div>
             <div class="ident">
                 <% if (user) { %>
@@ -16,14 +16,30 @@
             </div>
 
             <h2>Ma bibliotèque</h2>
-            <label for="book-select" class="book-select">Choississez vos favoris:</label>
-            <select name="book-select" id="book-select">
-                <option value="nos_lectures">-- Nos lectures --</option>
-                <option value="">Affiche tout par la bdd</option>
-                <option value="">Affiche tout par la bdd</option>
-                <option value="">Affiche tout par la bdd</option>
-                <option value="">Affiche tout par la bdd</option>
-            </select> 
+            <div class="flex_biblio">
+                <label for="book-select" class="book-select">Choississez vos favoris:</label>
+               
+                <select name="book-select" id="book-select">
+                    <option value="nos_lectures">-- Nos lectures --</option> 
+                       
+                            <option value="book"></option>
+                     
+                </select>
+                
+            </div>
+            <div class="books_gallery">
+
+                <div class="card">
+                    <article class="cover_book">
+                            <figure>
+                                <img src="" alt="">
+                                <figcaption lang="pt-br"></figcaption>
+                            </figure>
+                            <button type="button"><a href="">En savoir plus</a></button>
+                    </article>
+                </div>
+ 
+            </div>
         </article>
 </main>
 <%- include('footer') -%>

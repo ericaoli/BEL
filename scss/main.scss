@@ -406,6 +406,11 @@ footer {
     width: 100%;
     margin: 1rem;
 }
+.flex_biblio {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+}
 .book-select {
     @include label;
     font-size: 1rem;
@@ -463,6 +468,10 @@ option {
     }
 }
 .book_form_delete {
+    &fieldset {
+        height: 400px;
+        overflow-y: scroll; 
+    }
     &.flex_form_delete {
         display: flex;
         flex-direction: row;

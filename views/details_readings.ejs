@@ -34,17 +34,11 @@
                         <legend lang="pt-br"> Comente o livro</legend>
                         <label for="email">E-mail</label>
                         <input class="input-error" type="email" name="email" id="email" placeholder="E-mail">
-                        <!-- <% if(locals.messageEmail) { %>
-                        <p class="message_error"><%= messageEmail%></p>
-                        <% } %> -->
                         <textarea name="textarea" class="input-error" id="" cols="30" rows="5" placeholder="Escreva aqui o seu comentário" lang="pt-br"></textarea>
-                        <!-- <% if(locals.messageEmail) { %>
-                        <p class="message_error"><%= messageEmail%></p>
-                        <% } %> -->
-                        <button type="submit" lang="pt-br"><a href="#">Dê a sua opinião</a></button>
-                        <!-- <% if(locals.messageEmail) { %>
-                        <p class="message_error"><%= messageEmail%></p>
-                        <% } %> -->
+                        <button type="submit" lang="pt-br">Dê a sua opinião</button>
+                        <% if(locals.message) { %>
+                        <p class="message_error"><%= message%></p>
+                        <% } %>
                     </fieldset>
                 </form>
             </article>

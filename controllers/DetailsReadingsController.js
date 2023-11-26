@@ -4,6 +4,7 @@ const hostname = "localhost";
 const port = 9000;
 const baseUrl = "http://localhost:9000";
 
+
 export const DetailsReadingsController = (req, res) => {
     let id = req.params.id;
   
@@ -17,7 +18,6 @@ export const DetailsReadingsController = (req, res) => {
                 INNER JOIN editor e ON b.id_editor = e.id_editor
           WHERE b.id_book = ?`;
         
-
 	pool.query(sql, [id], function (error, book, fields) {
 		res.render("details_readings", { base_url: baseUrl, books: book[0]});
         //console.log(book[0]);
@@ -30,50 +30,48 @@ export const CommentSubmit = (req, res) => {
     // déclaration des variables
     const email = req.body.email;
     //console.log(email);
-    const message = req.body.textarea;
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const comment = req.body.textarea;
+    //console.log(comment);
+    let id = req.params.id;
 
-    // validation des champs du formulaire de commentaires
-    try {
-        if (!email || !email.match(emailRegex)) {
-            throw new Error (res.render("contact", {
-            messageEmail: "Le champ e-mail est obligatoire. Veuillez saisir une adresse valide.",
-            base_url: baseUrl}));
+    // 1. Vérifie si l'email est enregistré dans la base de données
+    const checkEmailUser = "SELECT id_user, registration_date, lastname, firstname, email, password, id_user_type FROM users WHERE email = ? AND id_user_type = 2";
+    pool.query(checkEmailUser, [id, email], (checkErr, user, checkResult) => {
+        console.log('User qui envoie un commentaire:', user);
+        if (checkErr) {
+            console.error("Erreur requête SQL:", checkErr);
+            return res.status(500).render("connexion", {
+                message: "Erreur du serveur. Veuillez essayer plus tard.",
+                base_url: baseUrl,
+                users: user,
+            });
         }
-        if (!message) {
-            throw new Error (res.render("contact", {
-          messageUser: "Le champ message est obligatoire. Veuillez écrire votre message.",
-            base_url: baseUrl}));
+        // Si l'email n'est pas enregistré
+        if (checkResult.length === 0) {
+            return res.status(404).render("connexion", {
+                message: "Vous n'êtes pas inscrit. Veuillez vous inscrire!",
+                base_url: baseUrl,
+                users: user,
+            });
         }
-    } catch (error) {
-      console.error('Erreur de validation:', error.message);
-      return res.status(400).render("contact", {
-      message: error.message,
-      base_url: baseUrl
-      });
-    }
-  
-// vérifie si l'email est enregistré dans la base de données
-    // const checkEmailUser = "SELECT * FROM users WHERE email = ?";
+        // si l'email est enregistré
+        if (checkResult.length > 0) {
+            let commentQuery = `INSERT INTO comment(date_added, comment, id_user, id_book) VALUES (CURDATE(), ?, ?, ?);`
+            pool.query(commentQuery,[comment, id], (error, result) => {
+                if(error) {
+                    console.error("Erreur requête SQL:", insertErr);
+                } else {
+                    res.render("details_readings", {
+                        message: "Votre commentaire a été bien enregistré!",
+                        base_url: baseUrl,
+                        comments: comment[0]
+                        });
+                }
 
-    // pool.query(checkEmailUser, [email], (checkErr, checkResult) => {
-    //     if (checkErr) {
-    //         console.error("Erreur requête SQL:", checkErr);
-    //         return res.status(500).render("details_readings", {
-    //             message: "Erreur du serveur. Veuillez essayer plus tard.",
-    //             base_url: baseUrl,
-    //         });
-    //     }
+            })
+        }
+    });
 
-    //     // Si l'email n'est pas enregistré
-    //     if (checkResult.length === 0) {
-    //         return res.status(404).render("details_readings", {
-    //         message: "Vous n'êtes pas inscrit. Veuillez vous inscrire pour commenter un livre!",
-    //         base_url: baseUrl,
-    //         });
-    //     }
-
-    // })
 }
 
 

@@ -1,18 +1,16 @@
 import pool from "../config/database.js";
-
-const hostname = "localhost";
-const port = 9000;
-const baseUrl = "http://localhost:9000";
+import { baseUrl } from "../server.js";
 
 
 export const ReadingsController = (req, res) => {
 
 	// requete SQL qui récupére tous les livres
-	let sqlAll =
-			  `SELECT id_book, id_book_category, title, url_cover_image, alt_text FROM books`;
+	let sqlAll = `SELECT id_book, id_book_category, title, url_cover_image, alt_text FROM books`;
 
+			 
 	pool.query(sqlAll, function (error, book, fields) {
 		res.render("readings", { base_url: baseUrl, books: book });
+		
 	});
 };
 
