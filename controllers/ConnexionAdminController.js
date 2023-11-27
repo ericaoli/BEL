@@ -2,7 +2,6 @@ import pool from "../config/database.js";
 import bcrypt from "bcrypt";
 import { baseUrl } from "../server.js";
 
-
 // pour faire l'affichage de la page connexion
 export const ConnexionAdminController = (req, res) => {
     res.render("connexion_admin", {base_url: baseUrl});

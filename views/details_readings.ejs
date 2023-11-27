@@ -29,18 +29,19 @@
                     <p lang="pt-br"><span class="informations date">Data:</span></p>
                     <p lang="pt-br"><span class="informations comment">Comentário:</span></p>
                 </div>
-                <form method="post" class="form_comment">
-                    <fieldset>
-                        <legend lang="pt-br"> Comente o livro</legend>
-                        <label for="email">E-mail</label>
-                        <input class="input-error" type="email" name="email" id="email" placeholder="E-mail">
-                        <textarea name="textarea" class="input-error" id="" cols="30" rows="5" placeholder="Escreva aqui o seu comentário" lang="pt-br"></textarea>
-                        <button type="submit" lang="pt-br">Dê a sua opinião</button>
-                        <% if(locals.message) { %>
-                        <p class="message_error"><%= message%></p>
-                        <% } %>
-                    </fieldset>
-                </form>
+                <!-- le formulaire est disponible aux utilisateurs connectés (user et admin) -->
+                <% if (locals.user || locals.admin) { %>
+                    <form method="post" class="form_comment">
+                        <fieldset>
+                            <legend lang="pt-br"> Comente o livro</legend>
+                            <textarea name="textarea" class="input-error" id="" cols="30" rows="5" placeholder="Escreva aqui o seu comentário" lang="pt-br"></textarea>
+                            <button type="submit" lang="pt-br">Dê a sua opinião</button>
+                            <% if(locals.message) { %>
+                                <p class="message_error"><%= message%></p>
+                            <% } %>
+                        </fieldset>
+                    </form>
+                <% } %>
             </article>
           </section>  
     </main>

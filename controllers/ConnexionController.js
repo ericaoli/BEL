@@ -2,7 +2,6 @@ import pool from "../config/database.js";
 import bcrypt from "bcrypt";
 import { baseUrl } from "../server.js";
 
-
 // pour faire l'affichage de la page connexion
 export const ConnexionController = (req, res) => {
     res.render("connexion", {base_url: baseUrl});
@@ -121,7 +120,7 @@ export const ConnexionSubmitUser = (req, res, next) => {
                     users: user,
                 });
             }
-            // Si le mot de passe est correct
+            // Si le mot de passe est correct, on crée la session
             if (result) {
                 req.session.user = user[0];
                 console.log(`Nouvelle session créée pour l'utilisateur: ${req.session.user.firstname}`);

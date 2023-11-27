@@ -7,11 +7,11 @@
             <% for(let i=0; i < books.length; ++i) { %>
             <div class="card">
                 <article class="cover_book">
-                        <figure>
-                            <img src="/images/<%= books[i].url_cover_image %>" alt="<%= books[i].alt_text %>">
-                            <figcaption lang="pt-br"><%= books[i].title %></figcaption>
-                        </figure>
-                        <button type="button"><a href="/details_readings/<%= books[i].id_book %>">En savoir plus</a></button>
+                    <figure>
+                        <img src="/images/<%= books[i].url_cover_image %>" alt="<%= books[i].alt_text %>">
+                        <figcaption lang="pt-br"><%= books[i].title %></figcaption>
+                    </figure>
+                    <button type="button"><a href="/details_readings/<%= books[i].id_book %>">En savoir plus</a></button>
                 </article>
             </div>
             <% } %>  

@@ -3,9 +3,6 @@
     <main class="container">
         <article>
             <h1>Mon espace</h1>
-            <div class="logout">
-                <a href="/logout">Me déconnecter <i class="fa-solid fa-right-from-bracket"></i></a>
-            </div>
             <div class="ident">
                 <% if (user) { %>
                 <p><span class="informations">Utilisateur :</span> <%= user.firstname %></p>

@@ -2,13 +2,12 @@
 import pool from "../config/database.js";
 import { baseUrl } from "../server.js";
 
-
 // pour faire l'affichage de la page admin avec la session
 export const AdminController = (req, res) => {
     res.render("admin",{ admin: req.session.admin, base_url: baseUrl});				 
 }
 
-
+// pour ajouter un nouveau livre
 export const AddBooks = async (req, res) => {
     // déclaration de variables
     const title = req.body.title;
@@ -116,3 +115,19 @@ export const AddBooks = async (req, res) => {
   })                    
 }
 
+//pour supprimer un livre
+export const DeleteBooks = async (req, res) => {
+  // affichage des livres
+  //const deleteCommentBook = "DELETE FROM comment WHERE id_book = ?";
+  //const deleteLikedBook = "DELETE FROM liked WHERE id_book = ?";
+  const deleteBook = "DELETE FROM books WHERE id_book = ?";
+  pool.query(deleteBook, (error, result) => {
+    if(error) {
+      console.error(console.error("Erreur requête SQL:", error));
+    } else {
+        const books = result.book;
+        console.log(books);
+        res.render("admin", { books, base_url: baseUrl });
+    }
+  })
+}

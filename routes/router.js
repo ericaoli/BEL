@@ -8,13 +8,10 @@ import { InscriptionController, InscriptionSubmit } from "../controllers/Inscrip
 import { ConnexionController, ConnexionSubmitUser, Logout } from "../controllers/ConnexionController.js";
 import { ConnexionAdminController, ConnexionSubmitAdmin } from "../controllers/ConnexionAdminController.js";
 import { UserController} from "../controllers/UserController.js";
-import { AddBooks, AdminController} from "../controllers/AdminController.js";
+import { AdminController, AddBooks, DeleteBooks} from "../controllers/AdminController.js";
 import upload from "../helpers/upload.js";
 
-
-
 const router = express.Router();
-
 
 //liste des routes
 //Home
@@ -46,16 +43,13 @@ router.post("/connexion", ConnexionSubmitUser);
 router.get("/connexion_admin", ConnexionAdminController);
 router.post("/connexion_admin", ConnexionSubmitAdmin);
 
-
-
 // user
 router.get("/user", UserController);
 router.get("/logout", Logout);
 
-
 //Admin
 router.get("/admin", AdminController);
 router.post("/admin", upload.single("url_cover_image"), AddBooks);
-
+router.get("/admin", DeleteBooks);
 
 export default router;

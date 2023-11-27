@@ -45,10 +45,17 @@
                         </ul>
                     </li>
                     <li><a href="/contact"class="menu">Contact</a></li>
-                    <li><a href="/inscription"class="menu inscriptions">Inscriptions</a></li>
-                    <li><a href="/connexion"class="menu connect">Connexion</a></li>
-                    <li><a href="/deconnect"class="menu disconnect"></i> Déconnexion</a></li>
-                    <li><a href="/connexion" class="menu nav_login_desktop"><i class="fa-regular fa-user" style="color: #e9cd3b;"></i></a></li>
+                    <% if (locals.user) { %>
+                        <li><a href="/user" class="menu">Mon profil</a></li>
+                        <li><a href="/logout" class="menu">Déconnexion</a></li>
+                    <% } else if (locals.admin) {%>
+                        <li><a href="/admin" class="menu">Administrateur</a></li>
+                        <li><a href="/logout" class="menu">Déconnexion</a></li>
+                    <% } else { %>
+                        <li><a href="/inscription"class="menu inscriptions">Inscriptions</a></li>
+                        <li><a href="/connexion"class="menu connect">Connexion</a></li>
+                        <li><a href="/connexion" class="menu nav_login_desktop"><i class="fa-regular fa-user" style="color: #e9cd3b;"></i></a></li>
+                    <% } %>
                 </ul> 
                     
             </div> 

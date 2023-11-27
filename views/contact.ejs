@@ -6,30 +6,43 @@
         <form  class="form_contact" method="post">
             <fieldset>
                 <legend>Formulaire de contact</legend>
-                <label for="firstname">Prénom</label>
-                <input class="input-error" type="text" name="firstname" id="firstname" placeholder="Prénom">
-                <% if(locals.messageFirstname) { %>
-                    <p class="message_error"><%= messageFirstname %></p>
-                <% } %>
-                <label for="lastname">Nom</label>
-                <input class="input-error" type="text" name="lastname" id="lastname" placeholder="Nom">
-                <% if(locals.messageLastname) { %>
-                    <p class="message_error"><%= messageLastname %></p>
-                <% } %>
-                <label for="E-mail">E-mail</label>
-                <input class="input-error" type="email" name="email" id="email" placeholder="E-mail">
-                <% if(locals.messageEmail) { %>
-                    <p class="message_error"><%= messageEmail%></p>
-                <% } %>
-                <label for="message">Message</label>
-                <textarea class="input-error" name="message" id="message" cols="30" rows="10"></textarea>  
-                <% if(locals.messageUser) { %>
-                    <p class="message_error"><%= messageUser %></p>
-                <% } %>
-                <button type="submit">Envoyer un message</button>
-                <% if(locals.message) { %>
-                    <p class="message_error"><%= message %></p>
-                <% } %>
+                <!-- le formulaire de contact sera pré-rempli si l'user est connecté et les champs ne pourront pas être modifiés-->
+                <% if (locals.user) { %>
+                    <label for="firstname">Prénom</label>
+                    <input class="input-error" type="text" name="firstname" id="firstname" placeholder="Prénom" value="<%= user.firstname %>" readonly>
+                    <% if(locals.messageFirstname) { %> <p class="message_error"><%= messageFirstname %></p><% } %>
+                    
+                    <label for="lastname">Nom</label>
+                    <input class="input-error" type="text" name="lastname" id="lastname" placeholder="Nom" value="<%= user.lastname %>" readonly>
+                    <% if(locals.messageLastname) { %><p class="message_error"><%= messageLastname %></p><% } %>
+                        
+                    <label for="E-mail">E-mail</label>
+                    <input class="input-error" type="email" name="email" id="email" placeholder="E-mail" value="<%= user.email %>" readonly>
+                    <% if(locals.messageEmail) { %><p class="message_error"><%= messageEmail%></p><% } %>  
+                        
+                <% } else { %>
+                 <!-- sinon il faudra remplir les champs  -->
+                 
+                    <label for="firstname">Prénom</label>
+                    <input class="input-error" type="text" name="firstname" id="firstname" placeholder="Prénom">
+                    <% if(locals.messageFirstname) { %><p class="message_error"><%= messageFirstname %></p><% } %>
+                        
+                    <label for="lastname">Nom</label>
+                    <input class="input-error" type="text" name="lastname" id="lastname" placeholder="Nom">
+                    <% if(locals.messageLastname) { %><p class="message_error"><%= messageLastname %></p><% } %>
+                        
+                    <label for="E-mail">E-mail</label>
+                    <input class="input-error" type="email" name="email" id="email" placeholder="E-mail">
+                    <% if(locals.messageEmail) { %><p class="message_error"><%= messageEmail%></p><% } %>
+                 <% } %>  
+
+                    <label for="message">Message</label>
+                    <textarea class="input-error" name="message" id="message" cols="30" rows="10"></textarea>  
+                    <% if(locals.messageUser) { %><p class="message_error"><%= messageUser %></p><% } %>
+                    
+                    <button type="submit">Envoyer un message</button>
+                    <% if(locals.message) { %><p class="message_error"><%= message %></p><% } %>
+                
             </fieldset>
         </form>
     </article>

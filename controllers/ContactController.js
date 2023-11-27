@@ -2,7 +2,7 @@ import pool from "../config/database.js";
 import { baseUrl } from "../server.js";
 
 export const ContactController = (req, res) => {
-    res.render("contact", {base_url: baseUrl});   
+    res.render("contact", {base_url: baseUrl, user:req.session.user});   
 }
 
 export const ContactSubmit = (req, res) => {
@@ -45,25 +45,34 @@ export const ContactSubmit = (req, res) => {
       });
     }
 
-    // Insérer le commentaire dans la base de données: formulaire public
-        const insertMessage = "INSERT INTO message (firstname, lastname, email, message, registration_date) VALUES (?, ?, ?, ?, CURDATE())";
-        pool.query(insertMessage, [firstname, lastname, email, message], (error, result) => {
-            if (error) {
-                console.error("Erreur requête SQL:", error);
-                res.render("contact", {
-                message: "Erreur du serveur. Veuillez essayer plus tard.",
-                base_url: baseUrl,
-                 });
-            } else {
-                console.log(result);
-                res.render("contact", {
-                message: "Merci de votre message!",
-                base_url: baseUrl,
-                });
-            }
-        })
-} 
+    // Insérer le commentaire dans la base de données
+    let insertMessage = "INSERT INTO message (firstname, lastname, email, message, registration_date, id_user) VALUES (?, ?, ?, ?, CURDATE(), ?)";
+       
+    // la variable id reçoit la valeur en fonction de la présence ou de l'absence de req.session.user
+    let id = req.session.user ? req.session.user.id_user : null;
 
-
-
-
+    pool.query(insertMessage, [firstname, lastname, email, message, id], (error, result) => {
+    //console.log(`user form contact ${id}`);
+      if (error) {
+        console.error("Erreur requête SQL:", error);
+        res.render("contact", {
+          message: "Erreur du serveur. Veuillez essayer plus tard.",
+          base_url: baseUrl,
+        });
+      }
+      // si le résultat est bon et la session existe
+      if (result && req.session.user) {
+      //console.log(result);
+        res.render("contact", {
+          message: `${req.session.user.firstname}, votre message a été envoyé. Merci!`,
+          base_url: baseUrl,
+        });
+      } else {
+      // sinon le résultat est bon et la session n'existe pas
+        res.render("contact", {
+        message: `${firstname}, votre message a été envoyé. Merci!`,
+        base_url: baseUrl,
+        });
+      }
+    });
+  } 

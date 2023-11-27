@@ -1,14 +1,12 @@
 import express from "express";
+import session from "express-session";
 import router from "./routes/router.js";
 import parseurl from "parseurl";
-import session from "express-session";
-
 
 const app = express();
 const port = 9000;
 const hostname = "localhost";
 export const baseUrl = "http://localhost:9000";
-
 
 // indique la localisation des fichiers statiques js, images et css
 app.use(express.static("public"));
@@ -16,7 +14,6 @@ app.use(express.static("public"));
 // utilisation des templates ejs => moteur d'affichage
 app.set("views", "./views");
 app.set("view engine", "ejs");
-
 
 //pour l'utilisation du json à la réception des données formulaire
 app.use(express.json());
@@ -52,6 +49,15 @@ app.use(function (req, res, next) {
 		res.locals.user = false;
 	} else {
 		res.locals.user = true;
+	}
+	next();
+});
+
+app.use(function (req, res, next) {
+	if (!req.session.book) {
+		res.locals.book = false;
+	} else {
+		res.locals.book = true;
 	}
 	next();
 });

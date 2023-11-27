@@ -6,8 +6,6 @@ const baseUrl = "http://localhost:9000";
 
 const AboutController = (req, res) => {
     res.render("about", { base_url: baseUrl});
-
 }
-
 
 export default AboutController;

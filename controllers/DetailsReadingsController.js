@@ -4,9 +4,9 @@ const hostname = "localhost";
 const port = 9000;
 const baseUrl = "http://localhost:9000";
 
-
 export const DetailsReadingsController = (req, res) => {
-    let id = req.params.id;
+    let id = req.params.id;    
+    console.log("id book.1 : " + id);
   
 	// requete SQL qui va nous récupérer les informations
 	let sql =
@@ -18,60 +18,30 @@ export const DetailsReadingsController = (req, res) => {
                 INNER JOIN editor e ON b.id_editor = e.id_editor
           WHERE b.id_book = ?`;
         
-	pool.query(sql, [id], function (error, book, fields) {
-		res.render("details_readings", { base_url: baseUrl, books: book[0]});
-        //console.log(book[0]);
+	pool.query(sql, [id], function (error, book) {
+        res.render("details_readings", { base_url: baseUrl, books: book[0], user:req.session.user});
+		
 	});
 };
 
-
 export const CommentSubmit = (req, res) => {
-
     // déclaration des variables
-    const email = req.body.email;
-    //console.log(email);
     const comment = req.body.textarea;
-    //console.log(comment);
-    let id = req.params.id;
+    console.log(comment);
+    let id = req.session.user.id_user;
+    let idBook = req.session.book.id_book;
+    console.log('User.1 qui envoie un commentaire:', req.session.user.firstname);
 
-    // 1. Vérifie si l'email est enregistré dans la base de données
-    const checkEmailUser = "SELECT id_user, registration_date, lastname, firstname, email, password, id_user_type FROM users WHERE email = ? AND id_user_type = 2";
-    pool.query(checkEmailUser, [id, email], (checkErr, user, checkResult) => {
-        console.log('User qui envoie un commentaire:', user);
-        if (checkErr) {
-            console.error("Erreur requête SQL:", checkErr);
-            return res.status(500).render("connexion", {
-                message: "Erreur du serveur. Veuillez essayer plus tard.",
+    let commentQuery = `INSERT INTO comment(date_added, comment, id_user, id_book) VALUES (CURDATE(), ?, ?, ?);`
+    pool.query(commentQuery,[comment, id, idBook], (error, result) => {
+        if(error) {
+            console.error("Erreur requête SQL:", error);
+        } else {
+            res.render("details_readings", {
+                message: "Votre commentaire a été bien enregistré!",
                 base_url: baseUrl,
-                users: user,
-            });
-        }
-        // Si l'email n'est pas enregistré
-        if (checkResult.length === 0) {
-            return res.status(404).render("connexion", {
-                message: "Vous n'êtes pas inscrit. Veuillez vous inscrire!",
-                base_url: baseUrl,
-                users: user,
-            });
-        }
-        // si l'email est enregistré
-        if (checkResult.length > 0) {
-            let commentQuery = `INSERT INTO comment(date_added, comment, id_user, id_book) VALUES (CURDATE(), ?, ?, ?);`
-            pool.query(commentQuery,[comment, id], (error, result) => {
-                if(error) {
-                    console.error("Erreur requête SQL:", insertErr);
-                } else {
-                    res.render("details_readings", {
-                        message: "Votre commentaire a été bien enregistré!",
-                        base_url: baseUrl,
-                        comments: comment[0]
-                        });
-                }
-
-            })
-        }
-    });
-
-}
-
-
+                comments: comment[0]
+                });
+            }
+        })
+    }
