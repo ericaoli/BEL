@@ -3,6 +3,7 @@ import session from "express-session";
 import router from "./routes/router.js";
 import parseurl from "parseurl";
 
+
 const app = express();
 const port = 9000;
 const hostname = "localhost";
@@ -72,10 +73,12 @@ app.use((req, res, next) => {
 	if (!req.session.admin && protectedPath.includes(pathname[2])) {
 		console.log("Utilisateur non authentifié et route protégée. Rédirige vers /")
 		res.redirect("/");
-	} else {
+	} else if (!req.session.user && protectedPath.includes(pathname[2])) {
 		console.log("Utilisateur authentifié ou route non protégée. Continue vers le prochain middleware");
+		res.redirect("/");
+	} else {
 		next();
-	}
+	}	
 });
 
 //appel du routeur

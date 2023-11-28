@@ -46,6 +46,11 @@ export const AddBooks = async (req, res) => {
           messageIsbn: "Le champ 'ISBN' est obligatoire. Veuillez saisir 13 chiffres.",
           base_url: baseUrl}));
       }
+      if (!altText || isNaN(isbn)) {
+        throw new Error (res.render("admin", {
+          messageIsbn: "Le champ 'alt_text' est obligatoire. Veuillez saisir un text descriptif de l'image.",
+          base_url: baseUrl}));
+      }
       if (!urlCoverImage) {
         throw new Error (res.render("admin", {
           messageImage: "Champ obligatoire. Veuillez choisir l'image de couverture du livre.",

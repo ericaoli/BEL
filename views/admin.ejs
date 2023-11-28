@@ -19,12 +19,12 @@
                 <legend id="register">Nouveau livre</legend>
 
                 <label for="title">Titre</label>
-                <input type="text" name="title" id="title"  class="input-error" placeholder="Titre">
+                <input type="text" name="title" id="title"  class="input-error" placeholder="Taille maximale : 250 caractères.">
                 <% if(locals.messageTitle) { %>
                     <p class="message_error"><%= messageTitle %></p>
                 <% } %>
                 <label for="parution">Année de parution</label>
-                <input type="number" name="parution" id="parution" class="input-error" placeholder="Anée de parution">
+                <input type="number" name="parution" id="parution" class="input-error" placeholder="Veuillez saisir 4 chiffres.">
                 <% if(locals.messagePublicationYear) { %>
                     <p class="message_error"><%= messagePublicationYear %></p>
                 <% } %>

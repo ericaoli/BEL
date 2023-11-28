@@ -2,26 +2,28 @@
 <div class="books"></div>
     <main>
         <section class="container_books">
-            <h1 lang="pt-br"><%= books.title %></h1>
+            <% for(let i=0; i < books.length; ++i) { %>
+            <h1 lang="pt-br"><%= books[i].title %></h1>
             <article class="details"> 
                 <div class="technical_informations">
-                        <div class="details_cover">
-                            <img src="/images/<%= books.url_cover_image %>" alt="<%= books.alt_text %>">
-                        </div>
-                        <div class="editor_informations">
-                            <h2 lang="pt-br">Ficha técnica:</h2>
-                            <p lang="pt-br"><span class="informations">Apresentado no clube em:</span> <%= books.date_reading_club.toLocaleDateString() %></p>
-                            <p lang="pt-br"><span class="informations">Título:</span> <%= books.title %></p>
-                            <p lang="pt-br"><span class="informations">Autor:</span> <%= books.firstname + " " + books.lastname %></p>
-                            <p lang="pt-br"><span class="informations">Editora:</span> <%= books.name %></p>
-                            <p lang="pt-br"><span class="informations">ISBN: </span> <%= books.isbn %></p>
-                            <p lang="pt-br"><span class="informations">Ano de publicação:</span> <%= books.publication_year %></p>
-                            <p lang="pt-br" class="description"><span class="informations">Descrição:</span> <%= books.description %></p>
-                        </div>
+                    <div class="details_cover">
+                        <img src="/images/<%= books[i].url_cover_image %>" alt="<%= books[i].alt_text %>">
+                    </div>
+                    <div class="editor_informations">
+                        <h2 lang="pt-br">Ficha técnica:</h2>
+                        <p lang="pt-br"><span class="informations">Apresentado no clube em:</span> <%= books[i].date_reading_club.toLocaleDateString() %></p>
+                        <p lang="pt-br"><span class="informations">Título:</span> <%= books[i].title %></p>
+                        <p lang="pt-br"><span class="informations">Autor:</span> <%= books[i].firstname + " " + books[i].lastname %></p>
+                        <p lang="pt-br"><span class="informations">Editora:</span> <%= books[i].name %></p>
+                        <p lang="pt-br"><span class="informations">ISBN: </span> <%= books[i].isbn %></p>
+                        <p lang="pt-br"><span class="informations">Ano de publicação:</span> <%= books[i].publication_year %></p>
+                        <p lang="pt-br" class="description"><span class="informations">Descrição:</span> <%= books[i].description %></p>
+                    </div>
                 </div>
             </article>
-          </section>
-          <section>
+            <% } %>  
+        </section>
+        <section>
             <article class="comments">
                 <h2 lang="pt-br">Opinião dos leitores</h2>
                 <div class="id_comment"> 
@@ -34,7 +36,7 @@
                     <form method="post" class="form_comment">
                         <fieldset>
                             <legend lang="pt-br"> Comente o livro</legend>
-                            <textarea name="textarea" class="input-error" id="" cols="30" rows="5" placeholder="Escreva aqui o seu comentário" lang="pt-br"></textarea>
+                            <textarea name="text" class="input-error" id="text" cols="30" rows="5" placeholder="Escreva aqui o seu comentário" lang="pt-br"></textarea>
                             <button type="submit" lang="pt-br">Dê a sua opinião</button>
                             <% if(locals.message) { %>
                                 <p class="message_error"><%= message%></p>

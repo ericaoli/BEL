@@ -2,11 +2,10 @@ import express from "express";
 import HomeController from "../controllers/HomeController.js";
 import AboutController from "../controllers/AboutController.js";
 import { ReadingsController, ClassicsCategory, ContemporarysCategory } from "../controllers/ReadingsController.js";
-import { DetailsReadingsController, CommentSubmit } from "../controllers/DetailsReadingsController.js";
+import { DetailsReadingsController} from "../controllers/DetailsReadingsController.js";
 import { ContactController, ContactSubmit } from "../controllers/ContactController.js";
 import { InscriptionController, InscriptionSubmit } from "../controllers/InscriptionController.js";
 import { ConnexionController, ConnexionSubmitUser, Logout } from "../controllers/ConnexionController.js";
-import { ConnexionAdminController, ConnexionSubmitAdmin } from "../controllers/ConnexionAdminController.js";
 import { UserController} from "../controllers/UserController.js";
 import { AdminController, AddBooks, DeleteBooks} from "../controllers/AdminController.js";
 import upload from "../helpers/upload.js";
@@ -27,7 +26,8 @@ router.get("/readings_classics", ClassicsCategory);
 
 //DetailsReadings
 router.get("/details_readings/:id", DetailsReadingsController);
-router.post("/details_readings/:id", CommentSubmit);
+router.post("/details_readings/:id", DetailsReadingsController);
+// router.post("/details_readings/:id", CommentSubmit);
 
 //Contact
 router.get("/contact", ContactController);
@@ -40,8 +40,7 @@ router.post("/inscription", InscriptionSubmit);
 //Connexion
 router.get("/connexion", ConnexionController);
 router.post("/connexion", ConnexionSubmitUser);
-router.get("/connexion_admin", ConnexionAdminController);
-router.post("/connexion_admin", ConnexionSubmitAdmin);
+
 
 // user
 router.get("/user", UserController);

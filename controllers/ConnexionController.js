@@ -69,39 +69,65 @@ export const ConnexionController = (req, res) => {
 //     });//requete
 // } // controller
 
+export const Logout = (req, res) => {
+	req.session.destroy((err) => {
+		res.redirect("/");
+	});
+};
 export const ConnexionSubmitUser = (req, res, next) => {
+
     // Déclaration des variables
     const email = req.body.email;
     //console.log(email);
     const password = req.body.password;
     //console.log(password);
- ;
-    
-    // 1. Vérifie si l'email est enregistré dans la base de données
-    const checkEmailUser = "SELECT id_user, registration_date, lastname, firstname, email, password, id_user_type FROM users WHERE email = ? AND id_user_type = 2";
+   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    pool.query(checkEmailUser, [email], (checkErr, user, checkResult) => {
-        console.log('Conteúdo de user:', user);
+ 
+  //1. Validation des champs du formulaire de connexion
+  try {
+    if (!email || !email.match(emailRegex)) {
+      throw new Error (res.render("connexion", {
+        messageEmail: "Le champ e-mail est obligatoire. Veuillez saisir une adresse valide.",
+        base_url: baseUrl}));
+    }
+    if (!password || password.length !== 8) {
+      throw new Error (res.render("connexion", {
+        messagePassword: "Le champ mot de passe est obligatoire. Veuillez saisir 8 caractères.",
+        base_url: baseUrl}));
+    }
+   } catch (error) {
+      console.error('Erreur de validation:', error.message);
+      return res.status(400).render("connexion", {
+      message: error.message,
+      base_url: baseUrl
+      });
+    }
+    
+    // 2. Vérifie si l'email est enregistré dans la base de données
+    const checkEmailUser = "SELECT id_user, registration_date, lastname, firstname, email, password, id_user_type FROM users WHERE email = ?";
+
+    pool.query(checkEmailUser, [email], (checkErr, user) => {
+        console.log('Contenu user:', user);
         if (checkErr) {
             console.error("Erreur requête SQL:", checkErr);
             return res.status(500).render("connexion", {
                 message: "Erreur du serveur. Veuillez essayer plus tard.",
                 base_url: baseUrl,
-                users: user,
             });
         }
         // Si l'email n'est pas enregistré
-        if (checkResult.length === 0) {
+        if (user.length === 0) {
             return res.status(404).render("connexion", {
                 message: "Vous n'êtes pas inscrit. Veuillez vous inscrire!",
                 base_url: baseUrl,
-                users: user,
             });
         }
 
-        // Vérification si le mot de passe est correct
+        // 3. Vérifie si le mot de passe saisi est correct
         const storedPassword = user[0].password;
-        console.log('Conteúdo de user:', user)
+        const admin = { id_user_type: 1, firstname: "Chico" };
+
         bcrypt.compare(password, storedPassword, (bcryptError, result) => {
             // s'il y a une erreur
             if (bcryptError) {
@@ -109,7 +135,6 @@ export const ConnexionSubmitUser = (req, res, next) => {
                 return res.render("connexion", {
                     message: "Erreur. Veuillez ressayer.",
                     base_url: baseUrl,
-                    users: user,
                 });
             }
             // Si le mot de passe est incorrect, envoie un message
@@ -117,24 +142,24 @@ export const ConnexionSubmitUser = (req, res, next) => {
                 return res.status(401).render("connexion", {
                     message: "Login et/ou mot de passe incorrect.",
                     base_url: baseUrl,
-                    users: user,
                 });
-            }
-            // Si le mot de passe est correct, on crée la session
-            if (result) {
+            } else {
+                // Si le mot de passe est correct, si le user est du type user et si la session n'existe pas, on crée la session user et redirige vers la page user
+                if (user[0].id_user_type === 2 && !req.session.user) {
                 req.session.user = user[0];
                 console.log(`Nouvelle session créée pour l'utilisateur: ${req.session.user.firstname}`);
-            // Rediriger vers la page utilisateur
+                // Rediriger vers la page utilisateur
                 return res.redirect("/user");
             }
+                // Si le mot de passe est correct, si le user est du type admin et si la session n'existe pas, on crée la session admin et redirige vers la page admin
+                else if (user[0].id_user_type === 1 && !req.session.admin) {
+                req.session.admin = admin;
+                console.log(`Nouvelle session créée pour l'administrateur: ${req.session.admin.firstname}`);
+                return res.redirect("/admin");
+                }
+            } 
             // Si aucune condition n'est satisfaite, passe à la suite
             next();
         });
     });
-}; // controller
-
-export const Logout = (req, res) => {
-	req.session.destroy((err) => {
-		res.redirect("/");
-	});
-};
+}; 

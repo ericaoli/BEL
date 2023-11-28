@@ -48,8 +48,8 @@ export const ContactSubmit = (req, res) => {
     // Insérer le commentaire dans la base de données
     let insertMessage = "INSERT INTO message (firstname, lastname, email, message, registration_date, id_user) VALUES (?, ?, ?, ?, CURDATE(), ?)";
        
-    // la variable id reçoit la valeur en fonction de la présence ou de l'absence de req.session.user
-    let id = req.session.user ? req.session.user.id_user : null;
+    // la variable id reçoit la valeur en fonction de la présence ou de l'absence de req.session.user ou req.session.admin
+    let id = req.session.user ? req.session.admin : null;
 
     pool.query(insertMessage, [firstname, lastname, email, message, id], (error, result) => {
     //console.log(`user form contact ${id}`);
@@ -60,19 +60,28 @@ export const ContactSubmit = (req, res) => {
           base_url: baseUrl,
         });
       }
-      // si le résultat est bon et la session existe
+      // si le résultat est bon et la session user existe 
       if (result && req.session.user) {
       //console.log(result);
+        console.log(`CONTACT USER RéUSSI`);
         res.render("contact", {
           message: `${req.session.user.firstname}, votre message a été envoyé. Merci!`,
           base_url: baseUrl,
         });
+      // si le résultat est bon et la session admin existe
+      } else if (result && req.session.admin){
+        console.log(`CONTACT ADMIN RéUSSI`);
+        res.render("contact", {
+          message: `${req.session.admin.firstname}, votre message a été envoyé. Merci!`,
+          base_url: baseUrl,
+        });
       } else {
+        console.log(`CONTACT PUBLIC RéUSSI`);
       // sinon le résultat est bon et la session n'existe pas
         res.render("contact", {
         message: `${firstname}, votre message a été envoyé. Merci!`,
         base_url: baseUrl,
         });
-      }
+      } 
     });
   } 

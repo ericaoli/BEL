@@ -4,7 +4,6 @@ import { baseUrl } from "../server.js";
 
 const saltRoundsCrypt = 10;
 
-
 // pour faire l'affichage de la page inscriptions
 export const InscriptionController = (req,res) => {
 		res.render("inscription", {base_url: baseUrl});
@@ -18,9 +17,7 @@ export const InscriptionSubmit = (req,res) => {
   const lastname = req.body.lastname;
   const email = req.body.email;
   const password = req.body.password;
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
- 
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; 
 
   // validation des champs du formulaire d'inscription
   try {
