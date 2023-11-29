@@ -682,9 +682,7 @@ footer {
 
 .id_comment {
   max-width: 100%;
-  display: grid;
-  grid-template-rows: 1fr;
-  grid-template-columns: 1fr;
+  height: auto;
   border-bottom: 1px solid #ffde59;
 }
 .id_comment button {

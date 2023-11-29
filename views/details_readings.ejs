@@ -22,15 +22,18 @@
                 </div>
             </article>
             <% } %>  
+      
         </section>
         <section>
             <article class="comments">
                 <h2 lang="pt-br">Opinião dos leitores</h2>
+                <% for(let i=0; i < comments.length; ++i) { %>
                 <div class="id_comment"> 
-                    <p lang="pt-br"><span class="informations reader">Leitor:</span></p>
-                    <p lang="pt-br"><span class="informations date">Data:</span></p>
-                    <p lang="pt-br"><span class="informations comment">Comentário:</span></p>
+                            <p lang="pt-br"><span class="informations reader">Leitor: </span> <%= comments[i].firstname %></p>
+                            <p lang="pt-br"><span class="informations date">Data: </span> <%= comments[i].date_added.toLocaleDateString() %></p>
+                            <p lang="pt-br"><span class="informations comment">Comentário: </span> <%= comments[i].comment %></p>
                 </div>
+                <% } %>  
                 <!-- le formulaire est disponible aux utilisateurs connectés (user et admin) -->
                 <% if (locals.user || locals.admin) { %>
                     <form method="post" class="form_comment">

@@ -81,7 +81,7 @@ export const ConnexionSubmitUser = (req, res, next) => {
     //console.log(email);
     const password = req.body.password;
     //console.log(password);
-   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
  
   //1. Validation des champs du formulaire de connexion

@@ -276,9 +276,10 @@ footer {
 }
 .id_comment {
     max-width: 100%;
-    display: grid;
-    grid-template-rows: 1fr;
-    grid-template-columns: 1fr;
+    height: auto;
+    // display: grid;
+    // grid-template-rows: repeat (3, 50px);
+    // grid-template-columns: 1fr;
     border-bottom: 1px solid $link_title-color;
     & button {
         @include button_form;
@@ -288,7 +289,7 @@ footer {
 .id_comment {
     margin: 1rem;
     & p {
-        @include text;
+         @include text;
     }
 }
 .form_comment {
