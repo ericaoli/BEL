@@ -680,8 +680,13 @@ footer {
   width: 100%;
 }
 
+.comments {
+  max-width: 100%;
+}
+
 .id_comment {
   max-width: 100%;
+  margin: 2rem;
   height: auto;
   border-bottom: 1px solid #ffde59;
 }
@@ -719,8 +724,23 @@ footer {
   line-height: 1.5rem;
 }
 
-.form_comment {
-  max-width: 100%;
+.like {
+  float: right;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+}
+.like i {
+  justify-content: center;
+  font-size: 2rem;
+  margin-bottom: 0.3rem;
+  position: absolute;
+}
+.like button {
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 0.8rem;
+  margin-top: 2rem;
+  border-radius: 15px;
 }
 
 /* page contact */
@@ -973,27 +993,6 @@ footer {
   margin: 1rem;
 }
 
-.flex_biblio {
-  display: flex;
-  flex-direction: column;
-  margin: 1rem;
-}
-
-.book-select {
-  font-family: "Nunito Sans", sans-serif;
-  color: #fff;
-  margin-top: 1rem;
-  font-size: 1rem;
-}
-
-select,
-option {
-  font-family: "Nunito Sans", sans-serif;
-  font-size: 1rem;
-  padding: 0.5rem;
-  border-radius: 10px;
-}
-
 .logout {
   float: right;
   margin-right: 1rem;
@@ -1233,14 +1232,6 @@ option {
     height: 200px;
     overflow-y: scroll;
     padding-right: 1rem;
-  }
-  .id_comment {
-    display: grid;
-    grid-template-rows: 1fr;
-    grid-template-columns: 1fr;
-    border-bottom: 1px solid #ffde59;
-    width: 80%;
-    margin: auto;
   }
   .technical_informations {
     display: flex;

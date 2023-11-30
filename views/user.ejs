@@ -5,7 +5,7 @@
             <h1>Mon espace</h1>
             <div class="ident">
                 <% if (user) { %>
-                <p><span class="informations">Utilisateur :</span> <%= user.firstname %></p>
+                <p><span class="informations">Utilisateur :</span> <%= user.firstname + " " + user.lastname %></p>
                 <p><span class="informations">Inscrit le :</span> <%= new Date(user.registration_date).toLocaleDateString() %></p>
                 <% } else { %>
                     <p>Aucun utilisateur trouvé.</p>
@@ -13,29 +13,23 @@
             </div>
 
             <h2>Ma bibliotèque</h2>
-            <div class="flex_biblio">
-                <label for="book-select" class="book-select">Choississez vos favoris:</label>
-               
-                <select name="book-select" id="book-select">
-                    <option value="nos_lectures">-- Nos lectures --</option> 
-                       
-                            <option value="book"></option>
-                     
-                </select>
-                
-            </div>
             <div class="books_gallery">
-
+                <% for (const book of userLibrary) { %>
                 <div class="card">
-                    <article class="cover_book">
-                            <figure>
-                                <img src="" alt="">
-                                <figcaption lang="pt-br"></figcaption>
-                            </figure>
-                            <button type="button"><a href="">En savoir plus</a></button>
-                    </article>
+                    <form class="cover_book" method="post">
+                        <figure>
+                            <img src="/images/<%= book.url_cover_image %>" alt="<%= book.alt_text %>">
+                            <figcaption lang="pt-br"><%= book.title %></figcaption>
+                        </figure>
+                        <button type="button"><a href="/details_readings/<%= book.id_book %>">En savoir plus</a></button>
+                        <% if (locals.admin) { %>
+                            <br>
+                            <input type="hidden" name="id" value="<%= book.id_book %>">
+                            <button type="submit">Supprimer</button>
+                        <% } %>
+                    </form>
                 </div>
- 
+                <% } %>
             </div>
         </article>
 </main>

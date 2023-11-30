@@ -10,6 +10,13 @@
                         <img src="/images/<%= books[i].url_cover_image %>" alt="<%= books[i].alt_text %>">
                     </div>
                     <div class="editor_informations">
+                    <% if (locals.user) { %>
+                        <form  class="like" action="/details_readings/<%= books[i].id_book %>/like" method="POST">
+                            <!-- pour récuperer l'id du livre -->
+                            <input type="hidden" name="id" value="<%= books[i].id_book %>">
+                            <i class="fa-solid fa-heart" style="color: #f74408;"></i> <button type="submit">Like</button>
+                        </form>
+                    <% } %>
                         <h2 lang="pt-br">Ficha técnica:</h2>
                         <p lang="pt-br"><span class="informations">Apresentado no clube em:</span> <%= books[i].date_reading_club.toLocaleDateString() %></p>
                         <p lang="pt-br"><span class="informations">Título:</span> <%= books[i].title %></p>
@@ -24,15 +31,15 @@
             <% } %>  
       
         </section>
-        <section>
+        <section  class="container_books">
             <article class="comments">
                 <h2 lang="pt-br">Opinião dos leitores</h2>
                 <% for(let i=0; i < comments.length; ++i) { %>
-                <div class="id_comment"> 
-                            <p lang="pt-br"><span class="informations reader">Leitor: </span> <%= comments[i].firstname %></p>
-                            <p lang="pt-br"><span class="informations date">Data: </span> <%= comments[i].date_added.toLocaleDateString() %></p>
-                            <p lang="pt-br"><span class="informations comment">Comentário: </span> <%= comments[i].comment %></p>
-                </div>
+                    <div class="id_comment"> 
+                        <p lang="pt-br"><span class="informations reader">Leitor: </span> <%= comments[i].firstname %></p>
+                        <p lang="pt-br"><span class="informations date">Data: </span> <%= comments[i].date_added.toLocaleDateString() %></p>
+                        <p lang="pt-br"><span class="informations comment">Comentário: </span> <%= comments[i].comment %></p>
+                    </div>
                 <% } %>  
                 <!-- le formulaire est disponible aux utilisateurs connectés (user et admin) -->
                 <% if (locals.user || locals.admin) { %>

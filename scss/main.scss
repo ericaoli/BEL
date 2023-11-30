@@ -274,8 +274,12 @@ footer {
     color: $link_title-color;
     width: 100%;
 }
+.comments {
+    max-width: 100%;
+}
 .id_comment {
     max-width: 100%;
+    margin: 2rem;
     height: auto;
     // display: grid;
     // grid-template-rows: repeat (3, 50px);
@@ -292,9 +296,27 @@ footer {
          @include text;
     }
 }
-.form_comment {
-    max-width: 100%;
+
+.like {
+    float: right;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    & i {
+        justify-content: center;
+        font-size: 2rem;
+        margin-bottom: 0.3rem;
+        position: absolute;    
+    }
+    & button {
+        font-family: $nunito-sans;
+        font-size: 0.8rem;
+        margin-top: 2rem;
+        border-radius: 15px;
+    }
 }
+
+
 /* page contact */
 .contact {
     background-image: url('/images/contact.webp');
@@ -406,22 +428,6 @@ footer {
     clear: both;
     width: 100%;
     margin: 1rem;
-}
-.flex_biblio {
-    display: flex;
-    flex-direction: column;
-    margin: 1rem;
-}
-.book-select {
-    @include label;
-    font-size: 1rem;
-}
-select,
-option {
-   font-family: $nunito-sans;
-   font-size: 1rem;
-   padding: 0.5rem;
-   border-radius: 10px
 }
 
 .logout {
@@ -645,12 +651,13 @@ option {
             padding-right: 1rem;
         }
         .id_comment {
-        display: grid;
-        grid-template-rows: 1fr;
-        grid-template-columns: 1fr;
-        border-bottom: 1px solid $link_title-color;
-        width: 80%;
-        margin: auto;
+         
+        // display: grid;
+        // grid-template-rows: 1fr;
+        // grid-template-columns: 1fr;
+        // border-bottom: 1px solid $link_title-color;
+        // width: 80%;
+        // margin: auto;
         }
         .technical_informations {
         display: flex;

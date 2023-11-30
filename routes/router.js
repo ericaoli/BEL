@@ -2,7 +2,7 @@ import express from "express";
 import HomeController from "../controllers/HomeController.js";
 import AboutController from "../controllers/AboutController.js";
 import { ReadingsController, ClassicsCategory, ContemporarysCategory } from "../controllers/ReadingsController.js";
-import { DetailsReadingsController} from "../controllers/DetailsReadingsController.js";
+import { DetailsReadingsController, LikeReadings} from "../controllers/DetailsReadingsController.js";
 import { ContactController, ContactSubmit } from "../controllers/ContactController.js";
 import { InscriptionController, InscriptionSubmit } from "../controllers/InscriptionController.js";
 import { ConnexionController, ConnexionSubmitUser, Logout } from "../controllers/ConnexionController.js";
@@ -27,7 +27,8 @@ router.get("/readings_classics", ClassicsCategory);
 //DetailsReadings
 router.get("/details_readings/:id", DetailsReadingsController);
 router.post("/details_readings/:id", DetailsReadingsController);
-// router.post("/details_readings/:id", CommentSubmit);
+router.post("/details_readings/:id/like", LikeReadings);
+//router.get("/details_readings/:id", LikeReadings);
 
 //Contact
 router.get("/contact", ContactController);
@@ -44,11 +45,14 @@ router.post("/connexion", ConnexionSubmitUser);
 
 // user
 router.get("/user", UserController);
+// router.get("/user/library", UserLibrary);
 router.get("/logout", Logout);
+
 
 //Admin
 router.get("/admin", AdminController);
 router.post("/admin", upload.single("url_cover_image"), AddBooks);
-router.get("/admin", DeleteBooks);
+router.post("/readings", DeleteBooks);
+
 
 export default router;

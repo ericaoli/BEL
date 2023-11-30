@@ -67,7 +67,7 @@ app.use(function (req, res, next) {
 app.use((req, res, next) => {
 	let pathname = parseurl(req).pathname.split("/");
 	console.log(`Middleware de verification de session: ${pathname}`);
-	let protectedPath = ["admin, user"];
+	let protectedPath = ["admin", "user"];
 	console.log(`protectedpath: ${protectedPath}`);
 	//si la session admin n'existe pas et que l'url fait partie des urls protégées
 	if (!req.session.admin && protectedPath.includes(pathname[2])) {

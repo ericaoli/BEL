@@ -121,18 +121,30 @@ export const AddBooks = async (req, res) => {
 }
 
 //pour supprimer un livre
-export const DeleteBooks = async (req, res) => {
-  // affichage des livres
-  //const deleteCommentBook = "DELETE FROM comment WHERE id_book = ?";
-  //const deleteLikedBook = "DELETE FROM liked WHERE id_book = ?";
-  const deleteBook = "DELETE FROM books WHERE id_book = ?";
-  pool.query(deleteBook, (error, result) => {
+export const DeleteBooks = (req, res) => {
+
+  let deleteBook = "DELETE FROM books WHERE id_book = ?";
+  
+  let id = req.body.id;
+
+  let admin = req.session.admin;
+
+  if (!admin) {
+    return res.status(403).send("Apenas administradores podem excluir livros.");
+  }
+
+  pool.query(deleteBook, [id], (error, result) => {
     if(error) {
       console.error(console.error("Erreur requête SQL:", error));
+
     } else {
-        const books = result.book;
-        console.log(books);
-        res.render("admin", { books, base_url: baseUrl });
+        console.log(`Le livre : ${id} a été supprimé par ${admin.firstname}`);
+        //res.render("readings", { admin: req.session.admin, base_url: baseUrl });
     }
   })
 }
+
+
+//let deleteCommentBook = "DELETE FROM comment WHERE id_book = ?";
+//let deleteLikedBook = "DELETE FROM liked WHERE id_book = ?";
+

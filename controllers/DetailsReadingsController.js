@@ -3,7 +3,7 @@ import { baseUrl } from "../server.js";
 
 export const DetailsReadingsController = (req, res) => {       
     let id = req.params.id; 
-    console.log("id book.1 : " + id);
+    //console.log("id book.1 : " + id);
 	
     // requête SQL qui récupére les informations du livre sélectionné
 	let sql =
@@ -28,13 +28,12 @@ export const DetailsReadingsController = (req, res) => {
          
         let commentSaisi = req.body.text;
         let comment = "";
-
-        console.log(`CHAMP COMMENTAIRE: ${comment}`);
+        //console.log(`Champ commentaire: ${comment}`);
 
         if (req.body.text !== undefined) {
             comment = req.body.text;
         } else {
-            comment = "Nenhum comentário fornecido primeira verificaçao";
+            comment = "Aucun commentaire saisi.";
         }
 
         pool.query(sqlCommentList, [id], function(error, comment, field) {
@@ -44,38 +43,58 @@ export const DetailsReadingsController = (req, res) => {
             } 
             //s'il y a un livre, afiche les informations du livre et ses respectifs commentaires 
             if(book.length > 0) {
+                
                 res.render("details_readings", { 
                     base_url: baseUrl, 
                     books: book,
                     comments: comment,  
                     user:req.session.user });
-		            console.log(`Résultat de la requête:`, book, comment);            
+		            //console.log(`Résultat de la requête:`, book, comment);            
             }
-                let idUser = (req.session.user && req.session.user.id_user) || null; // ID do usuário ou null se não estiver autenticado
-                //let idUser = req.session.user.id_user;  // Supondo que o ID do usuário esteja na sessão
-                let idBook = book[0].id_book;  // Assume que o ID do livro está na primeira posição do array 
-                
-                console.log(`comment = ` + commentSaisi);
-                console.log(`idUser = ` + idUser);
-                console.log(`idBook = ` + idBook);
+                let idUser = (req.session.user && req.session.user.id_user) || null; // ID user, admin et null pour les non enregistrés
+                //console.log(`comment = ` + commentSaisi);
+                //console.log(`idUser = ` + idUser);
+                //console.log(`idBook = ` + id);
 
                 // s'il y a un commentaire sur ce livre, requête pour l'insérer dans la table commentaire
                 if (req.body.text !== undefined) {
                      //comment = req.body.text;
                      let commentQuery = `INSERT INTO comment(date_added, comment, id_user, id_book) VALUES (CURDATE(), ?, ?, ?)`
-                     pool.query(commentQuery,[commentSaisi, idUser, idBook], (error, result) => {
+                     pool.query(commentQuery,[commentSaisi, idUser, id], (error, result) => {
                          if(error) {
                              console.error("Erreur requête SQL:", error);
                              return res.status(500).send("Erreur du serveur. Veuillez essayer plus tard.");
                          } else {
-                             console.log(`COMMENTAIRE ENVOIE`);
+                             console.log(`Commentaire envoyé`);
+
                          }
                      })
 
                  } else {
-                    comment = "Nenhum comentário fornecido";
+                    comment = "Aucun commentaire saisi.";
                  }
 
         });
 	});
+};
+
+
+export const LikeReadings = (req, res) => {
+    let id = req.params.id;
+    console.log(`idBook likereadings = ${id}`);
+
+    let idUser = req.session.user && req.session.user.id_user;
+    console.log(`idUser likereadings = ${idUser}`);
+
+    let sqlInsertLiked = `INSERT INTO liked(id_book, id_user) VALUES(?, ?)`;
+
+    pool.query(sqlInsertLiked, [id, idUser], (error, result) => {
+        if (error) {
+            console.error("Erreur requête SQL:", error);
+            return res.status(500).send("Erreur du serveur. Veuillez essayer plus tard.");
+        } else {
+            console.log(`Le livre ${id} est dans ma bibliothèque de favoris!`);
+            res.redirect(`/details_readings/${id}`);
+        }
+    });
 };

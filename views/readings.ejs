@@ -3,16 +3,24 @@
 <main>
     <section class="container_books">
         <h1 class="readings">Nos lectures</h1>
+        <% if(locals.messageFirstname) { %>
+            <p class="message_error"><%= messageDeleteLivre %></p>
+        <% } %>
         <div class="books_gallery">
             <% for(let i=0; i < books.length; ++i) { %>
             <div class="card">
-                <article class="cover_book">
-                        <figure>
-                            <img src="/images/<%= books[i].url_cover_image %>" alt="<%= books[i].alt_text %>">
-                            <figcaption lang="pt-br"><%= books[i].title %></figcaption>
-                        </figure>
-                        <button type="button"><a href="/details_readings/<%= books[i].id_book %>">En savoir plus</a></button>
-                </article>
+                <form class="cover_book" method="post">
+                    <figure>
+                        <img src="/images/<%= books[i].url_cover_image %>" alt="<%= books[i].alt_text %>">
+                        <figcaption lang="pt-br"><%= books[i].title %></figcaption>
+                    </figure>
+                    <button type="button"><a href="/details_readings/<%= books[i].id_book %>">En savoir plus</a></button>
+                    <% if (locals.admin) { %>
+                        <br>
+                        <input type="hidden" name="id" value="<%= books[i].id_book %>">
+                        <button type="submit" value="<%= books[i].id_book %>">Supprimer</button>
+                    <% } %>
+                </form>
             </div>
             <% } %>  
         </div>
