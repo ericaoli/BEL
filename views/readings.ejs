@@ -14,13 +14,23 @@
                         <img src="/images/<%= books[i].url_cover_image %>" alt="<%= books[i].alt_text %>">
                         <figcaption lang="pt-br"><%= books[i].title %></figcaption>
                     </figure>
-                    <button type="button"><a href="/details_readings/<%= books[i].id_book %>">En savoir plus</a></button>
-                    <% if (locals.admin) { %>
-                        <br>
-                        <input type="hidden" name="id" value="<%= books[i].id_book %>">
-                        <button type="submit" value="<%= books[i].id_book %>">Supprimer</button>
-                    <% } %>
+                    <!-- rediriger vers la page details_readings  -->
+                    <button type="button"><a href="/details_readings/<%= books[i].id_book %>">En savoir plus</a></button> 
                 </form>
+                <% if (locals.admin) { %>
+                        <div class="btn_admin">
+                            <form class="cover_book" method="post" action="">
+                            <!-- supprimer le livre  -->
+                                <input type="hidden" name="id" value="<%= books[i].id_book %>">
+                                <button type="submit" value="<%= books[i].id_book %>">Supprimer</button>
+                            </form>
+                            <form class="cover_book" action="/admin/edit/<%= books[i].id_book %>">
+                            <!-- enviar informaçoes do livro para o formulario de ediçao na pagina admin -->
+                                <input type="hidden" name="id" value="<%=books[i].id_book %>">
+                                <button type="button"><a href="/admin/edit/<%= books[i].id_book %>">Modifier</a></button>
+                            </form>
+                        </div>
+                 <% } %>
             </div>
             <% } %>  
         </div>

@@ -17,7 +17,8 @@ export const InscriptionSubmit = (req,res) => {
   const lastname = req.body.lastname;
   const email = req.body.email;
   const password = req.body.password;
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; 
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const conditionsChecked = req.body.conditions === 'on';
 
   // validation des champs du formulaire d'inscription
   try {
@@ -41,6 +42,13 @@ export const InscriptionSubmit = (req,res) => {
         messagePassword: "Le champ mot de passe est obligatoire. Veuillez saisir 8 caractères.",
         base_url: baseUrl}));
     }
+
+    if(!conditionsChecked) {
+      throw new Error (res.render("inscription", {
+        message: "Vous devez accepter les conditions générales de participation pour vous inscrire.",
+        base_url: baseUrl}));
+    }
+
    } catch (error) {
       console.error('Erreur de validation:', error.message);
       return res.status(400).render("inscription", {

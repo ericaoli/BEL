@@ -2,6 +2,7 @@
 import pool from "../config/database.js";
 import { baseUrl } from "../server.js";
 
+
 // pour faire l'affichage de la page admin avec la session
 export const AdminController = (req, res) => {
     res.render("admin",{ admin: req.session.admin, base_url: baseUrl});				 
@@ -135,13 +136,61 @@ export const DeleteBooks = (req, res) => {
 
   pool.query(deleteBook, [id], (error, result) => {
     if(error) {
-      console.error(console.error("Erreur requête SQL:", error));
+      console.error("Erreur requête SQL:", error);
 
     } else {
         console.log(`Le livre : ${id} a été supprimé par ${admin.firstname}`);
-        //res.render("readings", { admin: req.session.admin, base_url: baseUrl });
+        res.redirect("/readings");
     }
-  })
+  });
+}
+
+//pour modifier les informations d'un livre - update
+export const EditBook = (req, res) => {
+  console.log(`ENTREI NA FUNCTION`);
+  
+  let id = req.params.id;
+  console.log(`RECUPEREI O LIVRO QUE VAI SER EDITADO: ${id}`);
+
+  let admin = req.session.admin;
+  if (!admin) {
+    return res.status(403).send("Apenas administradores podem EDITAR livros.");
+  }
+
+  //1. récuperer les informations du livre pour les envoyer au formulaire d'édition
+  let selectBookQuery = 'SELECT * FROM books WHERE id_book = ?';
+  
+  
+  pool.query(selectBookQuery, [id], (selectErr, selectResult) => {
+    if(selectErr) {
+      console.error("Erreur requête SQL:", selectErr);
+      res.render("error", { message: "Erro ao obter informações do livro." });
+    } else {
+      console.log("Détails du livre retrouvés lors de la requête:", selectResult[0]);
+       
+      if(selectResult.length === 0) {
+        console.warn("Livro não encontrado no banco de dados.");
+        res.render("error", { message: "Livro não encontrado." });
+        return;
+      }
+
+  //envio os resultados recuperados aos campos do formulario
+  const title = selectResult[0].title;
+  const publicationYear = selectResult[0].parution;
+  const description = selectResult[0].description;
+  const isbn = selectResult[0].ISBN;
+  const urlCoverImage = selectResult[0].url_cover_image; // Modificado para corresponder à sua tabela
+  const altText = selectResult[0].alt_text;
+  const dateReadingClub = selectResult[0].date_reading_club;
+  const idBookCategory = selectResult[0].id_book_category;
+  const editor = selectResult[0].editor;
+  const authorFirstname = selectResult[0].author_firstname;
+  const authorLastname = selectResult[0].author_lastname;
+
+  console.log("Book details retrieved successfully:", selectResult[0]);
+      res.redirect(`admin/edit/${id}`);
+    }
+  });
 }
 
 

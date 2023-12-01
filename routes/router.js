@@ -7,7 +7,7 @@ import { ContactController, ContactSubmit } from "../controllers/ContactControll
 import { InscriptionController, InscriptionSubmit } from "../controllers/InscriptionController.js";
 import { ConnexionController, ConnexionSubmitUser, Logout } from "../controllers/ConnexionController.js";
 import { UserController} from "../controllers/UserController.js";
-import { AdminController, AddBooks, DeleteBooks} from "../controllers/AdminController.js";
+import { AdminController, AddBooks, DeleteBooks, EditBook} from "../controllers/AdminController.js";
 import upload from "../helpers/upload.js";
 
 const router = express.Router();
@@ -28,7 +28,7 @@ router.get("/readings_classics", ClassicsCategory);
 router.get("/details_readings/:id", DetailsReadingsController);
 router.post("/details_readings/:id", DetailsReadingsController);
 router.post("/details_readings/:id/like", LikeReadings);
-//router.get("/details_readings/:id", LikeReadings);
+
 
 //Contact
 router.get("/contact", ContactController);
@@ -53,6 +53,7 @@ router.get("/logout", Logout);
 router.get("/admin", AdminController);
 router.post("/admin", upload.single("url_cover_image"), AddBooks);
 router.post("/readings", DeleteBooks);
-
+router.post("/admin/edit/:id", EditBook);
+router.get("/admin/edit/:id", EditBook);
 
 export default router;

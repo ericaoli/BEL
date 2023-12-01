@@ -362,6 +362,14 @@ footer {
 .form_flex {
     width: 100%;
 }
+.flex_conditions{
+    display: flex;
+    gap: 10px;
+    line-height: 1.3;
+    font-family: $poppins;
+    font-size: 0.7rem;
+    color: $text-color;
+}
 .inscription_form,
 .form_comment,
 .form_contact,
@@ -622,6 +630,12 @@ footer {
                 transition: 0.3s;
             }
         }
+        .btn_admin {
+            margin-top: 1rem;
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
     /* page details_readings */
         .details {
             width: 80%;
@@ -650,15 +664,6 @@ footer {
             overflow-y: scroll;
             padding-right: 1rem;
         }
-        .id_comment {
-         
-        // display: grid;
-        // grid-template-rows: 1fr;
-        // grid-template-columns: 1fr;
-        // border-bottom: 1px solid $link_title-color;
-        // width: 80%;
-        // margin: auto;
-        }
         .technical_informations {
         display: flex;
         width: 80%;
@@ -683,8 +688,9 @@ footer {
     /* page inscriptions */
         .inscription_wrapper {
             display: flex;
-            height: 500px;
+            height: 600px;
             gap: 2rem;
+            margin-top: 0;
             margin-bottom: 2rem;
             align-items: center;
         }
@@ -696,18 +702,15 @@ footer {
             }
         }
         .form_flex{
-            width: 100%;
-            margin: 0;
-            height: 450px;
-            padding: 1rem;
-    
+            height: 400px;
+            margin-bottom: 8rem;
         }
         .reglement {
             width: 100%;
             background-color: $primary-color;
             overflow-y: scroll;
             border-radius: 15px;
-            padding: 1rem;
+            padding: 1rem 2rem 1rem;
             height: 450px;
             & * {
                 padding-right: 1rem;
