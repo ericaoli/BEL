@@ -374,8 +374,7 @@ footer {
 .form_comment,
 .form_contact,
 .form_connexion,
-.book_form_delete,
-.book_form{
+.book_form {
     margin: auto;
     @include form;
     & fieldset {
@@ -505,6 +504,15 @@ footer {
     & button {
         @include button_form;
     }
+}
+
+/* page edit_book*/
+.edit_book {
+    margin-bottom: 2rem;
+}
+
+select {
+    @include input;
 }
 /* footer */ 
 .foot{

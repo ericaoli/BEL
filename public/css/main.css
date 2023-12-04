@@ -828,7 +828,6 @@ footer {
 .form_comment,
 .form_contact,
 .form_connexion,
-.book_form_delete,
 .book_form {
   margin: auto;
   max-width: 100%;
@@ -839,7 +838,6 @@ footer {
 .form_comment fieldset,
 .form_contact fieldset,
 .form_connexion fieldset,
-.book_form_delete fieldset,
 .book_form fieldset {
   display: flex;
   padding: 0 1rem;
@@ -853,7 +851,6 @@ footer {
 .form_comment fieldset legend,
 .form_contact fieldset legend,
 .form_connexion fieldset legend,
-.book_form_delete fieldset legend,
 .book_form fieldset legend {
   border: 1px solid #ffde59;
   padding: 1rem;
@@ -870,7 +867,6 @@ footer {
 .form_comment fieldset label,
 .form_contact fieldset label,
 .form_connexion fieldset label,
-.book_form_delete fieldset label,
 .book_form fieldset label {
   font-family: "Nunito Sans", sans-serif;
   color: #fff;
@@ -880,7 +876,6 @@ footer {
 .form_comment fieldset button,
 .form_contact fieldset button,
 .form_connexion fieldset button,
-.book_form_delete fieldset button,
 .book_form fieldset button {
   width: -moz-fit-content;
   width: fit-content;
@@ -897,7 +892,6 @@ footer {
 .form_comment fieldset button a,
 .form_contact fieldset button a,
 .form_connexion fieldset button a,
-.book_form_delete fieldset button a,
 .book_form fieldset button a {
   text-decoration: none;
   color: black;
@@ -906,7 +900,6 @@ footer {
 .form_comment fieldset button:hover,
 .form_contact fieldset button:hover,
 .form_connexion fieldset button:hover,
-.book_form_delete fieldset button:hover,
 .book_form fieldset button:hover {
   font-weight: bold;
   transition: 0.3s;
@@ -915,7 +908,6 @@ footer {
 .form_comment fieldset input,
 .form_contact fieldset input,
 .form_connexion fieldset input,
-.book_form_delete fieldset input,
 .book_form fieldset input {
   padding: 0.5rem;
   border-radius: 15px;
@@ -928,7 +920,6 @@ footer {
 .form_comment fieldset input[type=file],
 .form_contact fieldset input[type=file],
 .form_connexion fieldset input[type=file],
-.book_form_delete fieldset input[type=file],
 .book_form fieldset input[type=file] {
   border-radius: 15px;
   font-family: "Nunito Sans", sans-serif;
@@ -938,7 +929,6 @@ footer {
 .form_comment fieldset textarea,
 .form_contact fieldset textarea,
 .form_connexion fieldset textarea,
-.book_form_delete fieldset textarea,
 .book_form fieldset textarea {
   padding: 0.5rem;
   border-radius: 15px;
@@ -951,7 +941,6 @@ footer {
 .form_comment fieldset .message_error,
 .form_contact fieldset .message_error,
 .form_connexion fieldset .message_error,
-.book_form_delete fieldset .message_error,
 .book_form fieldset .message_error {
   font-family: "Nunito Sans", sans-serif;
   color: #ffde59;
@@ -1100,6 +1089,19 @@ footer {
 .delete_comment button:hover {
   font-weight: bold;
   transition: 0.3s;
+}
+
+/* page edit_book*/
+.edit_book {
+  margin-bottom: 2rem;
+}
+
+select {
+  padding: 0.5rem;
+  border-radius: 15px;
+  border: 1px solid #2b2b2b;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 1rem;
 }
 
 /* footer */

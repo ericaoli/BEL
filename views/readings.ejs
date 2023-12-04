@@ -14,26 +14,40 @@
                         <img src="/images/<%= books[i].url_cover_image %>" alt="<%= books[i].alt_text %>">
                         <figcaption lang="pt-br"><%= books[i].title %></figcaption>
                     </figure>
+                    <!-- le bouton en savoir plus sera toujours disponible -->
+                    <% if (action === "default") { %> 
                     <!-- rediriger vers la page details_readings  -->
                     <button type="button"><a href="/details_readings/<%= books[i].id_book %>">En savoir plus</a></button> 
+                    <% } %>
                 </form>
+                
+                <!-- si l'admin est en session -->
                 <% if (locals.admin) { %>
-                        <div class="btn_admin">
-                            <form class="cover_book" method="post" action="">
-                            <!-- supprimer le livre  -->
+                    <div class="btn_admin">
+
+                    <!-- si l'admin clique sur le lien supprimer un livre, le bouton supprimer sera disponible -->
+                        <% if (action === "supprimer") { %>
+                            <form class="cover_book" method="post">
+                                <!-- bouton pour supprimer le livre  -->
                                 <input type="hidden" name="id" value="<%= books[i].id_book %>">
                                 <button type="submit" value="<%= books[i].id_book %>">Supprimer</button>
                             </form>
-                            <form class="cover_book" action="/admin/edit/<%= books[i].id_book %>">
-                            <!-- enviar informaçoes do livro para o formulario de ediçao na pagina admin -->
+                        <% } %>
+
+                        <!-- si l'admin clique sur le lien modifier un livre, le bouton modifier sera disponible -->
+                        <% if (action === "modifier") { %>                            
+                            <form class="cover_book" method="post" action="/edit_book/<%= books[i].id_book %>">
+                                <!-- bouton pour rediriger vers la page edit_book et afficher les informations du livre -->
                                 <input type="hidden" name="id" value="<%=books[i].id_book %>">
-                                <button type="button"><a href="/admin/edit/<%= books[i].id_book %>">Modifier</a></button>
+                                <button type="submit" id="btn_edition">Modifier</button>
                             </form>
-                        </div>
+                        <% } %>
+                    </div>
                  <% } %>
             </div>
             <% } %>  
         </div>
     </section>
 </main>
+<script src="/javascript/btn_admin.js"></script>
 <%- include('footer') -%>

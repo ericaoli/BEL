@@ -28,7 +28,4 @@ menuClick.addEventListener('click', () => {
     }
   });
 
-  //NAVBAR - options du menu déroulant
-  // let title = document.querySelector('.readings');
-
 

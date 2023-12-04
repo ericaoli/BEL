@@ -1,0 +1,113 @@
+<%- include('header') -%>
+<div class="admin"></div>
+<section class="container admin_page">
+    <article>
+        <h3 id="edit" >Modifier le contenu d'un livre</h3>
+        <form method="post" class="book_form" enctype="multipart/form-data" action="/edit_book/<%= book.id_book %>/edit">
+            <fieldset>
+                <legend id="register">Modifier le contenu d'un livre</legend>
+
+                <label for="title">Titre</label>
+                <input type="text" name="title" id="title"  class="input-error" value="<%= book.title %>">
+                <% if(locals.messageTitle) { %>
+                    <p class="message_error"><%= messageTitle %></p>
+                <% } %>
+
+                <label for="parution">Année de parution</label>
+                <input type="number" name="parution" id="parution" class="input-error" value="<%= book.publication_year %>">
+                <% if(locals.messagePublicationYear) { %>
+                    <p class="message_error"><%= messagePublicationYear %></p>
+                <% } %>
+
+                <label for="description">Description</label>
+                <textarea name="description" id="description" cols="30" rows="10" ><%= book.description %></textarea>
+                <% if(locals.messageDescription) { %>
+                    <p class="message_error"><%= messageDescription %></p>
+                <% } %>
+
+                <label for="isbn">ISBN</label>
+                <input type="number" name="ISBN" id="isbn" class="input-error" value="<%= book.ISBN %>">
+                <% if(locals.messageIsbn) { %>
+                    <p class="message_error"><%= messageIsbn %></p>
+                <% } %>
+
+                <label for="image">Choissisez l'image du livre </label>
+                <input type="file" name="url_cover_image" id="image" value="<%= book.url_cover_image %>">
+                <img src="/images/<%= book.url_cover_image %>" width="250px" alt="<%= book.alt_text %>">
+                <% if(locals.messageImage) { %>
+                    <p class="message_error"><%= messageImage %></p>
+                <% } %>
+
+                <label for="alt_text">Text alternatif</label>
+                <input type="text" name="alt_text" id="alt_text" class="input-error" value="<%= book.alt_text %>">
+                <% if(locals.messageAltText) { %>
+                    <p class="message_error"><%= messageAltText %></p>
+                <% } %>
+                
+                <!-- fonction pour afficher la date récupèrée de la bdd en format jj/mm/aaaa  -->
+                <%
+                function formatDateForInput(date) {
+                  if (!date) {
+                    return ''; // Si date est null ou undefined
+                  }
+                
+                  const formattedDate = new Date(date);
+                
+                  if (isNaN(formattedDate.getTime())) {
+                    return ''; // Si date n'est pas une date valable
+                  }
+
+                  const day = String(formattedDate.getDate()).padStart(2, '0');
+                  const month = String(formattedDate.getMonth() + 1).padStart(2, '0');
+                  const year = formattedDate.getFullYear();
+                
+                  return `${year}-${month}-${day}`;
+                }
+                %>
+                <label for="date_reading_club">Date de lecture au club</label>
+                <input type="date" name="date_reading_club" id="date_reading_club" class="input-error" value="<%= formatDateForInput(book.date_reading_club) %>">
+                <% if(locals.messageDateReading) { %>
+                    <p class="message_error"><%= messageDateReading %></p>
+                <% } %>
+
+                <label for="id_book_category">Categorie du livre</label>
+                <select name="id_book_category">
+                    <option value="">Choissisez une option</option>
+                    <option value="1" <%= book.id_book_category === 1 ? 'selected' : '' %>>Classique</option>
+                    <option value="2" <%= book.id_book_category === 2 ? 'selected' : '' %>>Contemporain</option>
+                </select>
+                
+                <% if(locals.messageIdBookCategory) { %>
+                    <p class="message_error"><%= messageIdBookCategory %></p>
+                <% } %>
+
+                <label for="editor">Editeur</label>
+                <input type="text" name="editor" id="editor" class="input-error" value="<%= book.editor_name %>">
+                <% if(locals.messageEditor) { %>
+                    <p class="message_error"><%= messageEditor %></p>
+                <% } %>
+
+                <label for="author">Auteur - Prénom</label>
+                <input type="text" name="author_firstname" id="author_firstname" class="input-error" value="<%= book.author_firstname %>">
+                <% if(locals.messageAuthorFirstname) { %>
+                    <p class="message_error"><%= messageAuthorFirstname %></p>
+                <% } %>
+
+                <label for="author">Auteur - Nom</label>
+                <input type="text" name="author_lastname" id="author_lastname" class="input-error" value="<%= book.author_lastname %>">
+                <% if(locals.messageAuthorLastname) { %>
+                    <p class="message_error"><%= messageAuthorLastName %></p>
+                <% } %>
+ 
+                <button type="submit" class="submit-button" name="action" value="edit">Enregistrer</button>
+                <% if(locals.message) { %>
+                        <p class="message_error"><%= message %></p>
+                <% } %>
+        
+            </fieldset>
+        </form>
+    </article>
+
+</section>
+<script src="/javascript/formulaire.js"></script>
+<%- include('footer') -%>

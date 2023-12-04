@@ -5,152 +5,17 @@
     <article>
         <h2>Menu de fonctionalités :</h2>
         <ul>
-            <li><i class="fa-solid fa-clipboard-list" style="color: #ede607;"></i> <a href="#register">Enregistrer un nouveau livre</a></li>
-            <li><i class="fa-solid fa-clipboard-list" style="color: #ede607;"></i> <a href="/readings">Modifier le contenu d'un livre</a></li>
-            <li><i class="fa-solid fa-clipboard-list" style="color: #ede607;"></i> <a href="/readings">Supprimer un livre</a></li>
+            <li><i class="fa-solid fa-clipboard-list" style="color: #ede607;"></i> <a href="/add_book">Enregistrer un nouveau livre</a></li>
+            <!-- lien avec le paramètre action  -->
+            <li><i class="fa-solid fa-clipboard-list" style="color: #ede607;"></i> <a href="/readings?action=modifier">Modifier le contenu d'un livre</a></li>
+            <!-- lien avec le paramètre action -->
+            <li><i class="fa-solid fa-clipboard-list" style="color: #ede607;"></i> <a href="/readings?action=supprimer">Supprimer un livre</a></li>
             <li><i class="fa-solid fa-clipboard-list" style="color: #ede607;"></i> <a href="#delete_comment">Supprimer un commentaire</a></li>
             <li><i class="fa-solid fa-clipboard-list" style="color: #ede607;"></i> <a href="#delete_user">Supprimer un utilisateur</a></li>
             <li><i class="fa-solid fa-clipboard-list" style="color: #ede607;"></i> <a href="#delete_msg">Supprimer un message</a></li>
         </ul>
     </article>
-    <article>
-        <h3 >Enregistrer un nouveau livre</h3>
-        <form method="post" class="book_form" enctype="multipart/form-data">
-            <fieldset>
-                <legend id="register">Nouveau livre</legend>
 
-                <label for="title">Titre</label>
-                <input type="text" name="title" id="title"  class="input-error" placeholder="Taille maximale : 250 caractères.">
-                <% if(locals.messageTitle) { %>
-                    <p class="message_error"><%= messageTitle %></p>
-                <% } %>
-                <label for="parution">Année de parution</label>
-                <input type="number" name="parution" id="parution" class="input-error" placeholder="Veuillez saisir 4 chiffres.">
-                <% if(locals.messagePublicationYear) { %>
-                    <p class="message_error"><%= messagePublicationYear %></p>
-                <% } %>
-                <label for="description">Description</label>
-                <textarea name="description" id="description" placeholder="Description" cols="30" rows="10"></textarea>
-                <% if(locals.messageDescription) { %>
-                    <p class="message_error"><%= messageDescription %></p>
-                <% } %>
-                <label for="isbn">ISBN</label>
-                <input type="number" name="ISBN" id="isbn" class="input-error" placeholder="13 chiffres">
-                <% if(locals.messageIsbn) { %>
-                    <p class="message_error"><%= messageIsbn %></p>
-                <% } %>
-                <label for="image">Choissisez l'image du livre </label>
-                <input type="file" name="url_cover_image" id="image">
-                <% if(locals.messageImage) { %>
-                    <p class="message_error"><%= messageImage %></p>
-                <% } %>
-                <label for="alt_text">Text alternatif</label>
-                <input type="text" name="alt_text" id="alt_text" class="input-error" placeholder="Text descriptif de l'image">
-                <% if(locals.messageAltText) { %>
-                    <p class="message_error"><%= messageAltText %></p>
-                <% } %>
-                <label for="date_reading_club">Date de lecture au club</label>
-                <input type="date" name="date_reading_club" id="date_reading_club" class="input-error" placeholder="Date de la lecture au club">
-                <% if(locals.messageDateReading) { %>
-                    <p class="message_error"><%= messageDateReading %></p>
-                <% } %>
-                <label for="id_book_category">Categorie du livre</label>
-                <input type="text" name="id_book_category" id="id_book_category" class="input-error" placeholder="Classique: 1 et Contemporain: 2">
-                <% if(locals.messageIdBookCategory) { %>
-                    <p class="message_error"><%= messageIdBookCategory %></p>
-                <% } %>
-                <label for="editor">Editeur</label>
-                <input type="text" name="editor" id="editor" class="input-error" placeholder="Le nom de l'editeur">
-                <% if(locals.messageEditor) { %>
-                    <p class="message_error"><%= messageEditor %></p>
-                <% } %>
-                <label for="author">Auteur - Prénom</label>
-                <input type="text" name="author_firstname" id="author" class="input-error" placeholder="Le prenom de l'auteur">
-                <% if(locals.messageAuthorFirstname) { %>
-                    <p class="message_error"><%= messageAuthorFirstname %></p>
-                <% } %>
-                <label for="author">Auteur - Nom</label>
-                <input type="text" name="author_lastname" id="author" class="input-error" placeholder="Le nom de l'auteur">
-                <% if(locals.messageAuthorLastname) { %>
-                    <p class="message_error"><%= messageAuthorLastName %></p>
-                <% } %>
-                <button type="submit" class="submit-button">Enregistrer</button>
-                <% if(locals.message) { %>
-                        <p class="message_error"><%= message %></p>
-                <% } %>
-
-            </fieldset>
-        </form>
-    </article>
-    <article>
-        <h3 >Modifier le contenu d'un livre</h3>
-        <form method="post" class="book_form" enctype="multipart/form-data" action="">
-            <fieldset>
-                <legend id="register">Modifier le contenu d'un livre</legend>
-
-                <label for="title">Titre</label>
-                <input type="text" name="title" id="title"  class="input-error" value="">
-                <% if(locals.messageTitle) { %>
-                    <p class="message_error"><%= messageTitle %></p>
-                <% } %>
-                <label for="parution">Année de parution</label>
-                <input type="number" name="parution" id="parution" class="input-error" value="">
-                <% if(locals.messagePublicationYear) { %>
-                    <p class="message_error"><%= messagePublicationYear %></p>
-                <% } %>
-                <label for="description">Description</label>
-                <textarea name="description" id="description" value="" cols="30" rows="10"></textarea>
-                <% if(locals.messageDescription) { %>
-                    <p class="message_error"><%= messageDescription %></p>
-                <% } %>
-                <label for="isbn">ISBN</label>
-                <input type="number" name="ISBN" id="isbn" class="input-error" value="">
-                <% if(locals.messageIsbn) { %>
-                    <p class="message_error"><%= messageIsbn %></p>
-                <% } %>
-                <label for="image">Choissisez l'image du livre </label>
-                <input type="file" name="url_cover_image" id="image" value="">
-                <% if(locals.messageImage) { %>
-                    <p class="message_error"><%= messageImage %></p>
-                <% } %>
-                <label for="alt_text">Text alternatif</label>
-                <input type="text" name="alt_text" id="alt_text" class="input-error" value="">
-                <% if(locals.messageAltText) { %>
-                    <p class="message_error"><%= messageAltText %></p>
-                <% } %>
-                <label for="date_reading_club">Date de lecture au club</label>
-                <input type="date" name="date_reading_club" id="date_reading_club" class="input-error" value="">
-                <% if(locals.messageDateReading) { %>
-                    <p class="message_error"><%= messageDateReading %></p>
-                <% } %>
-                <label for="id_book_category">Categorie du livre</label>
-                <input type="text" name="id_book_category" id="id_book_category" class="input-error" value="">
-                <% if(locals.messageIdBookCategory) { %>
-                    <p class="message_error"><%= messageIdBookCategory %></p>
-                <% } %>
-                <label for="editor">Editeur</label>
-                <input type="text" name="editor" id="editor" class="input-error" value="">
-                <% if(locals.messageEditor) { %>
-                    <p class="message_error"><%= messageEditor %></p>
-                <% } %>
-                <label for="author">Auteur - Prénom</label>
-                <input type="text" name="author_firstname" id="author_firstname" class="input-error" value="">
-                <% if(locals.messageAuthorFirstname) { %>
-                    <p class="message_error"><%= messageAuthorFirstname %></p>
-                <% } %>
-                <label for="author">Auteur - Nom</label>
-                <input type="text" name="author_lastname" id="author_lastname" class="input-error" value="">
-                <% if(locals.messageAuthorLastname) { %>
-                    <p class="message_error"><%= messageAuthorLastName %></p>
-                <% } %>
-                <button type="submit" class="submit-button">Enregistrer</button>
-                <% if(locals.message) { %>
-                        <p class="message_error"><%= message %></p>
-                <% } %>
-
-            </fieldset>
-        </form>
-    </article>
     <article>
         <h3 id="delete_comment">Supprimer un commentaire</h3>
         <div class="delete_comment"> 
@@ -159,9 +24,11 @@
             <p><span class="informations comment">Commentaire:</span></p>
         </div>
     </article>
+
     <article>
        <h3 id="delete_user">Supprimer un utilisateur</h3> 
     </article>
+
     <article>
        <h3 id="delete_msg">Supprimer un message</h3> 
     </article>

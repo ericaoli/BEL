@@ -6,7 +6,31 @@ export const ReadingsController = (req, res) => {
 	let sqlAll = `SELECT id_book, id_book_category, title, url_cover_image, alt_text FROM books`;
 			 
 	pool.query(sqlAll, function (error, book, fields) {
-		res.render("readings", { base_url: baseUrl, books: book });
+
+		// controlle d'affichage des boutons de l'admin
+
+		// création d'un paramètre de route pour les liens dans la page admin 
+		const action = req.query.action;
+
+		// s'il clique sur le lien modifier un livre un bouton modifier s'affiche dans la page readings
+		if(action === "modifier") {
+			res.render("readings", { 
+				base_url: baseUrl, 
+				books: book, 
+				action:"modifier" });
+		// s'il clique sur le lien supprimer un livre un bouton supprimer s'affiche dans la page readings
+		} else if(action === "supprimer") {
+			res.render("readings", { 
+				base_url: baseUrl, 
+				books: book, 
+				action:"supprimer" });
+		// s'il clique sur le lien nos lectures s'affiche la page readings standard
+		} else {
+			res.render("readings", { 
+				base_url: baseUrl, 
+				books: book,
+				action: "default" });
+		}
 		
 	});
 };
@@ -40,4 +64,4 @@ let id = req.params.id;
 		res.render("readings_contemporarys", { base_url: baseUrl, books: book});
 		console.log(book);
 		});
-	};
+};

@@ -11,7 +11,7 @@
                     </div>
                     <div class="editor_informations">
                     <% if (locals.user) { %>
-                        <form  class="like" action="/details_readings/<%= books[i].id_book %>/like" method="POST">
+                        <form  class="like"  method="POST">
                             <!-- pour récuperer l'id du livre -->
                             <input type="hidden" name="id" value="<%= books[i].id_book %>">
                             <i class="fa-solid fa-heart" style="color: #f74408;"></i> <button type="submit">Like</button>

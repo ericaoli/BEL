@@ -7,7 +7,7 @@ import { ContactController, ContactSubmit } from "../controllers/ContactControll
 import { InscriptionController, InscriptionSubmit } from "../controllers/InscriptionController.js";
 import { ConnexionController, ConnexionSubmitUser, Logout } from "../controllers/ConnexionController.js";
 import { UserController} from "../controllers/UserController.js";
-import { AdminController, AddBooks, DeleteBooks, EditBook} from "../controllers/AdminController.js";
+import { AdminController, AddBooks, DeleteBooks, EditBookForm, EditBook, UpdateBook} from "../controllers/AdminController.js";
 import upload from "../helpers/upload.js";
 
 const router = express.Router();
@@ -23,6 +23,7 @@ router.get("/about", AboutController);
 router.get("/readings", ReadingsController);
 router.get("/readings_contemporarys", ContemporarysCategory);
 router.get("/readings_classics", ClassicsCategory);
+
 
 //DetailsReadings
 router.get("/details_readings/:id", DetailsReadingsController);
@@ -45,15 +46,25 @@ router.post("/connexion", ConnexionSubmitUser);
 
 // user
 router.get("/user", UserController);
-// router.get("/user/library", UserLibrary);
 router.get("/logout", Logout);
 
 
 //Admin
 router.get("/admin", AdminController);
-router.post("/admin", upload.single("url_cover_image"), AddBooks);
+router.post("/add_book", upload.single("url_cover_image"), AddBooks);
+router.get("/add_book", AddBooks);
 router.post("/readings", DeleteBooks);
-router.post("/admin/edit/:id", EditBook);
-router.get("/admin/edit/:id", EditBook);
+router.get("/edit_book", EditBookForm);
+router.get("/edit_book/:id", EditBook);
+router.post("/edit_book/:id", EditBook);
+router.post("/edit_book/:id/edit", upload.single("url_cover_image"), UpdateBook);
+
+
+
+
+
+
+
+
 
 export default router;
