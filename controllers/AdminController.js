@@ -259,9 +259,13 @@ export const UpdateBook = async(req, res) => {
     const isbn = req.body.ISBN;
     console.log(`ISBN UPDATE: ${isbn},  ${typeof isbn}`);
     //const urlCoverImage = req.file ? req.file.filename : req.body.url_cover_image;
-    const existingUrlCoverImage = req.body.url_cover_image; // Use o valor existente ou defina como null se não existir
+    
+    const directory = '/images/';
+    const existingUrlCoverImage = directory + req.body.url_cover_image; 
+    
     const newUrlCoverImage = req.file ? req.file.filename : existingUrlCoverImage; // Use a nova imagem se existir, senão, use a existente
     const urlCoverImage = newUrlCoverImage !== undefined ? newUrlCoverImage : (existingUrlCoverImage !== undefined ? existingUrlCoverImage : 'valor_padrao.jpg'); // Use a nova imagem se existir, senão, use a existente
+    
     console.log(`existingUrlCoverImage: ${existingUrlCoverImage}`);
     console.log(`newUrlCoverImage: ${newUrlCoverImage}`);
     console.log(`urlCoverImage: ${urlCoverImage}`);
@@ -292,224 +296,15 @@ export const UpdateBook = async(req, res) => {
         });
       } else {
         console.log("Resultat de cette modification:", result);
-        res.redirect("readings");
+        res.render("edit_book", {
+        message: "Le livre a été bien modifié.",
+        messageImage: "Fichier téléchargé avec succès.",
+        base_url: baseUrl,
+        });
       };
     });
-} 
+  } 
 };
-
-//pour récupérer les informations d'un livre et les envoyer au formulaire d'édition 
-// export const EditBook = (req, res) => {
-//   console.log(`Je rentre dans la fonction EditBook`);
-
-//   // pour l'affichage de la date 
-//   function formatDateForInput(date) {
-//     const formattedDate = new Date(date).toISOString().split('T')[0];
-//     return formattedDate;
-//   }
-  
-//   let admin = req.session.admin;
-//   if (!admin) {
-//     return res.status(403).send("Seulement l'administrateur peut modifier un livre.");
-//   }
-
-//   let id = req.params.id;
-//   console.log(`Récuperation du livre qui sera modifié: ${id}`);
-
-//   //1. récuperer les informations du livre pour les envoyer au formulaire d'édition
-//   let selectBookQuery = `SELECT b.id_book, b.title, b.publication_year, b.description, b.ISBN, b.url_cover_image, b.alt_text, b.date_reading_club,
-//           bc.id_book_category, bc.wording category_wording,
-//           a.id_author, a.firstname author_firstname, a.lastname author_lastname,
-//           e.id_editor, e.name editor_name
-//         FROM books b 
-//           INNER JOIN book_category bc on b.id_book_category = bc.id_book_category
-//           INNER JOIN author a ON b.id_author = a.id_author
-//           INNER JOIN editor e ON b.id_editor = e.id_editor
-//                         WHERE id_book = ?`;  
-  
-//   pool.query(selectBookQuery, [id], (selectErr, selectResult) => {
-//     console.log(`Je rentre dans le query select`);
-//     if(selectErr) {
-//       console.error("Erreur requête SQL:", selectErr);
-//       res.render("error", { message: "Erreur pendant la récuperation des informations du livre." });
-
-//     } else {
-//       console.log("Détails du livre retrouvés lors de la requête:", selectResult[0]);
-       
-//     if(selectResult.length === 0) {
-//       console.warn("Le livre n'est pas dans la base de données.");
-//       res.render("error", { message: "Livre non trouvé." });
-//       return;
-
-//     } else {
-      
-//         if (selectResult.length > 0) {
-//         // informations envoyées aux champs du formulaire
-//           const title = selectResult[0].title;
-//           console.log(`1 requete TITLE: ${title}, typeof ${typeof title}`);
-        
-//           const publicationYear = selectResult[0].publication_year;
-//           console.log(`1 requete PUBLI YEAR: ${publicationYear}, typeof ${typeof publicationYear}`);
-        
-//           const description = selectResult[0].description;
-//           console.log(`1 requete DESCRIPTION: ${description}, typeof ${typeof description}`);
-
-//           const isbn = selectResult[0].ISBN;
-//           console.log(`1 requete ISBN: ${isbn}, typeof ${typeof isbn}`);
-
-//           const urlCoverImage = selectResult[0].url_cover_image;
-//           console.log(`1 requete URL IMG: ${urlCoverImage}, typeof ${typeof urlCoverImage}`);
-
-//           const altText = selectResult[0].alt_text;
-//           console.log(`1 requete ALT TEXT: ${altText}, typeof ${typeof altText}`);
-
-//           const dateReadingClub = formatDateForInput(selectResult[0].date_reading_club);
-//           console.log(`1 requete DATE READING: ${dateReadingClub}, typeof ${typeof dateReadingClub}`);
-
-//           const idBookCategory = selectResult[0].id_book_category;
-//           console.log(`1 requete ID BOOK CATEGORY: ${idBookCategory}, typeof ${typeof idBookCategory}`);
-
-//           const isClassiqueOrContemporain = (idBookCategory === '1' || idBookCategory === '2');
-//           console.log(`1 requete ISCLASSICOUCONTEMPORAIN: ${isClassiqueOrContemporain}, typeof ${typeof isClassiqueOrContemporain}`);
-
-//           const categoryWording = isClassiqueOrContemporain ? 'Classique' : 'Contemporain';
-//           console.log(`1 requete CATEG WORDING: ${categoryWording}, typeof ${typeof categoryWording}`);
-
-//           const editor = selectResult[0].editor_name;
-//           console.log(`1 requete EDITOR: ${editor}, typeof ${typeof editor}`);
-
-//           const authorFirstname = selectResult[0].author_firstname;
-//           console.log(`1 requete AUTOR FIRST: ${authorFirstname}, typeof ${typeof authorFirstname}`);
-
-//           const authorLastname = selectResult[0].author_lastname;
-//           console.log(`1 requete AUTOR LAST: ${authorLastname}, typeof ${typeof authorLastname}`);
-    
-//           console.log("Book details retrieved successfully:", selectResult[0]);
-
-//             res.render("edit_book", {
-//               book: {...selectResult[0], 
-//                 date_reading_club: dateReadingClub,  
-//                 isClassiqueOrContemporain: isClassiqueOrContemporain,
-//                 categoryWording: categoryWording
-//                 },
-//                 base_url: baseUrl,
-//                 admin: req.session.admin
-//               });
-//               //pour modifier les informations du livre
-//               let updateProcedureSql = `CALL UPDATE_BOOK(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
-//               pool.query(updateProcedureSql, [id, title, publicationYear, description, isbn, urlCoverImage, altText, dateReadingClub, idBookCategory, editor, authorFistname, authorLastname], (error, result) => {
-//               console.log(`Je rentre dans le query update`);
-//                 if(error) {
-//                   console.error("Erreur requête SQL:", error);
-//                   res.status(500)({
-//                     message: "Erreur du serveur. Veuillez essayer plus tard.",
-//                     base_url: baseUrl,
-//                   });
-//                 } else {
-//                   const title = req.body.title;
-//                   console.log(`2 requete TITLE: ${title}, typeof ${typeof title}`);
-//                   const publicationYear = req.body.parution;
-//                   const description = req.body.description;
-//                   const isbn = req.body.ISBN;
-//                   const urlCoverImage = req.file ? req.file.filename : null;
-//                   const altText = req.body.alt_text;
-//                   const dateReadingClub = req.body.date_reading_club;
-//                   const idBookCategory = (req.body.id_book_category === '1' || req.body.id_book_category === '2') ? req.body.id_book_category : null;
-//                   const editor = req.body.editor;
-//                   const authorFistname = req.body.author_firstname;
-//                   const authorLastname = req.body.author_lastname;
-//                   console.log("Resultat de cette modification:", result);
-//                     res.redirect("edit_book", {
-//                       message: "Le livre a été bien modifié.",
-//                       messageImage: "Fichier téléchargé avec succès. Vous avez modifié l'image du livre",
-//                       base_url: baseUrl,
-//                     });
-//                   }; 
-//                 })  
-//               }
-//             } 
-//           }
-//         }); 
-//       }
-
-// pour faire la modification des informations d'un livre dans la base de données
-// export const EditBookSubmit = async (req, res) => {
-//   console.log(`Je rentre dans la fonction EditBookSubmit`);
-  
-//   //déclaration de variables
-//   console.log(`title 1 : `+ req.body.title);
-//   console.log(`title 2 : `+ req.query.title);
- 
-
-//   const title = req.body.title;
-//   console.log(`LE TITRE: ${title}`);
-//   const publicationYear = req.body.parution;
-//   const description = req.body.description;
-//   const isbn = req.body.ISBN;
-//   const urlCoverImage = req.file ? req.file.filename : null;
-//   const altText = req.body.alt_text;
-//   const dateReadingClub = req.body.date_reading_club;
-//   const idBookCategory = (req.body.id_book_category === '1' || req.body.id_book_category === '2') ? req.body.id_book_category : null;
-//   const editor = req.body.editor;
-//   const authorFistname = req.body.author_firstname;
-//   const authorLastname = req.body.author_lastname;
-    
-//   let id = req.params.id;
-//   console.log(`Récuperation du livre dans le formulaire d'édition: ${id}`);
-
-//   let admin = req.session.admin;
-//   if (!admin) {
-//     return res.status(403).send("Seulement l'administrateur peut modifier un livre.");
-//   }
-
-//   // Upload de l'image vers le dossier images
-//   if (req.file) {
-//     console.log("Fichier téléchargé avec succès : " + urlCoverImage);
-//    } else {
-//    console.log("Aucun fichier sélectionné.");
-//    return res.render("edit_book", {
-//      messageImage: "Veuillez choisir un fichier.",
-//      base_url: baseUrl,
-//      });
-//    }
-
-//   let updateProcedureSql = `CALL UPDATE_BOOK(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
-
-//   pool.query(updateProcedureSql, [id, title, publicationYear, description, isbn, urlCoverImage, altText, dateReadingClub, idBookCategory, editor, authorFistname, authorLastname], (error, result) => {
-
-//     if(error) {
-//       console.error("Erreur requête SQL:", error);
-//         res.status(500)({
-//         message: "Erreur du serveur. Veuillez essayer plus tard.",
-//         base_url: baseUrl,
-//         });
-//     } else {
-//       console.log("Resultat de cette modification:", result);
-//       res.render("edit_book", {
-//         message: "Le livre a été bien modifié.",
-//         messageImage: "Fichier téléchargé avec succès. Vous avez modifié l'image du livre",
-//         base_url: baseUrl,
-//       });
-//     }; 
-//   });
-// }
-
-//pour récupérer les informations d'un livre et les envoyer au formulaire d'édition 
-// export const EditBook = (req, res) => {
-//   //console.log(`Je rentre dans la fonction EditBook`);
-
-//   const action = req.query.action;
-
-//   if (action === 'edit_form') {
-//     // Se a ação for renderizar o formulário, redirecione para a rota que renderiza o formulário
-//     return renderEditForm(req, res);
-//   } else if (action === 'edit_submit') {
-//     // Se a ação for submeter o formulário, redirecione para a rota que processa a submissão
-//     return editSubmit(req, res);
-//   } else {
-//     return res.status(400).send("Ação inválida");
-//   }
-// }
 
 //let deleteCommentBook = "DELETE FROM comment WHERE id_book = ?";
 //let deleteLikedBook = "DELETE FROM liked WHERE id_book = ?";
