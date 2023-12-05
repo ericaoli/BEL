@@ -499,7 +499,6 @@ footer {
   height: calc(100vh - 160px);
   width: 100%;
   text-align: center;
-  z-index: -1;
 }
 .homepage p {
   color: #fff;
@@ -511,6 +510,8 @@ footer {
 }
 .homepage button {
   text-align: center;
+  padding: 0.5rem 1rem;
+  margin: 1rem auto;
   background-color: #ffde59;
   font-family: "Nunito Sans", sans-serif;
   border: none;
@@ -519,19 +520,13 @@ footer {
   margin-top: 3rem;
   padding: 1rem 1.5rem;
 }
-.homepage button a {
-  text-decoration: none;
-  color: black;
-}
-.homepage button:hover {
-  font-weight: bold;
-  color: #fefce8;
-  transition: 0.3s;
-}
 
 .block_home {
   width: 100%;
   padding-top: 90px;
+}
+.block_home p:last-child {
+  margin-top: 3rem;
 }
 
 .home {
@@ -553,6 +548,23 @@ footer {
   font-family: "Poppins", sans-serif;
 }
 
+.btn_home {
+  text-align: center;
+  padding: 1rem 1.5rem;
+  margin: 1rem auto;
+  background-color: #ffde59;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 1.6rem;
+  border-radius: 15px;
+  text-decoration: none;
+  color: black;
+}
+.btn_home:hover {
+  font-weight: bold;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
 /* page about */
 .a-propos {
   background-image: url("/images/a_propos.webp");
@@ -564,6 +576,7 @@ footer {
   margin-top: 70px;
   width: 100%;
   height: 80px;
+  z-index: 2;
   z-index: 2;
 }
 
@@ -638,7 +651,14 @@ footer {
   width: 150px;
   height: 20px;
 }
-.cover_book button {
+.cover_book .btn_admin {
+  text-decoration: none;
+  color: #2b2b2b;
+  width: -moz-fit-content;
+  width: fit-content;
+  border: 1px solid #2b2b2b;
+  padding: 1rem 1.5rem;
+  margin: 1rem auto;
   text-align: center;
   background-color: #ffde59;
   font-family: "Nunito Sans", sans-serif;
@@ -647,14 +667,10 @@ footer {
   font-size: 1rem;
   padding: 0.5rem 1rem;
 }
-.cover_book button a {
-  text-decoration: none;
-  color: black;
-}
-.cover_book button:hover {
+.cover_book .btn_admin:hover {
   font-weight: bold;
-  color: #fefce8;
   transition: 0.3s;
+  cursor: pointer;
 }
 
 #contemporary,
@@ -664,6 +680,23 @@ footer {
   text-align: center;
   margin: 2rem auto;
   display: none;
+}
+
+.btn {
+  text-align: center;
+  padding: 0.5rem 1rem;
+  margin: 1rem auto;
+  background-color: #ffde59;
+  font-family: "Nunito Sans", sans-serif;
+  border: none;
+  border-radius: 15px;
+  text-decoration: none;
+  color: black;
+}
+.btn:hover {
+  font-weight: bold;
+  transition: 0.3s;
+  cursor: pointer;
 }
 
 /* page details_readings */
@@ -682,6 +715,11 @@ footer {
 
 .comments {
   max-width: 100%;
+}
+.comments h3 {
+  color: #ffde59;
+  font-family: "Nunito Sans", sans-serif;
+  margin: 2rem;
 }
 
 .id_comment {
@@ -702,13 +740,10 @@ footer {
   border: none;
   border-radius: 15px;
 }
-.id_comment button a {
-  text-decoration: none;
-  color: black;
-}
 .id_comment button:hover {
   font-weight: bold;
   transition: 0.3s;
+  cursor: pointer;
 }
 
 .technical_informations,
@@ -827,8 +862,7 @@ footer {
 .inscription_form,
 .form_comment,
 .form_contact,
-.form_connexion,
-.book_form {
+.form_connexion {
   margin: auto;
   max-width: 100%;
   height: auto;
@@ -837,8 +871,7 @@ footer {
 .inscription_form fieldset,
 .form_comment fieldset,
 .form_contact fieldset,
-.form_connexion fieldset,
-.book_form fieldset {
+.form_connexion fieldset {
   display: flex;
   padding: 0 1rem;
   border-radius: 15px;
@@ -850,8 +883,7 @@ footer {
 .inscription_form fieldset legend,
 .form_comment fieldset legend,
 .form_contact fieldset legend,
-.form_connexion fieldset legend,
-.book_form fieldset legend {
+.form_connexion fieldset legend {
   border: 1px solid #ffde59;
   padding: 1rem;
   font-size: 1.5rem;
@@ -866,8 +898,7 @@ footer {
 .inscription_form fieldset label,
 .form_comment fieldset label,
 .form_contact fieldset label,
-.form_connexion fieldset label,
-.book_form fieldset label {
+.form_connexion fieldset label {
   font-family: "Nunito Sans", sans-serif;
   color: #fff;
   margin-top: 1rem;
@@ -875,8 +906,7 @@ footer {
 .inscription_form fieldset button,
 .form_comment fieldset button,
 .form_contact fieldset button,
-.form_connexion fieldset button,
-.book_form fieldset button {
+.form_connexion fieldset button {
   width: -moz-fit-content;
   width: fit-content;
   border: 1px solid #2b2b2b;
@@ -888,27 +918,18 @@ footer {
   border: none;
   border-radius: 15px;
 }
-.inscription_form fieldset button a,
-.form_comment fieldset button a,
-.form_contact fieldset button a,
-.form_connexion fieldset button a,
-.book_form fieldset button a {
-  text-decoration: none;
-  color: black;
-}
 .inscription_form fieldset button:hover,
 .form_comment fieldset button:hover,
 .form_contact fieldset button:hover,
-.form_connexion fieldset button:hover,
-.book_form fieldset button:hover {
+.form_connexion fieldset button:hover {
   font-weight: bold;
   transition: 0.3s;
+  cursor: pointer;
 }
 .inscription_form fieldset input,
 .form_comment fieldset input,
 .form_contact fieldset input,
-.form_connexion fieldset input,
-.book_form fieldset input {
+.form_connexion fieldset input {
   padding: 0.5rem;
   border-radius: 15px;
   border: 1px solid #2b2b2b;
@@ -919,8 +940,7 @@ footer {
 .inscription_form fieldset input[type=file],
 .form_comment fieldset input[type=file],
 .form_contact fieldset input[type=file],
-.form_connexion fieldset input[type=file],
-.book_form fieldset input[type=file] {
+.form_connexion fieldset input[type=file] {
   border-radius: 15px;
   font-family: "Nunito Sans", sans-serif;
   color: #ffde59;
@@ -928,8 +948,7 @@ footer {
 .inscription_form fieldset textarea,
 .form_comment fieldset textarea,
 .form_contact fieldset textarea,
-.form_connexion fieldset textarea,
-.book_form fieldset textarea {
+.form_connexion fieldset textarea {
   padding: 0.5rem;
   border-radius: 15px;
   border: 1px solid #2b2b2b;
@@ -940,13 +959,63 @@ footer {
 .inscription_form fieldset .message_error,
 .form_comment fieldset .message_error,
 .form_contact fieldset .message_error,
-.form_connexion fieldset .message_error,
-.book_form fieldset .message_error {
+.form_connexion fieldset .message_error {
   font-family: "Nunito Sans", sans-serif;
   color: #ffde59;
   text-align: center;
   font-size: 1rem;
   margin: 0;
+}
+
+.book_formform {
+  max-width: 100%;
+  height: auto;
+  border-radius: 15px;
+}
+.book_form fieldset {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ffde59;
+  border-radius: 15px;
+}
+.book_form label {
+  font-family: "Nunito Sans", sans-serif;
+  color: #fff;
+  margin-top: 1rem;
+}
+.book_form legend {
+  border: 1px solid #ffde59;
+  padding: 1rem;
+  font-size: 1.5rem;
+  border-radius: 15px;
+  text-align: center;
+  color: #ffde59;
+  font-family: "Nunito Sans", sans-serif;
+}
+.book_form input, .book_form textarea {
+  border-radius: 10px;
+  padding: 0.5rem;
+  overflow-y: scroll;
+}
+.book_form input[type=file] {
+  color: #ffde59;
+}
+.book_form button {
+  width: -moz-fit-content;
+  width: fit-content;
+  border: 1px solid #2b2b2b;
+  padding: 1rem 1.5rem;
+  margin: 1rem auto;
+  text-align: center;
+  background-color: #ffde59;
+  font-family: "Nunito Sans", sans-serif;
+  border: none;
+  border-radius: 15px;
+}
+.book_form button:hover {
+  font-weight: bold;
+  transition: 0.3s;
+  cursor: pointer;
 }
 
 /* page connexion */
@@ -1025,11 +1094,12 @@ footer {
   width: 100%;
   height: 80px;
   z-index: 2;
+  max-width: 100%;
 }
 
 .container.admin_page {
   width: 90%;
-  margin: auto;
+  margin: 1rem auto;
 }
 .container.admin_page h2 {
   text-align: left;
@@ -1082,13 +1152,10 @@ footer {
   border: none;
   border-radius: 15px;
 }
-.delete_comment button a {
-  text-decoration: none;
-  color: black;
-}
 .delete_comment button:hover {
   font-weight: bold;
   transition: 0.3s;
+  cursor: pointer;
 }
 
 /* page edit_book*/
@@ -1123,8 +1190,114 @@ select {
   padding: 0 0.5rem 1rem 0.5rem;
 }
 
+/* Version TABLETTE */
+@media screen and (min-width: 481px) and (max-width: 960px) {
+  /* page about */
+  .a-propos {
+    height: 200px;
+    background-position: bottom;
+    margin-top: 80px;
+  }
+  .about_container {
+    width: 70%;
+    display: block;
+    margin: auto;
+  }
+  /* footer */
+  .foot {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 4rem;
+  }
+  /* page home */
+  .homepage {
+    background-position: center;
+    height: calc(100vh - 90px);
+  }
+  .homepage p {
+    font-size: 1.3rem;
+  }
+  .homepage button {
+    margin-top: 30px;
+  }
+  .homepage .block_home {
+    margin-top: 60px;
+  }
+  /* page readings */
+  .books_gallery {
+    grid-template-columns: repeat(2, 1fr);
+    margin: 2rem;
+  }
+  .cover_book img {
+    width: 100%;
+  }
+  .cover_book figcaption {
+    max-width: 100%;
+    height: 70px;
+  }
+  .card {
+    background-color: #2b2b2b;
+    padding: 2rem 0;
+    border-radius: 10px;
+    width: 80%;
+    height: 80%;
+    margin: auto;
+  }
+  .card:hover {
+    box-shadow: 0 8px 16px 0 rgb(249, 248, 248);
+    transition: 0.3s;
+  }
+  /* page details_readings */
+  .details {
+    width: 90%;
+    margin: auto;
+  }
+  .technical_informations {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    height: auto;
+    margin: 5rem auto;
+  }
+  .details_cover img {
+    width: 350px;
+    height: auto;
+  }
+  .editor_informations {
+    width: 100%;
+    height: auto;
+  }
+  .description {
+    width: 95%;
+    height: 200px;
+    overflow-y: scroll;
+    padding-right: 1rem;
+  }
+  .technical_informations {
+    display: flex;
+    width: 80%;
+    margin: auto;
+    padding: 2rem;
+    border-radius: 15px;
+    background-color: #2b2b2b;
+  }
+  .comments {
+    height: 350px;
+    overflow-y: scroll;
+  }
+  /* page contact */
+  .container._contact {
+    margin: 2rem;
+  }
+  /* page connexion */
+  .form_connexion {
+    max-width: 100%;
+  }
+}
 /* Version DESKTOP*/
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 961px) {
   /* barre de navigation*/
   .main-navlinks {
     display: none;
@@ -1145,6 +1318,8 @@ select {
     width: 100%;
     display: flex;
     justify-content: space-around;
+    background-color: #2b2b2b;
+    z-index: 3;
   }
   .nav_login_desktop {
     display: block;
@@ -1158,6 +1333,7 @@ select {
     position: absolute;
     margin-top: 10px;
     padding: 0;
+    z-index: 3;
   }
   .menu_backdrop:hover {
     color: #ffde59;
@@ -1169,6 +1345,7 @@ select {
   /* footer */
   .foot {
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     padding: 0 4rem;
   }
@@ -1217,12 +1394,6 @@ select {
   .card:hover {
     box-shadow: 0 8px 16px 0 rgb(249, 248, 248);
     transition: 0.3s;
-  }
-  .btn_admin {
-    margin-top: 1rem;
-    display: flex;
-    gap: 10px;
-    justify-content: center;
   }
   /* page details_readings */
   .details {
@@ -1300,7 +1471,7 @@ select {
   .reglement * {
     padding-right: 1rem;
   }
-  /* page admin */
+  /* page connexion */
   .form_connexion {
     width: 50%;
     margin: auto;

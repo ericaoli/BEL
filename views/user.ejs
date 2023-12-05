@@ -1,36 +1,33 @@
 <%- include('header') -%>
 <div class="user"></div>
-    <main class="container">
-        <article>
-            <h1>Mon espace</h1>
-            <div class="ident">
-                <% if (user) { %>
+    <article class="container">
+        <h1>Mon espace</h1>
+        <div class="ident">
+            <% if (user) { %>
                 <p><span class="informations">Utilisateur :</span> <%= user.firstname + " " + user.lastname %></p>
                 <p><span class="informations">Inscrit le :</span> <%= new Date(user.registration_date).toLocaleDateString() %></p>
-                <% } else { %>
-                    <p>Aucun utilisateur trouvé.</p>
-                <% } %>
-            </div>
-
-            <h2>Ma bibliotèque</h2>
-            <div class="books_gallery">
-                <% for (const book of userLibrary) { %>
+            <% } else { %>
+                <p>Aucun utilisateur trouvé.</p>
+            <% } %>
+        </div>
+        <h2>Ma bibliotèque</h2>
+        <div class="books_gallery">
+            <% for (const book of userLibrary) { %>
                 <div class="card">
                     <form class="cover_book" method="post">
                         <figure>
                             <img src="/images/<%= book.url_cover_image %>" alt="<%= book.alt_text %>">
                             <figcaption lang="pt-br"><%= book.title %></figcaption>
                         </figure>
-                        <button type="button"><a href="/details_readings/<%= book.id_book %>">En savoir plus</a></button>
-                        <% if (locals.admin) { %>
-                            <br>
-                            <input type="hidden" name="id" value="<%= book.id_book %>">
-                            <button type="submit">Supprimer</button>
-                        <% } %>
-                    </form>
-                </div>
-                <% } %>
+                        <p><a class="btn" href="/details_readings/<%= book.id_book %>">En savoir plus</a></p>
+                    <% if (locals.admin) { %>
+                        <br>
+                        <input type="hidden" name="id" value="<%= book.id_book %>">
+                        <button type="submit">Supprimer</button>
+                    <% } %>
+                </form>
             </div>
-        </article>
-</main>
+            <% } %>
+        </div>
+    </article>
 <%- include('footer') -%>

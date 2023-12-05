@@ -25,19 +25,12 @@
 }
 @mixin button {
     text-align: center;
+    padding: 0.5rem 1rem;
+    margin: 1rem auto;
     background-color: $link_title-color;
     font-family: $nunito-sans;
     border: none;
     border-radius: 15px;
-    a{
-        text-decoration: none;
-        color: $secondary-color;  
-    }
-    &:hover {
-        font-weight: bold;
-        color: $hover-button-color;
-        transition: 0.3s;
-    }
 }
 @mixin button_form {
     width: fit-content;
@@ -49,13 +42,10 @@
     font-family: $nunito-sans;
     border: none;
     border-radius: 15px;
-    a{
-        text-decoration: none;
-        color: $secondary-color;  
-    }
     &:hover {
         font-weight: bold;
         transition: 0.3s;
+        cursor: pointer;
     }
 }
 @mixin background_image {

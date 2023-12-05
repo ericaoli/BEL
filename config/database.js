@@ -1,12 +1,16 @@
 import mysql from "mysql";
+import dotenv from "dotenv";
 
+dotenv.config();
 
 let pool = mysql.createPool({
-	host: "db.3wa.io", 
-	user: "ericaoliveiraeplouadoudi", 
-	password: "c4bca99da67d0b486005d3b19be40fb9", 
-	database: "ericaoliveiraeplouadoudi_bel"
+	connectionLimit: 10000,
+	host: process.env.DATABASE_HOST, 
+	user: process.env.DATABASE_USER, 
+	password: process.env.DATABASE_PASSWORD, 
+	database: process.env.DATABASE_BASE
 });
+
 
 // Connexion à la base de données
 pool.getConnection((err, connection) => {

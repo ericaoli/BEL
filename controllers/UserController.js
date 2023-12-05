@@ -4,7 +4,7 @@ import { baseUrl } from "../server.js";
 
 // Function pour obtenir les livres aimés par l'user
 const getUserLibrary = (idUser, callback) => {
-    console.log("Entréé dans getUserLibrary");
+    //console.log("Entréé dans getUserLibrary");
     let sqlUserLiked = `SELECT DISTINCT l.id_user,
                                b.id_book, b.title, b.alt_text, b.url_cover_image
                         FROM books b
@@ -12,7 +12,7 @@ const getUserLibrary = (idUser, callback) => {
                         WHERE l.id_user = ?`;
 
     pool.query(sqlUserLiked, [idUser], (error, result) => {
-        console.log("Query result:", result);
+        //console.log("Query result livre aimé:", result);
         if (error) {
             console.error("Erreur requête SQL:", error);
             callback(error, null);
@@ -28,11 +28,11 @@ export const UserController = (req, res) => {
     console.log("Entréé dans userController");
 
     let idUser = req.session.user && req.session.user.id_user;
-    console.log("C'est la page de l'utilisateur à = " + idUser);
+    console.log("C'est la page de l'utilisateur = " + idUser);
 
     // Appel de la fonction qui récupère les livres aimés
     getUserLibrary(idUser, (error, userLibrary) => {
-        console.log("Entréé dans getUserLibrary");
+        //console.log("Entréé dans getUserLibrary");
         if (error) {
             return res.status(500).send("Erreur du serveur. Veuillez essayer plus tard.");
         }

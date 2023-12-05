@@ -6,11 +6,6 @@ import { baseUrl } from "../server.js";
 export const ConnexionController = (req, res) => {
     res.render("connexion", {base_url: baseUrl});
 }
-export const Logout = (req, res) => {
-	req.session.destroy((err) => {
-		res.redirect("/");
-	});
-};
 
 // authentification des utilisateurs et création des sessions admin et user
 export const ConnexionSubmitUser = (req, res, next) => {
@@ -102,3 +97,10 @@ export const ConnexionSubmitUser = (req, res, next) => {
         });
     });
 }; 
+
+// pour faire la d"connexion de l'administrateur et des utilisateurs
+export const Logout = (req, res) => {
+	req.session.destroy((err) => {
+		res.redirect("/");
+	});
+};

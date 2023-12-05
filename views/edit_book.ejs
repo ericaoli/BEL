@@ -1,7 +1,6 @@
 <%- include('header') -%>
 <div class="admin"></div>
-<section class="container admin_page">
-    <article>
+    <article class="container admin_page">
         <h3 id="edit" >Modifier le contenu d'un livre</h3>
         <form method="post" class="book_form" enctype="multipart/form-data" action="/edit_book/<%= book.id_book %>/edit">
             <fieldset>
@@ -32,7 +31,7 @@
                 <% } %>
 
                 <label for="image">Choissisez l'image du livre </label>
-                <input type="file" name="url_cover_image" id="image" value="<%= book.url_cover_image %>">
+                <input type="file" name="url_cover_image" id="image">
                 <img src="/images/<%= book.url_cover_image %>" width="250px" alt="<%= book.alt_text %>">
                 <% if(locals.messageImage) { %>
                     <p class="message_error"><%= messageImage %></p>
@@ -70,7 +69,7 @@
                     <p class="message_error"><%= messageDateReading %></p>
                 <% } %>
 
-                <label for="id_book_category">Categorie du livre</label>
+                <label>Categorie du livre</label>
                 <select name="id_book_category">
                     <option value="">Choissisez une option</option>
                     <option value="1" <%= book.id_book_category === 1 ? 'selected' : '' %>>Classique</option>
@@ -87,13 +86,13 @@
                     <p class="message_error"><%= messageEditor %></p>
                 <% } %>
 
-                <label for="author">Auteur - Prénom</label>
+                <label for="author_firstname">Auteur - Prénom</label>
                 <input type="text" name="author_firstname" id="author_firstname" class="input-error" value="<%= book.author_firstname %>">
                 <% if(locals.messageAuthorFirstname) { %>
                     <p class="message_error"><%= messageAuthorFirstname %></p>
                 <% } %>
 
-                <label for="author">Auteur - Nom</label>
+                <label for="author_lastname">Auteur - Nom</label>
                 <input type="text" name="author_lastname" id="author_lastname" class="input-error" value="<%= book.author_lastname %>">
                 <% if(locals.messageAuthorLastname) { %>
                     <p class="message_error"><%= messageAuthorLastName %></p>
@@ -107,7 +106,5 @@
             </fieldset>
         </form>
     </article>
-
-</section>
 <script src="/javascript/formulaire.js"></script>
 <%- include('footer') -%>

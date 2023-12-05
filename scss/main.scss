@@ -70,6 +70,7 @@ footer {
     font-size: 1.2rem;
     &.backdrop {
         font-size: 1rem;
+
     }
     &:hover {
         color: $link_title-color;
@@ -102,7 +103,8 @@ footer {
 .menu_backdrop, 
 .navlinks-container {
     display: none;
-    text-align: right;    
+    text-align: right;
+        
 }
 .menu_scrolling_options {
     @include menu;
@@ -154,7 +156,6 @@ footer {
     height: calc(100vh - 160px);
     width: 100%;
     text-align: center;
-    z-index: -1;
     p{
         @include text;
         text-align: center;
@@ -169,12 +170,13 @@ footer {
 .block_home{
     width: 100%;
     padding-top: 90px;
-    
+    & p:last-child {
+        margin-top: 3rem;
+    }
 }
 .home {
     color: $text-color;
     text-align: center;
-    //height: 50vh;
     @include logo;
     &_title{
         @include main_title;
@@ -184,11 +186,31 @@ footer {
         font-family: $poppins;
     }
 }
+
+.btn_home {
+    text-align: center;
+    padding: 1rem 1.5rem;
+    margin: 1rem auto;
+    background-color: $link_title-color;
+    font-family: $nunito-sans;
+    font-size: 1.6rem;
+    border-radius: 15px;
+    text-decoration: none;
+    color: $secondary-color;
+ 
+    &:hover {
+        font-weight: bold;
+        transition: 0.3s;
+        cursor: pointer;
+    }
+}
+
 /* page about */
 .a-propos {
     background-image: url("/images/a_propos.webp");
     background-position: bottom;
     @include background_image;
+    z-index: 2;
 }
 .container.about {
     max-width: 100%;
@@ -248,8 +270,10 @@ footer {
             
         }
     }
-    & button {
-        @include button;
+    & .btn_admin {
+        text-decoration: none;
+        color: $primary-color;
+        @include button_form;
         font-size: 1rem;
         padding: 0.5rem 1rem;
     }
@@ -259,6 +283,17 @@ footer {
 #classic {
     @include main_title;
     display: none;
+}
+.btn {
+    @include button;
+    text-decoration: none;
+    color: $secondary-color;  
+ 
+    &:hover {
+        font-weight: bold;
+        transition: 0.3s;
+        cursor: pointer;
+    }
 }
 /* page details_readings */
 .details_cover {
@@ -276,6 +311,11 @@ footer {
 }
 .comments {
     max-width: 100%;
+    & h3 {
+        color: $link_title-color;
+        font-family: $nunito-sans;
+        margin: 2rem;
+    }
 }
 .id_comment {
     max-width: 100%;
@@ -316,7 +356,6 @@ footer {
     }
 }
 
-
 /* page contact */
 .contact {
     background-image: url('/images/contact.webp');
@@ -331,7 +370,7 @@ footer {
     background-image: url('/images/inscription.webp');
     background-position-y: bottom;
     background-position-x: center;
-    @include background_image;
+     @include background_image;
 }
 .inscription_wrapper {
     max-width: 90%;
@@ -373,8 +412,8 @@ footer {
 .inscription_form,
 .form_comment,
 .form_contact,
-.form_connexion,
-.book_form {
+.form_connexion
+ {
     margin: auto;
     @include form;
     & fieldset {
@@ -408,8 +447,40 @@ footer {
     & .message_error {
     @include message;
     }
+    }
 }
+
+.book_form {
+    &form {
+        @include form;
+    }
+    & fieldset {
+        display: flex;
+        flex-direction: column;
+        border: 1px solid $link_title-color;
+        border-radius: 15px;
+    }
+    & label {
+        @include label;
+    }
+    & legend {
+       @include legend;
+       color: $link_title-color;
+       font-family: $nunito-sans;
+    }
+    & input, & textarea {
+        border-radius: 10px;
+        padding: 0.5rem;
+        overflow-y: scroll;
+    }
+    & input[type="file"] {
+        color: $link_title-color;
+    }
+    & button {
+        @include button_form;
+    }
 }
+
 /* page connexion */
 .connexion {
     background-image: url('/images/inscription.webp');
@@ -461,10 +532,11 @@ footer {
     background-position-y: center;
     background-position-x: center;
     @include background_image;
+    max-width: 100%;
 }
 .container.admin_page {
     width: 90%;
-    margin: auto;
+    margin: 1rem auto;
     & h2 {
         text-align: left;
         margin-left: 1rem;
@@ -534,8 +606,129 @@ select {
 
 
 
+/* Version TABLETTE */
+@media screen and (min-width: 481px) and (max-width: 960px){
+
+    /* page about */
+        .a-propos {
+            height: 200px;
+            background-position: bottom;
+            margin-top: 80px;
+        }
+        .about_container {
+            width: 70%;
+            display: block;
+            margin: auto;
+        }
+        /* footer */ 
+        .foot {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            padding: 0 4rem;
+        }
+        /* page home */
+        .homepage {
+            background-position:center;
+            height: calc(100vh - 90px);
+        
+            p{
+               font-size: 1.3rem;
+            }
+            button {
+                margin-top: 30px;
+            }
+        .block_home {
+            margin-top: 60px;
+        }
+        }
+        /* page readings */
+        .books_gallery {
+            grid-template-columns: repeat(2, 1fr);
+            margin: 2rem;
+        }
+        .cover_book {
+            & img {
+                width: 100%;
+            }
+    
+            & figcaption {
+                max-width: 100%;
+                height: 70px;
+            }
+        }
+        .card {
+            background-color: $primary-color;
+            padding: 2rem 0;
+            border-radius: 10px;
+            width: 80%;
+            height: 80%;
+            margin: auto;
+            
+            &:hover {
+                box-shadow: 0 8px 16px 0 rgb(249, 248, 248);
+                transition: 0.3s;
+            }
+        }
+    /* page details_readings */
+        .details {
+            width: 90%;
+            margin: auto;
+        }
+        .technical_informations {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 90%;
+            height: auto;
+            margin: 5rem auto;
+        }
+        .details_cover {
+            & img {
+            width: 350px;
+            height: auto;
+            }
+        }
+        .editor_informations {
+            width: 100%;
+            height: auto;
+        }
+        .description {
+            width: 95%;
+            height: 200px;
+            overflow-y: scroll;
+            padding-right: 1rem;
+        }
+        .technical_informations {
+        display: flex;
+        width: 80%;
+        margin: auto;
+        padding: 2rem;
+        border-radius: 15px;
+        background-color: $primary-color;
+        }
+
+        .comments {
+            height: 350px;
+            overflow-y: scroll;
+        }
+
+        /* page contact */
+        .container._contact{
+            margin: 2rem ;
+        }
+
+        /* page connexion */
+        .form_connexion {
+            max-width: 100%;
+        }
+
+}
+
+
+
 /* Version DESKTOP*/
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 961px) {
 
     /* barre de navigation*/
         .main-navlinks{
@@ -558,6 +751,8 @@ select {
             width: 100%;
             display: flex;
             justify-content: space-around;
+            background-color: $primary-color;
+            z-index: 3;
         }
         .nav_login_desktop{
             display: block;
@@ -570,7 +765,8 @@ select {
             position: absolute;
             margin-top: 10px;
             padding: 0;
-    
+            z-index: 3;
+
             &:hover{
                 color: $link_title-color;
                 cursor: pointer;
@@ -583,9 +779,10 @@ select {
     /* footer */ 
         .foot {
             display: flex;
+            flex-direction: row;
             justify-content: space-between;
             padding: 0 4rem;
-        }
+         }
     /* page about */
         .a-propos {
             height: 200px;
@@ -637,12 +834,6 @@ select {
                 box-shadow: 0 8px 16px 0 rgb(249, 248, 248);
                 transition: 0.3s;
             }
-        }
-        .btn_admin {
-            margin-top: 1rem;
-            display: flex;
-            gap: 10px;
-            justify-content: center;
         }
     /* page details_readings */
         .details {
@@ -725,11 +916,11 @@ select {
             }
         }
 
-    /* page admin */
-    .form_connexion {
-        width: 50%;
-        margin: auto;
-    }
+        /* page connexion */
+        .form_connexion {
+            width: 50%;
+            margin: auto;
+        }
 }
 
 

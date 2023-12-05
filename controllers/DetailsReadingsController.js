@@ -3,7 +3,7 @@ import { baseUrl } from "../server.js";
 
 export const DetailsReadingsController = (req, res) => {       
     let id = req.params.id; 
-    //console.log("id book.1 : " + id);
+    console.log("id book.1 : " + id);
 	
     // requête SQL qui récupére les informations du livre sélectionné
 	let sql =
@@ -72,7 +72,7 @@ export const DetailsReadingsController = (req, res) => {
 
                  } else {
                     comment = "Aucun commentaire saisi.";
-                 }
+            }
 
         });
 	});
@@ -80,6 +80,8 @@ export const DetailsReadingsController = (req, res) => {
 
 
 export const LikeReadings = (req, res) => {
+    console.log(`Je suis dans likereadings`);
+    
     let id = req.params.id;
     console.log(`idBook likereadings = ${id}`);
 

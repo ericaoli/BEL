@@ -163,24 +163,26 @@ export const DeleteBooks = (req, res) => {
 export const EditBookForm = (req, res) => {
   res.render("edit_book", { base_url: baseUrl, admin: req.session.admin}); 
 }
-export const EditBook = (req, res) => {
-  console.log(`Je rentre dans la fonction EditBook`);
 
-  // para a formatação da data
+// pour afficher les informations du livre dans le formulaire pré-rempli
+export const EditBook = (req, res) => {
+  //console.log(`Je rentre dans la fonction EditBook`);
+
+  // pour la date
   function formatDateForInput(date) {
     const formattedDate = new Date(date).toISOString().split('T')[0];
     return formattedDate;
   }
-
+  // confirme qu'il s'agit de l'admin
   let admin = req.session.admin;
   if (!admin) {
     return res.status(403).send("Seulement l'administrateur peut modifier un livre.");
   }
-
+  // recupère l'id du livre
   let id = req.params.id;
-  console.log(`Récuperation du livre qui sera modifié: ${id}`);
+  //console.log(`Récuperation du livre qui sera modifié: ${id}`);
 
-  // 1. Recuperar as informações do livro para enviá-las ao formulário de edição
+  // 1. Recupère les informations du livre pour les envoyer au formulaire d'édition
   let selectBookQuery = `SELECT b.id_book, b.title, b.publication_year, b.description, b.ISBN, b.url_cover_image, b.alt_text, b.date_reading_club,
       bc.id_book_category, bc.wording category_wording,
       a.id_author, a.firstname author_firstname, a.lastname author_lastname,
@@ -192,13 +194,13 @@ export const EditBook = (req, res) => {
       WHERE id_book = ?`;
 
   pool.query(selectBookQuery, [id], (selectErr, selectResult) => {
-    console.log(`Je rentre dans le query select`);
+    //console.log(`Je rentre dans le query select`);
     if (selectErr) {
       console.error("Erreur requête SQL:", selectErr);
       res.render("error", { message: "Erreur pendant la récuperation des informations du livre." });
 
     } else {
-      console.log("Détails du livre retrouvés lors de la requête:", selectResult[0]);
+      //console.log("Détails du livre retrouvés lors de la requête:", selectResult[0]);
 
       if (selectResult.length === 0) {
         console.warn("Le livre n'est pas dans la base de données.");
@@ -206,7 +208,7 @@ export const EditBook = (req, res) => {
         return;
 
       } else {
-        // Informações enviadas aos campos do formulário
+        // Informations envoyées au formulaire
         const title = selectResult[0].title;
         const publicationYear = selectResult[0].publication_year;
         const description = selectResult[0].description;
@@ -221,7 +223,7 @@ export const EditBook = (req, res) => {
         const authorFirstname = selectResult[0].author_firstname;
         const authorLastname = selectResult[0].author_lastname;
 
-        console.log("Book details retrieved successfully:", selectResult[0]);
+        //console.log("Book details retrieved successfully:", selectResult[0]);
 
         res.render("edit_book", {
           book: {
@@ -237,55 +239,51 @@ export const EditBook = (req, res) => {
     }
   });
 };
-// Quando o formulário é enviado para atualizar as informações do livro
+
+// pour l'envoie des informations mises à jour
 export const UpdateBook = async(req, res) => {
-  console.log(`Je rentre dans la fonction UpdateBook`);
+  //console.log(`Je rentre dans la fonction UpdateBook`);
 
   let id = req.params.id;
-  console.log(`Récuperation du livre en UPDATEBOOK: ${id}`);
-
+  //console.log(`Récuperation du livre en UPDATEBOOK: ${id}`);
+ 
+  // utilisation d'un paramètre de route pour gérer les routes POST identiques "/edit_book/:id"
   const action = req.body.action;
-
-  console.log(`Valor real do campo 'action': ${action}`);
-
   if(action === "edit") {
-    console.log(`JE RENTRE DANS L'ACTION`);
+      //console.log(`JE RENTRE DANS L'ACTION`);
     const title = req.body.title;
-    console.log(`TITLE UPDATE: ${title},  ${typeof title}`);
+      //console.log(`TITLE UPDATE: ${title},  ${typeof title}`);
     const publicationYear = req.body.parution;
-    console.log(`PUBLICATION YEAR UPDATE: ${publicationYear},  ${typeof publicationYear}`);
+      //console.log(`PUBLICATION YEAR UPDATE: ${publicationYear},  ${typeof publicationYear}`);
     const description = req.body.description;
-    console.log(`DESCRIPTION UPDATE: ${description},  ${typeof description}`);
+      //console.log(`DESCRIPTION UPDATE: ${description},  ${typeof description}`);
     const isbn = req.body.ISBN;
-    console.log(`ISBN UPDATE: ${isbn},  ${typeof isbn}`);
-    //const urlCoverImage = req.file ? req.file.filename : req.body.url_cover_image;
-    
-    const directory = '/images/';
-    const existingUrlCoverImage = directory + req.body.url_cover_image; 
-    
-    const newUrlCoverImage = req.file ? req.file.filename : existingUrlCoverImage; // Use a nova imagem se existir, senão, use a existente
-    const urlCoverImage = newUrlCoverImage !== undefined ? newUrlCoverImage : (existingUrlCoverImage !== undefined ? existingUrlCoverImage : 'valor_padrao.jpg'); // Use a nova imagem se existir, senão, use a existente
-    
-    console.log(`existingUrlCoverImage: ${existingUrlCoverImage}`);
-    console.log(`newUrlCoverImage: ${newUrlCoverImage}`);
-    console.log(`urlCoverImage: ${urlCoverImage}`);
-    console.log(`URL IMAGE UPDATE: ${urlCoverImage},  ${typeof urlCoverImage}`);
-    const altText = req.body.alt_text;
-    console.log(`ALTTEXT UPDATE: ${altText},  ${typeof altText}`);
-    const dateReadingClub = req.body.date_reading_club;
-    console.log(`DATEREADING UPDATE: ${dateReadingClub},  ${typeof dateReadingClub}`);
-    const idBookCategory = (req.body.id_book_category === '1' || req.body.id_book_category === '2') ? req.body.id_book_category : null;
-    console.log(`IDBOOKCATEGORY UPDATE: ${idBookCategory},  ${typeof idBookCategory}`);
-    const editor = req.body.editor;
-    console.log(`EDITOR UPDATE: ${editor},  ${typeof editor}`);
-    const authorFistname = req.body.author_firstname;
-    console.log(`AUTOR FIRSTNAME UPDATE: ${authorFistname}, ${typeof authorFistname}`);
-    const authorLastname = req.body.author_lastname;
-    console.log(`AUTOR LASTNAME UPDATE: ${authorLastname},  ${typeof authorLastname}`);
+      //console.log(`ISBN UPDATE: ${isbn},  ${typeof isbn}`);
+    const existingUrlCoverImage = req.body.url_cover_image; 
+    const newUrlCoverImage = req.file ? req.file.filename : existingUrlCoverImage; // Utilise la nouvelle image si ça existe, sinon, utilise celle qui existe déjà
+    const urlCoverImage = newUrlCoverImage !== undefined ? newUrlCoverImage : existingUrlCoverImage; // Uitlise la nouvelle image si elle existe, sinon, utilise la nouvelle image
 
-    // para modificar as informações do livro
+    //console.log(`existingUrlCoverImage: ${existingUrlCoverImage}`);
+    //console.log(`newUrlCoverImage: ${newUrlCoverImage}`);
+    //console.log(`urlCoverImage: ${urlCoverImage}`);
+    //console.log(`URL IMAGE UPDATE: ${urlCoverImage},  ${typeof urlCoverImage}`);
+    const altText = req.body.alt_text;
+      //console.log(`ALTTEXT UPDATE: ${altText},  ${typeof altText}`);
+    const dateReadingClub = req.body.date_reading_club;
+      //console.log(`DATEREADING UPDATE: ${dateReadingClub},  ${typeof dateReadingClub}`);
+    const idBookCategory = (req.body.id_book_category === '1' || req.body.id_book_category === '2') ? req.body.id_book_category : null;
+      //console.log(`IDBOOKCATEGORY UPDATE: ${idBookCategory},  ${typeof idBookCategory}`);
+    const editor = req.body.editor;
+      //console.log(`EDITOR UPDATE: ${editor},  ${typeof editor}`);
+    const authorFistname = req.body.author_firstname;
+      //console.log(`AUTOR FIRSTNAME UPDATE: ${authorFistname}, ${typeof authorFistname}`);
+    const authorLastname = req.body.author_lastname;
+      //console.log(`AUTOR LASTNAME UPDATE: ${authorLastname},  ${typeof authorLastname}`);
+
+      // appel de la procedure stockée
     let updateProcedureSql = `CALL UPDATE_BOOK(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
-    console.log(`RESULTADO DA CONSULTA UPDATE:`, updateProcedureSql);
+      //console.log(`RESULTAT UPDATE:`, updateProcedureSql);
+
     pool.query(updateProcedureSql, [id, title, publicationYear, description, isbn, urlCoverImage, altText, dateReadingClub, idBookCategory, editor, authorFistname, authorLastname], (error, result) => {
       console.log(`Je rentre dans le query update`);
       if (error) {

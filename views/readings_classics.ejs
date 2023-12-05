@@ -1,6 +1,5 @@
 <%- include('header') -%>
 <div class="books"></div>
-<main>
     <section class="container_books">
         <h1 class="readings">Les classiques</h1>
         <div class="books_gallery">
@@ -11,11 +10,10 @@
                             <img src="/images/<%= books[i].url_cover_image %>" alt="<%= books[i].alt_text %>">
                             <figcaption lang="pt-br"><%= books[i].title %></figcaption>
                         </figure>
-                        <button type="button"><a href="/details_readings/<%= books[i].id_book %>">En savoir plus</a></button>
+                    <p><a class="btn" href="/details_readings/<%= books[i].id_book %>">En savoir plus</a></p> 
                 </article>
             </div>
             <% } %>  
         </div>
     </section>
-</main>
 <%- include('footer') -%>
