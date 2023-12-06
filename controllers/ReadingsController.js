@@ -9,22 +9,24 @@ export const ReadingsController = (req, res) => {
 
 		// controlle d'affichage des boutons de l'admin
 
-		// création d'un paramètre de route pour les liens dans la page admin 
+		// création d'un paramètre de route pour gérer les liens sur la page admin 
 		const action = req.query.action;
 
-		// s'il clique sur le lien modifier un livre un bouton modifier s'affiche dans la page readings
+		// s'il clique sur le lien modifier un livre, le bouton 'modifier' s'affiche sur la page readings
 		if(action === "modifier") {
 			res.render("readings", { 
 				base_url: baseUrl, 
 				books: book, 
 				action:"modifier" });
-		// s'il clique sur le lien supprimer un livre un bouton supprimer s'affiche dans la page readings
+
+		// s'il clique sur le lien supprimer un livre, le bouton 'supprimer' s'affiche sur la page readings
 		} else if(action === "supprimer") {
 			res.render("readings", { 
 				base_url: baseUrl, 
 				books: book, 
 				action:"supprimer" });
-		// s'il clique sur le lien nos lectures s'affiche la page readings standard
+
+		// sinon il s'affiche la page readings standard
 		} else {
 			res.render("readings", { 
 				base_url: baseUrl, 

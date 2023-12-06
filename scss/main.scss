@@ -209,8 +209,7 @@ footer {
 .a-propos {
     background-image: url("/images/a_propos.webp");
     background-position: bottom;
-    @include background_image;
-    z-index: 2;
+    @include background-image;
 }
 .container.about {
     max-width: 100%;
@@ -219,6 +218,13 @@ footer {
 .about_container {
     margin: auto;
 }
+.video {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 2rem;
+}
+
 /* page readings */
 .books {
     background-image: url("/images/nos_lectures.webp");
@@ -448,7 +454,6 @@ footer {
     }
     }
 }
-
 .book_form {
     &form {
         @include form;

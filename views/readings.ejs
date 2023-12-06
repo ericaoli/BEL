@@ -23,7 +23,7 @@
                 <!-- si l'admin est en session -->
                 <% if (locals.admin) { %>
                     <div>
-                    <!-- si l'admin clique sur le lien supprimer un livre, le bouton supprimer sera disponible -->
+                    <!-- si l'admin clique sur le lien supprimer un livre dans sa page, le bouton supprimer sera disponible sur la page readings grâce au paramètre de route action -->
                         <% if (action === "supprimer") { %>
                             <form class="cover_book" method="post">
                                 <!-- bouton pour supprimer le livre  -->
@@ -32,7 +32,7 @@
                             </form>
                         <% } %>
 
-                        <!-- si l'admin clique sur le lien modifier un livre, le bouton modifier sera disponible -->
+                        <!-- si l'admin clique sur le lien modifier un livre, le bouton modifier sera disponible sur la page readings grâce au paramètre de route action -->
                         <% if (action === "modifier") { %>                            
                             <form class="cover_book" method="post" action="/edit_book/<%= books[i].id_book %>">
                                 <!-- bouton pour rediriger vers la page edit_book et afficher les informations du livre -->

@@ -4,20 +4,21 @@ import { baseUrl } from "../server.js";
 
 // pour faire l'affichage de la page admin avec la session
 export const AdminController = (req, res) => {
-    res.render("admin",{ admin: req.session.admin, base_url: baseUrl});				 
+  res.render("admin",{ admin: req.session.admin, base_url: baseUrl});				 
 }
 
 // pour ajouter un nouveau livre
 export const AddBooks = (req, res) => {
 
+  // Si la requisition est GET, affiche le formulaire
   if (req.method === "GET") {
-    // Si la requisition est GET, affiche le formulaire
     res.render("add_book", { base_url: baseUrl });
 
-  } else if (req.method === "POST") {
   // Si la requisition est POST, envoie le formulaire
+  } else if (req.method === "POST") {
+  
 
-  // déclaration de variables
+    // déclaration de variables
     const title = req.body.title;
     const publicationYear = req.body.parution;
     const description = req.body.description;
@@ -33,64 +34,74 @@ export const AddBooks = (req, res) => {
 
     // validation des champs du formulaire
      try {   
-      console.log('AdminController - je suis dans le try catch'); 
-      console.log('AdminController - altText.1 = ' + altText); 
-      console.log('AdminController - altText.2= ' + req.body.alt_text); 
+      //console.log('AdminController - je suis dans le try catch'); 
+
         if (!title || title.length > 250) {
           throw new Error (res.render("add_book", {
             messageTitle: "Le champ 'Titre' est obligatoire. Taille maximale : 250 caractères.",
             base_url: baseUrl}));
         }
+
         if (!publicationYear || publicationYear.length !== 4 || isNaN(publicationYear)) {
           throw new Error (res.render("add_book", {
             messagePublicationYear: "Le champ 'Année de parution' est obligatoire. Veuillez saisir 4 chiffres.",
             base_url: baseUrl}));
         }
+
         if (!description || description.length > 4000) {
           throw new Error (res.render("add_book", {
             messageDescription: "Le champ 'Description' est obligatoire. Taille maximale : 4000 caractères.",
             base_url: baseUrl}));
         }
+
         if (!isbn || isbn.length !== 13 || isNaN(isbn)) {
           throw new Error (res.render("add_book", {
             messageIsbn: "Le champ 'ISBN' est obligatoire. Veuillez saisir 13 chiffres.",
-            base_url: baseUrl}));
+            base_url: baseUrl})); 
         }
+
         if (!altText || altText.length > 100) {
          throw new Error (res.render("add_book", {
            messageAltText: "Le champ 'alt_text' est obligatoire. Veuillez saisir un text descriptif de l'image.",
            base_url: baseUrl}));
          }
+
         if (!urlCoverImage) {
           throw new Error (res.render("add_book", {
             messageImage: "Champ obligatoire. Veuillez choisir l'image de couverture du livre.",
             base_url: baseUrl}));
         }
+
         if (!dateReadingClub) {
           throw new Error (res.render("add_book", {
             messageDateReading: "Le champ 'Date de lecture au club' est obligatoire et doit être au format jj/mm/aaaa.",
             base_url: baseUrl}));
         }
+
         if (!idBookCategory || (idBookCategory !== '1' && idBookCategory !== '2')) {
           throw new Error (res.render("add_book", {
             messageIdBookCategory: "Le champ 'Categorie du livre' est obligatoire. Choisissez Classique ou Contemporain.",
             base_url: baseUrl}));
         }
+
         if (!editor || !/^[a-zA-Z]+$/.test(editor)) {
           throw new Error (res.render("add_book", {
             messageEditor: "Le champ 'Editeur' est obligatoire. Saisissez un nom valid.",
             base_url: baseUrl}));
         }
+
         if (!authorFistname || !/^[a-zA-Z]+$/.test(authorFistname)) {
           throw new Error (res.render("add_book", {
             messageAuthorFirstname: "Le champ 'Auteur - Prénom' est obligatoire. Saisissez un nom valid.",
             base_url: baseUrl}));
         }
+
         if (!authorLastname || !/^[a-zA-Z]+$/.test(authorLastname)) {
           throw new Error (res.render("add_book", {
             messageAuthorLastname: "Le champ 'Auteur - Nom' est obligatoire. Saisissez un nom valid.",
             base_url: baseUrl}));
         }
+
         // Upload de l'image vers le dossier images
         if (req.file) {
      	   console.log("Fichier téléchargé avec succès : " + urlCoverImage);
@@ -101,40 +112,39 @@ export const AddBooks = (req, res) => {
            base_url: baseUrl,
            });
          }
+
       } catch (error) {
          console.error('Erreur de validation:', error.message);
          return res.status(400).json({
          message: error.message,
          base_url: baseUrl
          });
-    
        }
 
     // Requête pour insérer les informations du livre sur la base de données
-    
-    const createProcedureSql = `CALL INSERT_BOOK(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+      const createProcedureSql = `CALL INSERT_BOOK(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
 
-    pool.query(createProcedureSql, [title, publicationYear, description, isbn, urlCoverImage, altText, dateReadingClub, idBookCategory, editor, authorFistname, authorLastname], (error, result) => {
-    if (error) {
-        console.error("Erreur requête SQL:", error);
-        res.status(500)({
-        message: "Erreur du serveur. Veuillez essayer plus tard.",
-        base_url: baseUrl,
-        });
-      } else {
-        console.log(result);
-        res.render("add_book", {
-        message: "Le livre a été bien enregistré.",
-        messageImage: "Fichier téléchargé avec succès.",
-        base_url: baseUrl,
-        });
-      }; 
-  })
-} else {
-  // Méthode non supportée
-  res.status(405).send("Méthode non autorisée");
-}                 
-}
+      pool.query(createProcedureSql, [title, publicationYear, description, isbn, urlCoverImage, altText, dateReadingClub, idBookCategory, editor, authorFistname, authorLastname], (error, result) => {
+        if (error) {
+          console.error("Erreur requête SQL:", error);
+          res.status(500)({
+            message: "Erreur du serveur. Veuillez essayer plus tard.",
+            base_url: baseUrl,
+          });
+        } else {
+          console.log(result);
+          res.render("add_book", {
+            message: "Le livre a été bien enregistré.",
+            messageImage: "Fichier téléchargé avec succès.",
+            base_url: baseUrl,
+          });
+        }; 
+      })
+    } else {
+      // Méthode non supportée
+      res.status(405).send("Méthode non autorisée");
+    }                 
+  }
 
 //pour supprimer un livre
 export const DeleteBooks = (req, res) => {
@@ -145,7 +155,7 @@ export const DeleteBooks = (req, res) => {
   let admin = req.session.admin;
 
   if (!admin) {
-    return res.status(403).send("Apenas administradores podem excluir livros.");
+    return res.status(403).send("Seulement les administrateurs peuvent supprimer les livres.");
   }
 
   pool.query(deleteBook, [id], (error, result) => {
