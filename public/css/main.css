@@ -1017,6 +1017,13 @@ footer {
   transition: 0.3s;
   cursor: pointer;
 }
+.book_form .message_error {
+  font-family: "Nunito Sans", sans-serif;
+  color: #ffde59;
+  text-align: center;
+  font-size: 1rem;
+  margin: 0;
+}
 
 /* page connexion */
 .connexion {
@@ -1192,7 +1199,21 @@ select {
 
 /* Version TABLETTE */
 @media screen and (min-width: 481px) and (max-width: 960px) {
-  /* page about */
+  /* page HOME */
+  .homepage {
+    background-position: center;
+    height: calc(100vh - 90px);
+  }
+  .homepage p {
+    font-size: 1.2rem;
+  }
+  .homepage button {
+    margin-top: 30px;
+  }
+  .homepage .block_home {
+    padding-top: 60px;
+  }
+  /* page ABOUT */
   .a-propos {
     height: 200px;
     background-position: bottom;
@@ -1203,28 +1224,14 @@ select {
     display: block;
     margin: auto;
   }
-  /* footer */
+  /* FOOTER */
   .foot {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding: 0 4rem;
+    padding: 0 2rem;
   }
-  /* page home */
-  .homepage {
-    background-position: center;
-    height: calc(100vh - 90px);
-  }
-  .homepage p {
-    font-size: 1.3rem;
-  }
-  .homepage button {
-    margin-top: 30px;
-  }
-  .homepage .block_home {
-    margin-top: 60px;
-  }
-  /* page readings */
+  /* page READINGS */
   .books_gallery {
     grid-template-columns: repeat(2, 1fr);
     margin: 2rem;
@@ -1248,7 +1255,7 @@ select {
     box-shadow: 0 8px 16px 0 rgb(249, 248, 248);
     transition: 0.3s;
   }
-  /* page details_readings */
+  /* page DETAILS_READINGS */
   .details {
     width: 90%;
     margin: auto;
@@ -1284,21 +1291,47 @@ select {
     background-color: #2b2b2b;
   }
   .comments {
-    height: 350px;
+    height: 400px;
     overflow-y: scroll;
+    margin: 1rem;
   }
-  /* page contact */
+  /* page CONTACT */
   .container._contact {
     margin: 2rem;
   }
-  /* page connexion */
+  /* page INSCRIPTIONS */
+  .inscription_wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin: 2rem auto;
+    align-items: center;
+  }
+  .inscription_form {
+    height: 450px;
+  }
+  .inscription_formfieldset {
+    margin-top: 3rem;
+  }
+  .form_flex {
+    height: 400px;
+    margin-bottom: 8rem;
+  }
+  .reglement {
+    max-width: 100%;
+    background-color: #2b2b2b;
+    border-radius: 15px;
+    padding: 1rem 2rem;
+    height: 600px;
+  }
+  /* page CONNEXION */
   .form_connexion {
     max-width: 100%;
   }
 }
 /* Version DESKTOP*/
 @media screen and (min-width: 961px) {
-  /* barre de navigation*/
+  /* BARRE DE NAVIGATION*/
   .main-navlinks {
     display: none;
   }
@@ -1342,14 +1375,14 @@ select {
   .menu .menu_scrolling_options {
     position: relative;
   }
-  /* footer */
+  /* FOOTER */
   .foot {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     padding: 0 4rem;
   }
-  /* page about */
+  /* page ABOUT */
   .a-propos {
     height: 200px;
     background-position: bottom;
@@ -1360,7 +1393,7 @@ select {
     display: block;
     margin: auto;
   }
-  /* page home */
+  /* page HOME */
   .homepage {
     background-position: center;
     height: calc(100vh - 90px);
@@ -1371,7 +1404,7 @@ select {
   .homepage button {
     margin-top: 30px;
   }
-  /* page readings */
+  /* page READINGS */
   .books_gallery {
     grid-template-columns: repeat(4, 1fr);
     margin: 2rem;
@@ -1395,7 +1428,7 @@ select {
     box-shadow: 0 8px 16px 0 rgb(249, 248, 248);
     transition: 0.3s;
   }
-  /* page details_readings */
+  /* page DETAILS_READINGS */
   .details {
     width: 80%;
     margin: auto;
@@ -1433,14 +1466,19 @@ select {
     width: 80%;
     margin: 1rem auto;
   }
-  /* page contact */
+  .comments {
+    height: 450px;
+    overflow-y: scroll;
+    margin: 1rem;
+  }
+  /* page CONTACT */
   .container._contact {
     margin: 1rem auto;
   }
   .form_contact {
     width: 800px;
   }
-  /* page inscriptions */
+  /* page INSCRIPTIONS */
   .inscription_wrapper {
     display: flex;
     height: 600px;
