@@ -110,16 +110,16 @@ export const InscriptionSubmit = (req,res) => {
                         message: "Vous êtes inscrits au Club de lecture Brasil em livros!",
                         base_url: baseUrl,
                         });
-                      }; // fin confirme inscription
-                    }); // fin requete insert
-                  }); //fin bcrypt
-                } // fin l'inscription poursuit après la verification de l'email
-              }
-            }) // fin poolquery checkEmail
-          }; // fin else - l'inscription poursuivre avec la verificaçao de l'ensemble
-        }; // fin if erreur checkUser
-      }); // fin poolquery checkUser
-    }; // fin controller
+                      }; 
+                    }); 
+                  }); 
+                }; 
+              };
+            }); 
+          }; 
+        }; 
+      }); 
+    }; 
  
 
   

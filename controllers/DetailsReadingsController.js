@@ -68,15 +68,14 @@ export const DetailsReadingsController = (req, res) => {
                              console.log(`Commentaire envoyé`);
 
                          }
-                     })
+                     });
 
                  } else {
                     comment = "Aucun commentaire saisi.";
-            }
-
-        });
-	});
-};
+                }
+            });
+	    });
+    };
 
 
 export const LikeReadings = (req, res) => {
