@@ -5,13 +5,13 @@
         <div class="books_gallery">
             <% for(let i=0; i < books.length; ++i) { %>
             <div class="card">
-                <article class="cover_book">
+                <div class="cover_book">
                     <figure>
                         <img src="/images/<%= books[i].url_cover_image %>" alt="<%= books[i].alt_text %>">
                         <figcaption lang="pt-br"><%= books[i].title %></figcaption>
                     </figure>
                     <p><a class="btn" href="/details_readings/<%= books[i].id_book %>">En savoir plus</a></p>
-                </article>
+                </div>
             </div>
             <% } %>  
         </div>

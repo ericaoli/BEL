@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Le club de lecture Brasil em livros est un club de lecture
-    franco-brésilien qui rassemble des passionnés de la littérature brésilienne à Paris. Vous apprenez le portugais et vous avez envie de lire, de rencontrer d’autres étudiants et de discuter de vos lectures, tout ça en portugais ? Inscrivez-vous au Brasil em livros !"/>
+    franco-brésilien qui rassemble des passionnés de la littérature brésilienne à Paris. Vous apprenez le portugais et vous avez envie de lire, de rencontrer d’autres étudiants et de discuter de vos lectures, tout ça en portugais ? Inscrivez-vous au Brasil em livros !">
     <title>Brasil em livros</title>
     <!-- favicon -->
     <link rel="icon" type="image/svg" href="/images/favicon.svg">
@@ -26,8 +26,8 @@
                         <i class="fa-regular fa-user" style="color: #e9cd3b;"></i>
                     </a>
                 <!-- menu hamburger -->
-                    <button class="hamburger" type="submit" aria-label="Toggle navigation" alt="submit button">
-                    <div class="bar"></div>
+                    <button class="hamburger" type="submit" aria-label="Toggle navigation">
+                    <span class="bar"></span>
                     </button>
                 </div>
 
@@ -36,16 +36,16 @@
             <div  class="navlinks-container">
                
                 <ul class="navlinks-wrapper">
-                    <li><a href="/"class="menu go-home">Accueil</a></li>
+                    <li><a href="/" class="menu go-home">Accueil</a></li>
                     <li><a href="/about" class="menu">Qui sommes nous</a></li>
-                    <li><a href="#"class="menu_scrolling_options" id="menu_click"><i class="fa-solid fa-angle-down"></i> Nos lectures</a>
+                    <li><a href="#" class="menu_scrolling_options" id="menu_click"><i class="fa-solid fa-angle-down"></i> Nos lectures</a>
                         <ul class="menu_backdrop">
                             <li><a href="/readings" class="menu backdrop">Tous les livres</a></li>
                             <li><a href="/readings_classics" class="menu backdrop" id="bd_classic">Les Classiques</a></li>
                             <li><a href="/readings_contemporarys" class="menu backdrop" id="bd_contemporary">Les Contemporaines</a></li>
                         </ul>
                     </li>
-                    <li><a href="/contact"class="menu">Contact</a></li>
+                    <li><a href="/contact" class="menu">Contact</a></li>
                     <% if (locals.user) { %>
                         <li><a href="/user" class="menu">Mon profil</a></li>
                         <li><a href="/logout" class="menu">Déconnexion</a></li>
@@ -53,8 +53,8 @@
                         <li><a href="/admin" class="menu">Administrateur</a></li>
                         <li><a href="/logout" class="menu">Déconnexion</a></li>
                     <% } else { %>
-                        <li><a href="/inscription"class="menu inscriptions">Inscriptions</a></li>
-                        <li><a href="/connexion"class="menu connect">Connexion</a></li>
+                        <li><a href="/inscription" class="menu inscriptions">Inscriptions</a></li>
+                        <li><a href="/connexion" class="menu connect">Connexion</a></li>
                         <li><a href="/connexion" class="menu nav_login_desktop" aria-label="Icone de connexion sur le site."><i class="fa-regular fa-user" style="color: #e9cd3b;"></i></a></li>
                     <% } %>
                 </ul>     

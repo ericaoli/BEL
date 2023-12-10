@@ -3,14 +3,15 @@
     <section class="container_books">
         <% for(let i=0; i < books.length; ++i) { %>
             <h1 lang="pt-br"><%= books[i].title %></h1>
-            <article class="details"> 
+            <article class="details">
+                <h2 lang="pt-br">Saiba mais sobre esse livro:</h2> 
                 <div class="technical_informations">
                     <div class="details_cover">
                         <img src="/images/<%= books[i].url_cover_image %>" alt="<%= books[i].alt_text %>">
                     </div>
                 <div class="editor_informations">
                     <% if (locals.user) { %>
-                        <!-- si l'utulisateur est enregistré il a le bouton like -->
+                        <!-- si l'utilisateur est enregistré il a le bouton like -->
                         <form  class="like"  method="POST" action="/details_readings/<%= books[i].id_book %>/like">
                             <!-- pour récuperer l'id du livre -->
                             <input type="hidden" name="id" value="<%= books[i].id_book %>">
