@@ -45,7 +45,7 @@ export const ContactSubmit = (req, res) => {
       });
     }
 
-    // Insérer le commentaire dans la base de données
+    // Insérer le message dans la base de données
     let insertMessage = "INSERT INTO message (firstname, lastname, email, message, registration_date, id_user) VALUES (?, ?, ?, ?, CURDATE(), ?)";
        
     // la variable id reçoit la valeur en fonction de la présence ou de l'absence de req.session.user ou req.session.admin

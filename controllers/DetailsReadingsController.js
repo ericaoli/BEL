@@ -66,12 +66,12 @@ export const DetailsReadingsController = (req, res) => {
                              return res.status(500).send("Erreur du serveur. Veuillez essayer plus tard.");
                          } else {
                              console.log(`Commentaire envoyé`);
-
-                         }
+                                }
                      });
 
                  } else {
                     comment = "Aucun commentaire saisi.";
+
                 }
             });
 	    });

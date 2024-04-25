@@ -98,7 +98,7 @@ export const ConnexionSubmitUser = (req, res, next) => {
     });
 }; 
 
-// pour faire la d"connexion de l'administrateur et des utilisateurs
+// pour faire la deconnexion de l'administrateur et des utilisateurs
 export const Logout = (req, res) => {
 	req.session.destroy((err) => {
 		res.redirect("/");

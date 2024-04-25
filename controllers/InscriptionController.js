@@ -119,7 +119,7 @@ export const InscriptionSubmit = (req,res) => {
           }; 
         }; 
       }); 
-    }; 
+    };
  
 
   

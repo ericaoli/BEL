@@ -1191,6 +1191,9 @@ select {
   height: -moz-fit-content;
   height: fit-content;
   padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .medias {

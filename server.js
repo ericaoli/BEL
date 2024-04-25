@@ -67,24 +67,30 @@ app.use(function (req, res, next) {
 //MiddleWare - PAGES PROTEGEES
 app.use((req, res, next) => {
 	let pathname = parseurl(req).pathname.split("/");
-	//console.log(`Middleware de verification de session: ${pathname}`);
+	console.log(`Middleware de verification de session: ${pathname}`);
 
-	let protectedPath = ["admin", "user", "add_book", "edit_book"];
-	//console.log(`protectedpath: ${protectedPath}`);
-
+	let protectedPath = ["admin","add_book", "edit_book"];
+	let protectedPathUser = ["user"];
+	//console.log(`protectedpath: ${protectedPathUser}`);
+	
 	//si la session admin n'existe pas et que l'url fait partie des urls protégées
-	if (!req.session.admin && protectedPath.includes(pathname[2])) {
-		//console.log("Utilisateur non authentifié et route protégée. Rédirige vers /")
+	if (!req.session.admin && protectedPath.indexOf(pathname[1]) !==-1) {
+		console.log("Admin non authentifié et route protégée. Rédirige vers /")
 		res.redirect("/");
-
-	} else if (!req.session.user && protectedPath.includes(pathname[2])) {
-		//console.log("Utilisateur authentifié ou route non protégée. Continue vers le prochain middleware");
+	} else if (!req.session.user && protectedPathUser.indexOf(pathname[1]) !==-1) {
+		console.log("User non authentifié et route protégée. Rédirige vers /")
 		res.redirect("/");
-
 	} else {
 		next();
-	}	
+	}
+	
+	console.log("Pathname:", pathname);
+	console.log("Session admin:", req.session.admin);
+	console.log("URL complète:", req.url)
 });
+
+
+
 
 //appel du routeur
 app.use("/", router);

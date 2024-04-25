@@ -259,6 +259,7 @@ export const UpdateBook = async(req, res) => {
  
   // utilisation d'un paramètre de route pour gérer les routes POST identiques "/edit_book/:id"
   const action = req.body.action;
+  
   if(action === "edit") {
       //console.log(`JE RENTRE DANS L'ACTION`);
     const title = req.body.title;
@@ -313,6 +314,3 @@ export const UpdateBook = async(req, res) => {
     });
   } 
 };
-
-//let deleteCommentBook = "DELETE FROM comment WHERE id_book = ?";
-//let deleteLikedBook = "DELETE FROM liked WHERE id_book = ?";

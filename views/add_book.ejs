@@ -5,6 +5,9 @@
         <form method="post" class="book_form" enctype="multipart/form-data">
             <fieldset>
                 <legend id="register">Nouveau livre</legend>
+                <% if(locals.message) { %>
+                    <p class="message_error"><%= message %></p>
+                <% } %>
                 <label for="title">Titre</label>
                 <input type="text" name="title" id="title"  class="input-error" placeholder="Taille maximale : 250 caractères.">
                 <% if(locals.messageTitle) { %>
@@ -26,7 +29,7 @@
                     <p class="message_error"><%= messageIsbn %></p>
                 <% } %>
                 <label for="image">Choissisez l'image du livre </label>
-                <input type="file" name="url_cover_image" id="image">
+                <input type="file" name="url_cover_image" id="image" class="input-error">
                 <% if(locals.messageImage) { %>
                     <p class="message_error"><%= messageImage %></p>
                 <% } %>
@@ -65,9 +68,6 @@
                     <p class="message_error"><%= messageAuthorLastName %></p>
                 <% } %>
                 <button type="submit" class="submit-button">Enregistrer</button>
-                <% if(locals.message) { %>
-                        <p class="message_error"><%= message %></p>
-                <% } %>
             </fieldset>
         </form>
     </article>

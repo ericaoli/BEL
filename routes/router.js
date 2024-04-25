@@ -61,10 +61,4 @@ router.post("/edit_book/:id/edit", upload.single("url_cover_image"), UpdateBook)
 
 
 
-
-
-
-
-
-
 export default router;
