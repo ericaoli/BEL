@@ -57,7 +57,7 @@
  - La base de données conçue pour cette application contient les informations techniques concernant les livres, les informations concernant les utilisateurs enregistrés (identifiants, commentaires et likes) et les informations reçues par le formulaire de contact.
 
 #### Structure de la base de données :
-##### Tables :
- - 
+##### Modèles de données : 
+ - Voir le cahier des charges : https://drive.google.com/file/d/1mQfa_3K4IIVgdwQlUFUT2QyMklnRhnWu/view?usp=sharing (p.27 - p.31)
 
     
