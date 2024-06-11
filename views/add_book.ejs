@@ -5,6 +5,7 @@
         <form method="post" class="book_form" enctype="multipart/form-data">
             <fieldset>
                 <legend id="register">Nouveau livre</legend>
+                <!-- message d'erreur conditionnel, capturé par le contrôleur -->
                 <% if(locals.message) { %>
                     <p class="message_error"><%= message %></p>
                 <% } %>
