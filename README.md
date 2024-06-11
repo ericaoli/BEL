@@ -83,18 +83,18 @@
         * Chaque champ de saisie est accompagné d'un label descriptif et d'un message d'erreur conditionnel.
         * Script JavaScript : situé dans le dossier `public/javascript`. Masque les messages d'erreur lors d'un click sur les inputs.
     
-    3. admin.ejs :
-    4. connexion.ejs :
-    5. contact.ejs :
-    6. details_readings.ejs :
-    7. edit_book.ejs :
-    8. footer.ejs :
-    9. header.ejs :
-    10. home.ejs :
-    11. inscription.ejs :
-    12. readings_classics.ejs :
-    13. readings_contemporarys.ejs :
-    14. readings.ejs :
-    15. user.ejs :
+3. admin.ejs :
+4. connexion.ejs :
+5. contact.ejs :
+6. details_readings.ejs :
+7. edit_book.ejs :
+8. footer.ejs :
+9. header.ejs :
+10. home.ejs :
+11. inscription.ejs :
+12. readings_classics.ejs :
+13. readings_contemporarys.ejs :
+14. readings.ejs :
+15. user.ejs :
 
         
