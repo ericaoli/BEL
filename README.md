@@ -1,7 +1,8 @@
 # BEL
 Site web du club de lecture Brasil Em Livros.
 Création d'une application CRUD (Create, Read, Update, Delete) en HTML5, SCSS, JS, NODE JS et SQL.
-Le projet a un cahier des charges. La documentation du code se trouve dans le commentaires et dans ce fichier README.
+Le projet a un cahier des charges. https://drive.google.com/file/d/1mQfa_3K4IIVgdwQlUFUT2QyMklnRhnWu/view?usp=sharing
+La documentation du code se trouve dans le commentaires et dans ce fichier README.
 Projet réalisé pour l'obtention du titre RNCP 37273 Niveau 5 - Développeur Web Full Stack 
 
 ## Conseils d'utilisation :
@@ -52,8 +53,11 @@ Projet réalisé pour l'obtention du titre RNCP 37273 Niveau 5 - Développeur We
 
 ### BASE DE DONNÉES
 
-##### Introduction :
-    La base de données conçue pour cette application contient les informations techniques concernant les livres, les informations concernant les utilisateurs enregistrés (identifiants, commentaires et likes) et les informations reçues par le formulaire de contact.
+#### Introduction :
+ - La base de données conçue pour cette application contient les informations techniques concernant les livres, les informations concernant les utilisateurs enregistrés (identifiants, commentaires et likes) et les informations reçues par le formulaire de contact.
 
-##### Structure de la base de données :
+#### Structure de la base de données :
+##### Tables :
+ - 
+
     
