@@ -68,20 +68,20 @@
     * Les vues sont organisées en fichiers EJS, qui sont stockés dans le répertoire `views` du projet. Chaque fichier EJS correspond à une page ou à un composant de l'interface utilisateur.
     
 - Liste des Vues :
-    1. about.ejs : Présente des informations sur le club de lecture “Brasil em Livros”.
-        - Détails du Code :
-            * Div "a-propos" : affiche la bannière de la page.
-            * Header / Footer : templates communs pour toutes les pages de l'application.
-            * Section "container about-container" : contient des informations textuelles sur le club de lecture.
-            * Section "container" : fournit une vidéo sur la littérature brésilienne, intégrée via une iframe YouTube.
+1. about.ejs : Présente des informations sur le club de lecture “Brasil em Livros”.
+    - Détails du Code :
+        * Div "a-propos" : affiche la bannière de la page.
+        * Header / Footer : templates communs pour toutes les pages de l'application.
+        * Section "container about-container" : contient des informations textuelles sur le club de lecture.
+        * Section "container" : fournit une vidéo sur la littérature brésilienne, intégrée via une iframe YouTube.
 
-    2. add_book.ejs : Permet à l'administrateur de saisir des informations pour enregistrer un nouveau livre dans la base de données. Elle offre un formulaire détaillé pour capturer toutes les informations nécessaires sur le livre, y compris le titre, l'année de parution, la description, l'ISBN, l'image de couverture, le texte alternatif, la date de lecture au club, la catégorie du livre, l'éditeur et les informations sur l'auteur.
-        - Détails du Code :
-            * Div "admin" : affiche la bannière de la page.
-            * Header / Footer : templates communs pour toutes les pages de l'application.
-            * Article "container admin_page" : contient le formulaire.
-            * Chaque champ de saisie est accompagné d'un label descriptif et d'un message d'erreur conditionnel.
-            * Script JavaScript : situé dans le dossier `public/javascript`. Masque les messages d'erreur lors d'un click sur les inputs.
+2. add_book.ejs : Permet à l'administrateur de saisir des informations pour enregistrer un nouveau livre dans la base de données. Elle offre un formulaire détaillé pour capturer toutes les informations nécessaires sur le livre, y compris le titre, l'année de parution, la description, l'ISBN, l'image de couverture, le texte alternatif, la date de lecture au club, la catégorie du livre, l'éditeur et les informations sur l'auteur.
+    - Détails du Code :
+        * Div "admin" : affiche la bannière de la page.
+        * Header / Footer : templates communs pour toutes les pages de l'application.
+        * Article "container admin_page" : contient le formulaire.
+        * Chaque champ de saisie est accompagné d'un label descriptif et d'un message d'erreur conditionnel.
+        * Script JavaScript : situé dans le dossier `public/javascript`. Masque les messages d'erreur lors d'un click sur les inputs.
     
     3. admin.ejs :
     4. connexion.ejs :
