@@ -48,8 +48,12 @@ Projet réalisé pour l'obtention du titre RNCP 37273 Niveau 5 - Développeur We
     - Implémentation :
 
         * Node.js (Express) : Gère les routes et les contrôleurs. Contient une partie de la logique de l'application, mais son rôle principal est de traiter les requêtes entrantes, d'appliquer la logique nécessaire en utilisant le modèle, et de déterminer quelle vue doit être rendue.
-        
-
-#### BASE DE DONNÉES
 
 
+### BASE DE DONNÉES
+
+##### Introduction :
+    La base de données conçue pour cette application contient les informations techniques concernant les livres, les informations concernant les utilisateurs enregistrés (identifiants, commentaires et likes) et les informations reçues par le formulaire de contact.
+
+##### Structure de la base de données :
+    

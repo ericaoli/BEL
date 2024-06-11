@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : db.3wa.io
--- Généré le : mar. 02 avr. 2024 à 15:21
+-- Généré le : mar. 11 juin 2024 à 08:39
 -- Version du serveur :  5.7.33-0ubuntu0.18.04.1-log
 -- Version de PHP : 8.0.3
 
@@ -118,34 +118,7 @@ INSERT INTO `author` (`id_author`, `lastname`, `firstname`) VALUES
 (10, 'Ribeiro', 'João Ubaldo'),
 (11, 'de Macedo', 'Joaquim Manuel'),
 (12, 'Machado de Assis', 'Joaquim Maria'),
-(13, 'Tenorio', 'Jeferson'),
-(37, 'Oliveira', 'Ravi'),
-(49, NULL, NULL),
-(50, NULL, NULL),
-(51, NULL, NULL),
-(52, NULL, NULL),
-(53, NULL, NULL),
-(54, NULL, NULL),
-(55, NULL, NULL),
-(56, NULL, NULL),
-(57, NULL, NULL),
-(58, NULL, NULL),
-(59, NULL, NULL),
-(60, NULL, NULL),
-(61, NULL, NULL),
-(62, NULL, NULL),
-(63, NULL, NULL),
-(64, NULL, NULL),
-(65, NULL, NULL),
-(66, NULL, NULL),
-(67, NULL, NULL),
-(68, NULL, NULL),
-(69, 'Oliveira', 'Erica'),
-(70, 'Oliveira', 'MARIA'),
-(71, 'PINHEIRO', 'MARIA'),
-(72, 'ttt', 'ttt'),
-(73, 'ROGER', 'Micke'),
-(74, 'atr', 'aut');
+(13, 'Tenorio', 'Jeferson');
 
 -- --------------------------------------------------------
 
@@ -518,12 +491,9 @@ CREATE TABLE `message` (
 --
 
 INSERT INTO `message` (`id_message`, `firstname`, `lastname`, `email`, `message`, `registration_date`, `id_user`) VALUES
-(37, 'Cecile', 'Verdun', 'cecile@gmail.com', 'C\'est un message test d\'un utilisateur qui n\'est pas enregistré.', '2023-12-06', NULL),
 (38, 'Jose', 'Louadoudi', 'louadoudi@gmail.com', 'C\'est un message d\'un utilisateur enregistré!', '2023-12-06', NULL),
 (41, 'Djamila', 'Buarque', 'djamila@gmail.com', 'Je suis un user non inscrit et je test le formulaire.', '2023-12-08', NULL),
-(42, 'Antonio', 'Ramos', 'antonio@gmail.com', 'Je suis ravi d\'être là!', '2023-12-08', NULL),
-(43, 'Ravi', 'Pinheiro', 'pinheiro@gmail.com', 'bonjour', '2023-12-12', NULL),
-(44, 'Ravi', 'Pinheiro', 'pinheiro@gmail.com', 'coucou', '2023-12-12', NULL);
+(42, 'Antonio', 'Ramos', 'antonio@gmail.com', 'Je suis ravi d\'être là!', '2023-12-08', NULL);
 
 -- --------------------------------------------------------
 
@@ -684,7 +654,7 @@ ALTER TABLE `editor`
 -- AUTO_INCREMENT pour la table `message`
 --
 ALTER TABLE `message`
-  MODIFY `id_message` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id_message` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT pour la table `users`
