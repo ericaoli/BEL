@@ -14,8 +14,7 @@ const router = express.Router();
 
 //liste des routes
 //Home
-router.get("/", HomeController);
-
+router.get("/", HomeController)
 //About
 router.get("/about", AboutController);
 
