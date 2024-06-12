@@ -1,5 +1,6 @@
 
 import pool from "../config/database.js";
+import upload from "../helpers/upload.js";
 import { baseUrl } from "../server.js";
 
 // pour faire l'affichage de la page admin avec la session
@@ -251,7 +252,7 @@ export const EditBook = (req, res) => {
 };
 
 // pour l'envoie des informations mises à jour
-export const UpdateBook = async(req, res) => {
+export const UpdateBook = (req, res) => {
   //console.log(`Je rentre dans la fonction UpdateBook`);
 
   let id = req.params.id;
@@ -261,39 +262,24 @@ export const UpdateBook = async(req, res) => {
   const action = req.body.action;
   
   if(action === "edit") {
-      //console.log(`JE RENTRE DANS L'ACTION`);
-    const title = req.body.title;
-      //console.log(`TITLE UPDATE: ${title},  ${typeof title}`);
-    const publicationYear = req.body.parution;
-      //console.log(`PUBLICATION YEAR UPDATE: ${publicationYear},  ${typeof publicationYear}`);
-    const description = req.body.description;
-      //console.log(`DESCRIPTION UPDATE: ${description},  ${typeof description}`);
-    const isbn = req.body.ISBN;
-      //console.log(`ISBN UPDATE: ${isbn},  ${typeof isbn}`);
-    const existingUrlCoverImage = req.body.url_cover_image; 
-    const newUrlCoverImage = req.file ? req.file.filename : existingUrlCoverImage; // Utilise la nouvelle image si ça existe, sinon, utilise celle qui existe déjà
-    const urlCoverImage = newUrlCoverImage !== undefined ? newUrlCoverImage : existingUrlCoverImage; // Uitlise la nouvelle image si elle existe, sinon, utilise la nouvelle image
+    //console.log(`JE RENTRE DANS L'ACTION`);
+    // recupération des informations du formulaire
+    const title = req.body.title; //console.log(`TITLE UPDATE: ${title},  ${typeof title}`);
+    const publicationYear = req.body.parution;//console.log(`PUBLICATION YEAR UPDATE: ${publicationYear},  ${typeof publicationYear}`);
+    const description = req.body.description;//console.log(`DESCRIPTION UPDATE: ${description},  ${typeof description}`);
+    const isbn = req.body.ISBN;//console.log(`ISBN UPDATE: ${isbn},  ${typeof isbn}`);
+    const existingUrlCoverImage = req.body.existingUrlCoverImage; 
+    const newUrlCoverImage = req.file ? req.file.filename : existingUrlCoverImage; 
+    const urlCoverImage = newUrlCoverImage || existingUrlCoverImage;
+    const altText = req.body.alt_text;//console.log(`ALTTEXT UPDATE: ${altText},  ${typeof altText}`);
+    const dateReadingClub = req.body.date_reading_club;//console.log(`DATEREADING UPDATE: ${dateReadingClub},  ${typeof dateReadingClub}`);
+    const idBookCategory = (req.body.id_book_category === '1' || req.body.id_book_category === '2') ? req.body.id_book_category : null;//console.log(`IDBOOKCATEGORY UPDATE: ${idBookCategory},  ${typeof idBookCategory}`);
+    const editor = req.body.editor;//console.log(`EDITOR UPDATE: ${editor},  ${typeof editor}`);
+    const authorFistname = req.body.author_firstname;//console.log(`AUTOR FIRSTNAME UPDATE: ${authorFistname}, ${typeof authorFistname}`);
+    const authorLastname = req.body.author_lastname;//console.log(`AUTOR LASTNAME UPDATE: ${authorLastname},  ${typeof authorLastname}`);
 
-    //console.log(`existingUrlCoverImage: ${existingUrlCoverImage}`);
-    //console.log(`newUrlCoverImage: ${newUrlCoverImage}`);
-    //console.log(`urlCoverImage: ${urlCoverImage}`);
-    //console.log(`URL IMAGE UPDATE: ${urlCoverImage},  ${typeof urlCoverImage}`);
-    const altText = req.body.alt_text;
-      //console.log(`ALTTEXT UPDATE: ${altText},  ${typeof altText}`);
-    const dateReadingClub = req.body.date_reading_club;
-      //console.log(`DATEREADING UPDATE: ${dateReadingClub},  ${typeof dateReadingClub}`);
-    const idBookCategory = (req.body.id_book_category === '1' || req.body.id_book_category === '2') ? req.body.id_book_category : null;
-      //console.log(`IDBOOKCATEGORY UPDATE: ${idBookCategory},  ${typeof idBookCategory}`);
-    const editor = req.body.editor;
-      //console.log(`EDITOR UPDATE: ${editor},  ${typeof editor}`);
-    const authorFistname = req.body.author_firstname;
-      //console.log(`AUTOR FIRSTNAME UPDATE: ${authorFistname}, ${typeof authorFistname}`);
-    const authorLastname = req.body.author_lastname;
-      //console.log(`AUTOR LASTNAME UPDATE: ${authorLastname},  ${typeof authorLastname}`);
-
-      // appel de la procedure stockée
-    let updateProcedureSql = `CALL UPDATE_BOOK(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
-      //console.log(`RESULTAT UPDATE:`, updateProcedureSql);
+    // appel de la procedure stockée
+    let updateProcedureSql = `CALL UPDATE_BOOK(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;//console.log(`RESULTAT UPDATE:`, updateProcedureSql);
 
     pool.query(updateProcedureSql, [id, title, publicationYear, description, isbn, urlCoverImage, altText, dateReadingClub, idBookCategory, editor, authorFistname, authorLastname], (error, result) => {
       console.log(`Je rentre dans le query update`);

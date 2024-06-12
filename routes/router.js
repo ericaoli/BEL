@@ -49,15 +49,18 @@ router.get("/logout", Logout);
 
 
 //Admin
+// route pour la page Administrateur
 router.get("/admin", AdminController);
-router.post("/add_book", upload.single("url_cover_image"), AddBooks);
+// routes pour ajouter un nouveau livre
 router.get("/add_book", AddBooks);
+router.post("/add_book", upload.single("url_cover_image"), AddBooks);
+// route pour effacer un livre
 router.post("/readings", DeleteBooks);
+// routes pour faire la mise à jour d'un livre
 router.get("/edit_book", EditBookForm);
 router.get("/edit_book/:id", EditBook);
 router.post("/edit_book/:id", EditBook);
 router.post("/edit_book/:id/edit", upload.single("url_cover_image"), UpdateBook);
-
 
 
 export default router;

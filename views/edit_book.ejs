@@ -33,6 +33,7 @@
                 <label for="image">Choissisez l'image du livre </label>
                 <input type="file" name="url_cover_image" id="image">
                 <img src="/images/<%= book.url_cover_image %>" width="250" alt="<%= book.alt_text %>">
+                <input type="hidden" name="existingUrlCoverImage" value="<%= book.url_cover_image %>">
                 <% if(locals.messageImage) { %>
                     <p class="message_error"><%= messageImage %></p>
                 <% } %>
