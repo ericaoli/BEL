@@ -5,7 +5,7 @@
  - La documentation du code se trouve dans le commentaires et dans ce fichier README.
  
 ## Conseils d'utilisation :
-1. Veuillez trouver les informations de l'Administrateur du site et d'un utilisateur enregistré (login et mot de passe) sur le fichier .env
+1. Les informations concernant l'Administrateur du site et la base de données sont protégées.
 
 2. Le site a 1 administrateur, les utilisateurs enregistrés et les utilisateurs non enregistrés. Chaque type compte avec des différentes fonctionnalités :
 
@@ -16,6 +16,10 @@
     - Utilisateur non enregistré (profil public) - visualisation des livres, de ses détails et des commentaires sans interaction, inscription, formulaire de contact.
 
 ## DOCUMENTATION
+
+### Technologies et dependences :
+ - Node.Js (version 18.17.0), SCSS (1.69.5 compilé avec dart2js 3.1.5)
+ - Dependences : bcrypt (version 5.1.1), dotenv(version 16.3.1),  ejs(version 3.1.9), express(version 4.18.2),  multer(version 1.4.5-lts.1), mysql(version 2.18.1), nodemon(version 3.0.1 ), npm-run-all(version 4.1.5), parseurl(version 1.3.3), path(version 0.12.7), session(version 0.1.0),
 
 ### ARCHITECTURE 
 
