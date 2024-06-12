@@ -83,7 +83,12 @@
         * Chaque champ de saisie est accompagné d'un label descriptif et d'un message d'erreur conditionnel.
         * Script JavaScript : situé dans le dossier `public/javascript`. Masque les messages d'erreur lors d'un click sur les inputs.
     
-3. admin.ejs :
+3. admin.ejs : Présente la page de l'administrateur avec les liens permettant d'accéder à ses fonctionnalités.
+    - Détails du Code :
+        * Div "admin" : affiche la bannière de la page.
+        * Header / Footer : templates communs pour toutes les pages de l'application.
+        * Section "container admin_page" : Présente le menu de fonctionalités de l'administrateur.  
+
 4. connexion.ejs :
 5. contact.ejs :
 6. details_readings.ejs :

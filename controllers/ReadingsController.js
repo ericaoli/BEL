@@ -12,14 +12,14 @@ export const ReadingsController = (req, res) => {
 		// création d'un paramètre de route pour gérer les liens sur la page admin 
 		const action = req.query.action;
 
-		// s'il clique sur le lien modifier un livre, le bouton 'modifier' s'affiche sur la page readings
+		// s'il clique sur le lien modifier un livre sur la page admin, seulement le bouton 'modifier' s'affiche sur la page readings
 		if(action === "modifier") {
 			res.render("readings", { 
 				base_url: baseUrl, 
 				books: book, 
 				action:"modifier" });
 
-		// s'il clique sur le lien supprimer un livre, le bouton 'supprimer' s'affiche sur la page readings
+		// s'il clique sur le lien supprimer un livre sur la page admin, seulement le bouton 'supprimer' s'affiche sur la page readings
 		} else if(action === "supprimer") {
 			res.render("readings", { 
 				base_url: baseUrl, 

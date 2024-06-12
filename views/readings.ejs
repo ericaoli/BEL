@@ -1,50 +1,71 @@
 <%- include('header') -%>
 <div class="books"></div>
-    <section class="container_books">
-        <h1 class="readings">Nos lectures</h1>
-        <% if(locals.messageFirstname) { %>
-            <p class="message_error"><%= messageDeleteLivre %></p>
+<section class="container_books">
+  <h1 class="readings">Nos lectures</h1>
+  <% if(locals.messageFirstname) { %>
+  <p class="message_error"><%= messageDeleteLivre %></p>
+  <% } %>
+  <!-- "books-gallery" - affiche un ensemble de cartes de livres de manière dynamique en utilisant une boucle for -->
+  <div class="books_gallery">
+    <% for(let i=0; i < books.length; ++i) { %>
+    <div class="card">
+      <form class="cover_book" method="post">
+        <figure>
+          <!-- Chaque itération de la boucle génère une nouvelle image avec les données spécifiques du livre actuel (titre, URL de l'image, texte alternatif, titre). -->
+          <img
+            src="/images/<%= books[i].url_cover_image %>"
+            alt="<%= books[i].alt_text %>"
+          />
+          <figcaption lang="pt-br"><%= books[i].title %></figcaption>
+        </figure>
+        <!-- le bouton en savoir plus sera toujours disponible -->
+        <% if (action === "default") { %>
+        <!-- affiche le bouton "en savoir plus" qui redirige vers la page details_readings  -->
+        <p>
+          <a class="btn" href="/details_readings/<%= books[i].id_book %>"
+            >En savoir plus</a
+          >
+        </p>
         <% } %>
-        <div class="books_gallery">
-            <% for(let i=0; i < books.length; ++i) { %>
-            <div class="card">
-                <form class="cover_book" method="post">
-                    <figure>
-                        <img src="/images/<%= books[i].url_cover_image %>" alt="<%= books[i].alt_text %>">
-                        <figcaption lang="pt-br"><%= books[i].title %></figcaption>
-                    </figure>
-                    <!-- le bouton en savoir plus sera toujours disponible -->
-                    <% if (action === "default") { %> 
-                        <!-- rediriger vers la page details_readings  -->
-                        <p><a class="btn" href="/details_readings/<%= books[i].id_book %>">En savoir plus</a></p> 
-                    <% } %>
-                </form>
-                
-                <!-- si l'admin est en session -->
-                <% if (locals.admin) { %>
-                    <div>
-                    <!-- si l'admin clique sur le lien supprimer un livre dans sa page, le bouton supprimer sera disponible sur la page readings grâce au paramètre de route action -->
-                        <% if (action === "supprimer") { %>
-                            <form class="cover_book" method="post">
-                                <!-- bouton pour supprimer le livre  -->
-                                <input type="hidden" name="id" value="<%= books[i].id_book %>">
-                                <button class="btn_admin" type="submit" value="<%= books[i].id_book %>">Supprimer</button>
-                            </form>
-                        <% } %>
+      </form>
 
-                        <!-- si l'admin clique sur le lien modifier un livre, le bouton modifier sera disponible sur la page readings grâce au paramètre de route action -->
-                        <% if (action === "modifier") { %>                            
-                            <form class="cover_book" method="post" action="/edit_book/<%= books[i].id_book %>">
-                                <!-- bouton pour rediriger vers la page edit_book et afficher les informations du livre -->
-                                <input type="hidden" name="id" value="<%=books[i].id_book %>">
-                                <button class="btn_admin" type="submit" id="btn_edition">Modifier</button>
-                            </form>
-                        <% } %>
-                    </div>
-                 <% } %>
-            </div>
-            <% } %>  
-        </div>
-    </section>
+      <!-- si l'admin est en session -->
+      <% if (locals.admin) { %>
+      <div>
+        <!-- si l'admin clique sur le lien supprimer un livre dans sa page, le bouton supprimer sera disponible sur la page readings grâce au paramètre de route 'action' -->
+        <% if (action === "supprimer") { %>
+        <form class="cover_book" method="post">
+          <!-- bouton pour supprimer le livre  -->
+          <input type="hidden" name="id" value="<%= books[i].id_book %>" />
+          <button
+            class="btn_admin"
+            type="submit"
+            value="<%= books[i].id_book %>"
+          >
+            Supprimer
+          </button>
+        </form>
+        <% } %>
+
+        <!-- si l'admin clique sur le lien modifier un livre, le bouton modifier sera disponible sur la page readings grâce au paramètre de route 'action' -->
+        <% if (action === "modifier") { %>
+        <form
+          class="cover_book"
+          method="post"
+          action="/edit_book/<%= books[i].id_book %>"
+        >
+          <!-- bouton pour rediriger vers la page edit_book et afficher les informations du livre -->
+          <input type="hidden" name="id" value="<%=books[i].id_book %>" />
+          <button class="btn_admin" type="submit" id="btn_edition">
+            Modifier
+          </button>
+        </form>
+        <% } %>
+      </div>
+      <% } %>
+    </div>
+    <% } %>
+  </div>
+</section>
 <script src="/javascript/btn_admin.js"></script>
 <%- include('footer') -%>
