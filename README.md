@@ -100,6 +100,7 @@
     * Script "formulaire.js" : situé dans le dossier `public/javascript`. Masque les messages d'erreur lors d'un click sur les inputs.  
 
 5. contact.ejs :
+
 6. details_readings.ejs :
 7. edit_book.ejs :
 8. footer.ejs :
