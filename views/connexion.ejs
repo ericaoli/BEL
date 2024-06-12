@@ -7,15 +7,18 @@
                 <legend>Connexion</legend>
                 <label for="email">E-mail</label>
                 <input type="email" name="email" id="email" class="input-error" placeholder="E-mail">
+                <!-- affiche un message d'erreur spécifique à l'email si locals.messageEmail est défini. -->
                 <% if(locals.messageEmail) { %>
                     <p class="message_error"><%= messageEmail%></p>
                 <% } %>
                 <label for="password">Mot de passe</label>
                 <input type="password" name="password" id="password" class="input-error" placeholder="Veuillez enregistrer 8 caractères">
+                <!-- Affiche un message d'erreur spécifique au mot de passe si locals.messagePassword est défini. -->
                 <% if(locals.messagePassword) { %>
                     <p class="message_error"><%= messagePassword%></p>
                 <% } %>
                 <button type="submit">Connexion</button>
+                <!-- Affiche un message d'erreur général si locals.message est défini. -->
                 <% if(locals.message) { %>
                     <p class="message_error"><%= message %></p>
                 <% } %>

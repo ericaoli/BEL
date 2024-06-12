@@ -79,9 +79,10 @@
     - Détails du Code :
         * Div "admin" : affiche la bannière de la page.
         * Header / Footer : templates communs pour toutes les pages de l'application.
-        * Article "container admin_page" : contient le formulaire.
+        * Article "container admin_page" : contient le formulaire pour enregistrer un livre dans la base de données.
+        * <form method="post" class="book_form" enctype="multipart/form-data">: Un formulaire HTML utilisant la méthode POST pour soumettre les données du livre, avec enctype="multipart/form-data" pour permettre la gestion de l'upload des fichiers, notamment les images de couverture des livres.
         * Chaque champ de saisie est accompagné d'un label descriptif et d'un message d'erreur conditionnel.
-        * Script JavaScript : situé dans le dossier `public/javascript`. Masque les messages d'erreur lors d'un click sur les inputs.
+        * Script "formulaire.js" : situé dans le dossier `public/javascript`. Masque les messages d'erreur lors d'un click sur les inputs.
     
 3. admin.ejs : Présente la page de l'administrateur avec les liens permettant d'accéder à ses fonctionnalités.
     - Détails du Code :
@@ -89,7 +90,15 @@
         * Header / Footer : templates communs pour toutes les pages de l'application.
         * Section "container admin_page" : Présente le menu de fonctionalités de l'administrateur.  
 
-4. connexion.ejs :
+4. connexion.ejs : Présente la page de connexion.
+- Détails du Code :
+    * Div "connexion" : affiche la bannière de la page.
+    * Header / Footer : templates communs pour toutes les pages de l'application.
+    * Article "container connect" : Contient le formulaire de connexion des utilisateurs et de l'administrateur.
+    * <form method="post" class="form_connexion">: Un formulaire HTML utilisant la méthode POST pour soumettre les données de connexion.
+    * <fieldset> et <legend>: Groupement des éléments de formulaire avec une légende pour améliorer l'accessibilité et l'organisation visuelle.
+    * Script "formulaire.js" : situé dans le dossier `public/javascript`. Masque les messages d'erreur lors d'un click sur les inputs.  
+
 5. contact.ejs :
 6. details_readings.ejs :
 7. edit_book.ejs :

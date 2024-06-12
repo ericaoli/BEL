@@ -1,6 +1,5 @@
 
 import pool from "../config/database.js";
-import upload from "../helpers/upload.js";
 import { baseUrl } from "../server.js";
 
 // pour faire l'affichage de la page admin avec la session
@@ -292,8 +291,8 @@ export const UpdateBook = (req, res) => {
       } else {
         console.log("Resultat de cette modification:", result);
         res.render("edit_book", {
-        message: "Le livre a été bien modifié.",
-        messageImage: "Fichier téléchargé avec succès.",
+        message: `Le livre ${title} a été bien modifié.`,
+        messageImage: `L'image pour ${title} a été bien modifiée.`,
         base_url: baseUrl,
         });
       };

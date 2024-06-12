@@ -7,6 +7,15 @@
                 <legend id="register">Modifier le contenu d'un livre</legend>
 
                 <label for="title">Titre</label>
+
+                <!-- messages de confirmation de l'enregistrement des modifications -->
+                <% if(locals.message) { %>
+                    <p class="message_error"><%= message %></p>
+                <% } %>
+                <% if(locals.messageImage) { %>
+                    <p class="message_error"><%= messageImage %></p>
+                <% } %>
+
                 <input type="text" name="title" id="title"  class="input-error" value="<%= book.title %>">
                 <% if(locals.messageTitle) { %>
                     <p class="message_error"><%= messageTitle %></p>
