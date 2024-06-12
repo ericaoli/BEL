@@ -1,10 +1,9 @@
 # BEL
- - Site web du club de lecture Brasil Em Livros.
- - Création d'une application CRUD (Create, Read, Update, Delete) en HTML5, SCSS, JS, NODE JS et SQL. Projet réalisé pour l'obtention du titre RNCP 37273 Niveau 5 - Développeur Web Full Stack
+ - Site web du club de lecture Brasil Em Livros. Projet réalisé pour l'obtention du titre RNCP 37273 Niveau 5 - Développeur Web Full Stack.
+ - Création d'une application CRUD (Create, Read, Update, Delete) en HTML5, SCSS, JS, NODE JS et SQL. 
  - Cahier des charges: https://drive.google.com/file/d/1mQfa_3K4IIVgdwQlUFUT2QyMklnRhnWu/view?usp=sharing
  - La documentation du code se trouve dans le commentaires et dans ce fichier README.
  
-
 ## Conseils d'utilisation :
 1. Veuillez trouver les informations de l'Administrateur du site et d'un utilisateur enregistré (login et mot de passe) sur le fichier .env
 
