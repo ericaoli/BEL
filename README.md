@@ -87,24 +87,38 @@
         * Chaque champ de saisie est accompagné d'un label descriptif et d'un message d'erreur conditionnel.
         * Script "formulaire.js" : situé dans le dossier `public/javascript`. Masque les messages d'erreur lors d'un click sur les inputs.
     
-3. admin.ejs : Présente la page de l'administrateur avec les liens permettant d'accéder à ses fonctionnalités.
+3. admin.ejs : Présente la page de l'administrateur avec les liens permettant d'accéder à ses fonctionnalités (ajouter un livre, modifier un livre, supprimer un livre).
     - Détails du Code :
         * Div "admin" : affiche la bannière de la page.
         * Header / Footer : templates communs pour toutes les pages de l'application.
         * Section "container admin_page" : Présente le menu de fonctionalités de l'administrateur.  
 
-4. connexion.ejs : Présente la page de connexion.
+4. connexion.ejs : Présente la page de connexion, avec un formulaire permetant à l'administrateur aux utilisateurs inscrits de se connecter au site.
 - Détails du Code :
     * Div "connexion" : affiche la bannière de la page.
     * Header / Footer : templates communs pour toutes les pages de l'application.
     * Article "container connect" : Contient le formulaire de connexion des utilisateurs et de l'administrateur.
-    * <form method="post" class="form_connexion">: Un formulaire HTML utilisant la méthode POST pour soumettre les données de connexion.
+    * <form method="post" class="form_connexion">: Un formulaire HTML utilisant la méthode POST pour soumettre les données de connexion. Chaque saisie est vérifiée et un message d'erreur spécifique est affiché en cas de non validation.
     * <fieldset> et <legend>: Groupement des éléments de formulaire avec une légende pour améliorer l'accessibilité et l'organisation visuelle.
     * Script "formulaire.js" : situé dans le dossier `public/javascript`. Masque les messages d'erreur lors d'un click sur les inputs.  
 
-5. contact.ejs :
+5. contact.ejs : Présente la page conenant un formulaire de contact, permettant aux utilisateurs d'envoyer des messages à l'administrateur du site.
+- Détails du Code :
+    * Div "contact" : affiche la bannière de la page.
+    * Header / Footer : templates communs pour toutes les pages de l'application.
+    * Article "container _contact" : Contient le formulaire de contact. 
+    * <form  class="form_contact" method="post"> : formulaire de contact qui peut être utilisé par tous (utilisateurs enregistrés et non enregistrés). Si l'utilisateur est enregistré et connecté, le formulaire sera pré-rempli et ces champs ne peuvent pas être modifiés. Sinon, il faudra remplir les champs. Chaque saisie est vérifiée et un message d'erreur spécifique est affiché en cas de non validation.
+    * <fieldset> et <legend>: Groupement des éléments de formulaire avec une légende pour améliorer l'accessibilité et l'organisation visuelle.
+    * Script "formulaire.js" : situé dans le dossier `public/javascript`. Masque les messages d'erreur lors d'un click sur les inputs. 
 
-6. details_readings.ejs :
+6. details_readings.ejs : Page de détails de livre qui affiche des informations techniques sur le livre sélectionné, ainsi que des commentaires d'utilisateurs et une fonctionnalité de "like". Les utilisateurs enregistrés peuvent aimer les livres et ajouter des commentaires.
+- Détails du Code :
+    * Div "books" : affiche la bannière de la page.
+    * Header / Footer : templates communs pour toutes les pages de l'application.
+    * Section "container_books" : La section suivante affiche dynamiquement les informations techniques de chaque livre sélectionné à travers une boucle for. Pour chaque livre dans le tableau books, elle affiche le titre, les détails techniques, une image de couverture (article "details"), et, si l'utilisateur est connecté, un formulaire "like". 
+    * Section "container container_books" : La section suivante affiche dynamiquement les commentaires enregistrés grâce à une boucle for. Si un utilisateur ou l'administrateur est connecté, elle affiche également un formulaire permettant de soumettre un nouveau commentaire.
+     * Script "formulaire.js" : situé dans le dossier `public/javascript`. Masque les messages d'erreur lors d'un click sur les inputs. 
+
 7. edit_book.ejs :
 8. footer.ejs :
 9. header.ejs :
