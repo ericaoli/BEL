@@ -2,7 +2,13 @@
 <div class="admin"></div>
     <article class="container admin_page">
         <h3 id="edit" >Modifier le contenu d'un livre</h3>
+        <!-- Formulaire pour modifier les informations d'un livre -->
         <form method="post" class="book_form" enctype="multipart/form-data" action="/edit_book/<%= book.id_book %>/edit">
+            <!--
+                enctype="multipart/form-data": Indique que le formulaire peut envoyer des fichiers en plus des données textuelles. Ceci est nécessaire car le formulaire permet de télécharger une nouvelle image de couverture pour le livre.
+    
+                action="/edit_book/<%= book.id_book %>/edit": Spécifie l'URL où les données du formulaire doivent être envoyées pour traitement. Ici, les données sont envoyées à l'endpoint qui gère l'édition du livre identifié par son ID.
+            -->
             <fieldset>
                 <legend id="register">Modifier le contenu d'un livre</legend>
 
@@ -42,7 +48,7 @@
                 <label for="image">Choissisez l'image du livre </label>
                 <input type="file" name="url_cover_image" id="image">
                 <img src="/images/<%= book.url_cover_image %>" width="250" alt="<%= book.alt_text %>">
-                <input type="hidden" name="existingUrlCoverImage" value="<%= book.url_cover_image %>">
+                <input type="hidden" name="existingUrlCoverImage" value="<%= book.url_cover_image %>"> <!-- Champ caché pour conserver l'URL de l'image de couverture actuelle si aucune nouvelle image n'est téléchargée -->
                 <% if(locals.messageImage) { %>
                     <p class="message_error"><%= messageImage %></p>
                 <% } %>
@@ -56,21 +62,26 @@
                 <!-- fonction pour afficher la date récupèrée de la bdd en format jj/mm/aaaa  -->
                 <%
                 function formatDateForInput(date) {
+                  // Vérifie si la date est null ou undefined et renvoie une chaîne vide si c'est le cas.
                   if (!date) {
-                    return ''; // Si date est null ou undefined
+                    return ''; 
                   }
                 
+                  // Crée un objet Date à partir de la date fournie.
                   const formattedDate = new Date(date);
                 
+                  // Vérifie si la date créée est valide. Si ce n'est pas le cas, renvoie une chaîne vide.
                   if (isNaN(formattedDate.getTime())) {
-                    return ''; // Si date n'est pas une date valable
+                    return ''; 
                   }
 
+                  // Extrait le jour, le mois et l'année de la date et les formate en ajoutant des zéros si nécessaire.
                   const day = String(formattedDate.getDate()).padStart(2, '0');
                   const month = String(formattedDate.getMonth() + 1).padStart(2, '0');
                   const year = formattedDate.getFullYear();
                 
-                  return `${year}-${month}-${day}`;
+                  // Renvoie la date formatée en chaîne de caractères.
+                  return `${day}-${month}-${year}`;
                 }
                 %>
                 <label for="date_reading_club">Date de lecture au club</label>
@@ -80,8 +91,12 @@
                 <% } %>
 
                 <label>Categorie du livre</label>
+                <!-- Menu déroulant pour sélectionner la catégorie du livre -->
                 <select name="id_book_category">
+                    <!-- Option par défaut demandant à l'utilisateur de choisir une option -->
                     <option value="">Choissisez une option</option>
+                    <!-- Options pour sélectionner la catégorie "Classique" ou la catégorie "Contemporain" -->
+                    <!-- Si la catégorie du livre correspond à cette option, ajout l'attribut 'selected' et elle sera séléctionnée par défault. -->
                     <option value="1" <%= book.id_book_category === 1 ? 'selected' : '' %>>Classique</option>
                     <option value="2" <%= book.id_book_category === 2 ? 'selected' : '' %>>Contemporain</option>
                 </select>

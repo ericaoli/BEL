@@ -119,8 +119,18 @@
     * Section "container container_books" : La section suivante affiche dynamiquement les commentaires enregistrés grâce à une boucle for. Si un utilisateur ou l'administrateur est connecté, elle affiche également un formulaire permettant de soumettre un nouveau commentaire.
      * Script "formulaire.js" : situé dans le dossier `public/javascript`. Masque les messages d'erreur lors d'un click sur les inputs. 
 
-7. edit_book.ejs :
-8. footer.ejs :
+7. edit_book.ejs : Page qui présente le formulaire d'édition des informations d'un livre sélectionné par l'administrateur.
+- Détails du Code :
+    * Div "admin" : affiche la bannière de la page.
+    * Header / Footer : templates communs pour toutes les pages de l'application.
+    * Article "container admin_page" : contient le formulaire "book_form", permettant la mise à jour des informations d'un livre, les envoyant à la base de données. 
+    * Script "formulaire.js" : situé dans le dossier `public/javascript`. Masque les messages d'erreur lors d'un click sur les inputs. 
+
+8. footer.ejs : Pied de page. Utilisée en tant qu'un template pour toutes les pages.
+- Détails du code :
+    * Contient un logo avec un lien vers la page d'accueil.
+    * Inclut des liens vers les réseaux sociaux du club de lecture et de la développeuse.
+
 9. header.ejs :
 10. home.ejs :
 11. inscription.ejs :
